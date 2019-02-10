@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import List from './containers/List';
+
 const App = () => {
-  return (<div>movieList</div>);
+  return <List />;
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
