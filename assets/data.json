@@ -1,6 +1,6 @@
 [
   {
-    "name": "Avatar",
+    "title": "Avatar",
     "distributor": "20th Century Fox",
     "year": "2009",
     "amount": "$2,787,965,087",
@@ -11,7 +11,7 @@
     "ranking": 1
   },
   {
-    "name": "Titanic",
+    "title": "Titanic",
     "distributor": "20th Century Fox",
     "year": "1997",
     "amount": "$2,187,463,944",
@@ -21,8 +21,8 @@
     },
     "ranking": 2
   },
-  { 
-    "name": "Star Wars: The Force Awakens",
+  {
+    "title": "Star Wars: The Force Awakens",
     "distributor": "Walt Disney Studios Motion Pictures",
     "year": "2015",
     "amount": "$2,068,223,624",
@@ -33,7 +33,7 @@
     "ranking": 3
   },
   {
-    "name": "Avengers: Infinity War",
+    "title": "Avengers: Infinity War",
     "distributor": "Walt Disney Studios Motion Pictures",
     "year": "2018",
     "amount": "$2,048,359,754",
@@ -44,10 +44,10 @@
     "ranking": 4
   },
   {
-    "name": "Jurassic World",
+    "title": "Jurassic World",
     "distributor": "Universal Pictures",
     "year": "2015",
-    "amount": "$1,671,713,208	",
+    "amount": "$1,671,713,208",
     "img": {
       "src": "media/jurassic_world.jpg",
       "alt": "jurassic_world"
