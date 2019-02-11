@@ -3,7 +3,6 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -14,22 +13,5 @@ module.exports = {
     "plugins": [
         "react"
     ],
-    "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
-    }
+    "extends": ["eslint:recommended", "plugin:react/recommended"]
 };
