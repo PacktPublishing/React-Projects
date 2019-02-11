@@ -5,7 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import List from './containers/List';
 
 const App = () => {
-  return <List />;
+  return (
+    <div class="container">
+      <List />
+    </div>
+  )
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
