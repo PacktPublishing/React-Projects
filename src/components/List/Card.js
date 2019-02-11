@@ -17,7 +17,17 @@ const Card = ({ movie }) => {
 };
 
 Card.propTypes = {
-  movie: PropTypes.object
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    distributor: PropTypes.string,
+    year: PropTypes.number,
+    amount: PropTypes.string,
+    img: PropTypes.shape({
+      src: PropTypes.string,
+      alt: PropTypes.string
+    }),
+    ranking: PropTypes.number
+  })
 };
 
 export default Card;
