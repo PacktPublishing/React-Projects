@@ -27,7 +27,7 @@ Card.propTypes = {
       alt: PropTypes.string
     }),
     ranking: PropTypes.number
-  })
+  }).isRequired
 };
 
 export default Card;
