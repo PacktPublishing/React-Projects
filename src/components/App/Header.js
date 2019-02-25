@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from '../shared/Link';
+import Link from '../Shared/Link';
+import './Header.css';
 
 const Header = ({logo}) => (
   <header className="App-header">
