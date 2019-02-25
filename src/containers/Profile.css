@@ -1,0 +1,18 @@
+.Profile-container {
+  width: 50%;
+  margin: 10px auto;
+}
+
+.Profile-avatar {
+  width: 150px;
+}
+
+.Profile-information {
+  list-style: none;
+  text-align: left;
+}
+
+.Profile-information > li {
+  display: flex;
+  justify-content: space-between;
+}
