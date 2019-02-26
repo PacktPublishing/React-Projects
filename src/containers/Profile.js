@@ -22,18 +22,23 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const profile = await fetch("https://api.github.com/users/octocat").then((res) => res.json());
+    const profile = await fetch("https://api.github.com/users/octocat");
+    const profileJSON = await profile.json();
 
-    if (profile) {
+    if (profileJSON) {
+      const repositories = await fetch(profileJSON.repos_url);
+      const repositoriesJSON = await repositories.json()
+
       this.setState({
-        data: profile,
+        data: profileJSON,
+        repositories: repositoriesJSON,
         loading: false
       })
     }
   }
 
   render() {
-    const { data, loading } = this.state;
+    const { data, loading, repositories } = this.state;
 
     if (loading) {
         return <div>Loading...</div>
@@ -47,12 +52,18 @@ class Profile extends Component {
       { label: 'location', value: data.location },
       { label: 'email', value: data.email },
       { label: 'bio', value: data.bio }
-    ]
+    ];
+
+    const projects = repositories.map((repository) => ({
+      label: repository.name,
+      value: <Link url={ repository.html_url } title="Github URL" />
+  }));
 
     return (
       <ProfileWrapper>
         <Avatar src={ data.avatar_url } alt="avatar" />
-        <List items={items} />
+        <List title="Profile" items={items} />
+        <List title="Projects" items={projects} />
       </ProfileWrapper>
     );
   }
