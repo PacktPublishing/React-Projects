@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from '../components/Shared/Link';
 import './Profile.css';
 
 class Profile extends Component {
@@ -32,7 +33,7 @@ class Profile extends Component {
       <div className="Profile-container">
         <img className="Profile-avatar" src={ data.avatar_url } alt="avatar" />
         <ul className="Profile-information">
-          <li><strong>html_url:</strong> { data.html_url }</li>
+          <li><strong>html_url:</strong> <Link url={ data.html_url } title={ data.html_url } /></li>
           <li><strong>repos_url:</strong> { data.repos_url }</li>
           <li><strong>name:</strong> { data.name }</li>
           <li><strong>company:</strong> { data.company }</li>
