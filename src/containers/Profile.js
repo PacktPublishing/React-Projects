@@ -17,6 +17,7 @@ class Profile extends Component {
     super();
     this.state = {
       data: {},
+      repositories: [],
       loading: 'Loading...'
     }
   }
