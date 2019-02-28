@@ -17,22 +17,29 @@ class Profile extends Component {
     super();
     this.state = {
       data: {},
-      loading: true
+      loading: 'Loading...'
     }
   }
 
   async componentDidMount() {
-    const profile = await fetch("https://api.github.com/users/octocat");
-    const profileJSON = await profile.json();
+    try {
+      const profile = await fetch("https://api.github.com/users/octocat");
+      const profileJSON = await profile.json();
 
-    if (profileJSON) {
-      const repositories = await fetch(profileJSON.repos_url);
-      const repositoriesJSON = await repositories.json()
+      if (profileJSON) {
+        const repositories = await fetch(profileJSON.repos_url);
+        const repositoriesJSON = await repositories.json()
 
+        this.setState({
+          data: profileJSON,
+          repositories: repositoriesJSON,
+          loading: false
+        })
+      }
+    }
+    catch(error) {
       this.setState({
-        data: profileJSON,
-        repositories: repositoriesJSON,
-        loading: false
+        loading: error.message
       })
     }
   }
@@ -41,7 +48,7 @@ class Profile extends Component {
     const { data, loading, repositories } = this.state;
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div>{ loading }</div>
     }
 
     const items = [
