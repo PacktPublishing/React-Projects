@@ -12,11 +12,12 @@ class List extends Component {
   }
 
   async componentDidMount() {
-    const movies = await fetch('../../assets/data.json').then((res) => res.json());
+    const movies = await fetch('../../assets/data.json');
+    const moviesJSON = await movies.json();
 
-    if (movies) {
+    if (moviesJSON) {
       this.setState({
-        data: movies,
+        data: moviesJSON,
         loading: false
       })
     }
