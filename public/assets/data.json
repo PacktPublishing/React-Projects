@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Avatar",
+    "body": "20th Century Fox",
+    "year": 2009,
+    "amount": "$2,787,965,087",
+    "img": {
+      "src": "media/avatar.jpg",
+      "alt": "avatar"
+    },
+    "board": 1
+  },
+  {
+    "title": "Titanic",
+    "body": "20th Century Fox",
+    "year": 1997,
+    "amount": "$2,187,463,944",
+    "img": {
+      "src": "media/titanic.jpg",
+      "alt": "titanic"
+    },
+    "board": 2
+  },
+  {
+    "title": "Star Wars: The Force Awakens",
+    "body": "Walt Disney Studios Motion Pictures",
+    "year": 2015,
+    "amount": "$2,068,223,624",
+    "img": {
+      "src": "media/star_wars_the_force_awakens.jpg",
+      "alt": "star_wars_the_force_awakens"
+    },
+    "board": 3
+  },
+  {
+    "title": "Star Wars: The Force Awakens 222222",
+    "body": "Walt Disney Studios Motion Pictures",
+    "year": 2015,
+    "amount": "$2,068,223,624",
+    "img": {
+      "src": "media/star_wars_the_force_awakens.jpg",
+      "alt": "star_wars_the_force_awakens"
+    },
+    "board": 3
+  },
+  {
+    "title": "Star Wars: The Force Awakens 33333",
+    "body": "Walt Disney Studios Motion Pictures",
+    "year": 2015,
+    "amount": "$2,068,223,624",
+    "img": {
+      "src": "media/star_wars_the_force_awakens.jpg",
+      "alt": "star_wars_the_force_awakens"
+    },
+    "board": 3
+  },
+  {
+    "title": "Avengers: Infinity War",
+    "body": "Walt Disney Studios Motion Pictures",
+    "year": 2018,
+    "amount": "$2,048,359,754",
+    "img": {
+      "src": "media/avengers_infinity_war.jpg",
+      "alt": "avengers_infinity_war"
+    },
+    "board": 4
+  },
+  {
+    "title": "Avengers: Infinity War 22222",
+    "body": "Walt Disney Studios Motion Pictures",
+    "year": 2018,
+    "amount": "$2,048,359,754",
+    "img": {
+      "src": "media/avengers_infinity_war.jpg",
+      "alt": "avengers_infinity_war"
+    },
+    "board": 4
+  }
+]

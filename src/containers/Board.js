@@ -14,13 +14,52 @@ const BoardWrapper = styled.div`
 `;
 
 class Board extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      loading: 'Loading...'
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const tickets = await fetch('../../assets/data.json');
+      const ticketsJSON = await tickets.json();
+
+      if (ticketsJSON) {
+        this.setState({
+          data: ticketsJSON,
+          loading: false
+        })
+      }
+    } catch(error) {
+      this.setState({
+       loading: error.message
+     })
+    }
+  }
+
   render() {
+    const { data, loading } = this.state;
+
+    const boards = [
+      { id: 1, title: "To Do"},
+      { id: 2, title: "In Progress"},
+      { id: 3, title: "Review"},
+      { id: 4, title: "Done"}
+    ]
+
     return (
       <BoardWrapper>
-        <Lane title="To Do" />
-        <Lane title="In Progress" />
-        <Lane title="Review" />
-        <Lane title="Done" />
+        { boards.map((board) =>
+          <Lane
+            key={board.id}
+            title={board.title}
+            loading={loading}
+            tickets={data.filter((ticket) => ticket.board === board.id)}
+          />
+        )}
       </BoardWrapper>
     );
   }
