@@ -27,10 +27,14 @@ const TicketsWrapper = styled.div`
   padding: 5%;
 `;
 
+const Loading = styled.div`
+    text-align: center;
+`
+
 const Lane = ({ tickets, loading, title }) => (
   <LaneWrapper>
     <Title>{title}</Title>
-    { (loading) && <div>{loading}</div>}
+    { (loading) && <Loading>{loading}</Loading>}
     <TicketsWrapper>
       { tickets.map((ticket) => <Ticket ticket={ticket} />)}
     </TicketsWrapper>
