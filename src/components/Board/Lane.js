@@ -5,10 +5,10 @@ const LaneWrapper = styled.div`
   list-style: none;
   text-align: left;
   padding: 0;
-  background: #f8f8f8;
+  background: lightGray;
   border-radius: 20px;
   min-height: 50vh;
-  min-width: 20vw;
+  width: 20vw;
 
   @media (max-width: 768px) {
     margin-bottom: 5%;
@@ -19,7 +19,7 @@ const Title = styled.h2`
   width: 100%;
   padding-bottom: 10px;
   text-align: center;
-  border-bottom: 1px solid lightGrey;
+  border-bottom: 1px solid darkGray;
 `;
 
 const Lane = ({ title }) => (
