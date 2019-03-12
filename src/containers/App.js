@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import Board from './Board';
+import BoardHOC from './BoardHOC';
+import TicketsHOC from './TicketsHOC';
 import Header from '../components/App/Header';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,12 +22,20 @@ text-align: center;
 
 class App extends Component {
   render() {
+    const boards = [
+      { id: 1, title: "To Do"},
+      { id: 2, title: "In Progress"},
+      { id: 3, title: "Review"},
+      { id: 4, title: "Done"}
+    ]
+
     return (
         <>
           <GlobalStyle />
             <AppWrapper>
             <Header />
-            <Board />
+            <BoardHOC boards={boards} dataSource={'../../assets/data.json'} />
+            <TicketsHOC dataSource={'../../assets/data.json'} />
           </AppWrapper>
         </>
     );

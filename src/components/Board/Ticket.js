@@ -8,6 +8,7 @@ const TicketWrapper = styled.div`
 
   &:not(:last-child) {
     margin-bottom: 5%;
+    margin-right: 1%;
   }
 `;
 
