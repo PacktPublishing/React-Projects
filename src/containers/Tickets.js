@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import withSubscription from '../HOC';
+import withDataFetching from '../HOC';
 import Ticket from '../components/Board/Ticket';
 
 const TicketsWrapper = styled.div`
@@ -21,8 +21,8 @@ const Loading = styled.div`
 const Tickets = ({loading, data}) => (
   <TicketsWrapper>
     { (loading) && <Loading>{loading}</Loading>}
-    { data.map((ticket) => <Ticket ticket={ticket} />)}
+    { data.map((ticket) => <Ticket marginRight ticket={ticket} />)}
   </TicketsWrapper>
 );
 
-export default withSubscription(Tickets);
+export default withDataFetching(Tickets);
