@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import withSubscription from './HOC';
+import withSubscription from '../HOC';
 import Ticket from '../components/Board/Ticket';
 
 const TicketsWrapper = styled.div`
