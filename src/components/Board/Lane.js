@@ -29,14 +29,17 @@ const TicketsWrapper = styled.div`
 
 const Loading = styled.div`
     text-align: center;
-`
+`;
 
-const Lane = ({ tickets, loading, title }) => (
-  <LaneWrapper>
+const Lane = ({ laneId, tickets, loading, onDragStart, onDragOver, onDrop, title }) => (
+  <LaneWrapper
+    onDragOver={(element) => onDragOver(element)}
+    onDrop={(element) => onDrop(element, laneId)}
+  >
     <Title>{title}</Title>
     { (loading) && <Loading>{loading}</Loading>}
     <TicketsWrapper>
-      { tickets.map((ticket) => <Ticket ticket={ticket} />)}
+      { tickets.map((ticket) => <Ticket key={ticket.id} onDragStart={onDragStart} ticket={ticket} />)}
     </TicketsWrapper>
   </LaneWrapper>
 );

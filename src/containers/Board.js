@@ -14,17 +14,62 @@ const BoardWrapper = styled.div`
   }
 `;
 
-const Board = ({boards, loading, data}) => (
-  <BoardWrapper>
-    { boards.map((board) =>
-      <Lane
-        key={board.id}
-        title={board.title}
-        loading={loading}
-        tickets={data.filter((ticket) => ticket.board === board.id)}
-      />
-    )}
-  </BoardWrapper>
-);
+class Board extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      tickets: []
+    }
+    this.onDragOver = this.onDragOver.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.data !== this.props.data) {
+        this.setState({ tickets: this.props.data })
+    }
+  }
+  onDragStart = (element, id) => {
+    console.log("dragstart:", id);
+    element.dataTransfer.setData("id", id);
+  };
+  onDragOver = (element) => {
+    element.preventDefault();
+  };
+  onDrop = (element, laneId) => {
+    const id = element.dataTransfer.getData("id");
+
+    const tickets = this.state.tickets.filter(ticket => {
+      if (ticket.id === id) {
+        ticket.lane = laneId;
+      }
+      return ticket;
+    });
+
+    this.setState({
+      ...this.state,
+      tickets
+    });
+  };
+  render() {
+    const {lanes, loading} = this.props;
+
+    return (
+      <BoardWrapper>
+        { lanes.map((lane) =>
+          <Lane
+            key={lane.id}
+            laneId={lane.id}
+            title={lane.title}
+            loading={loading}
+            onDragStart={this.onDragStart}
+            onDragOver={this.onDragOver}
+            onDrop={this.onDrop}
+            tickets={this.state.tickets.filter((ticket) => ticket.lane === lane.id)}
+          />
+        )}
+      </BoardWrapper>
+    );
+  }
+}
 
 export default withDataFetching(Board);

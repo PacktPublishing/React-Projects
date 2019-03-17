@@ -22,7 +22,7 @@ text-align: center;
 
 class App extends Component {
   render() {
-    const boards = [
+    const lanes = [
       { id: 1, title: "To Do"},
       { id: 2, title: "In Progress"},
       { id: 3, title: "Review"},
@@ -34,7 +34,7 @@ class App extends Component {
           <GlobalStyle />
             <AppWrapper>
             <Header />
-            <Board boards={boards} dataSource={'../../assets/data.json'} loadingMessage="Loading..." />
+            <Board lanes={lanes} dataSource={'../../assets/data.json'} loadingMessage="Loading..." />
             <Tickets dataSource={'../../assets/data.json'} loadingMessage="Loading..." />
           </AppWrapper>
         </>

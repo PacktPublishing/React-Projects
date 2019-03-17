@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "title": "Avatar",
     "body": "20th Century Fox",
     "year": 2009,
@@ -8,9 +9,10 @@
       "src": "media/avatar.jpg",
       "alt": "avatar"
     },
-    "board": 1
+    "lane": 1
   },
   {
+    "id": 2,
     "title": "Titanic",
     "body": "20th Century Fox",
     "year": 1997,
@@ -19,9 +21,10 @@
       "src": "media/titanic.jpg",
       "alt": "titanic"
     },
-    "board": 2
+    "lane": 2
   },
   {
+    "id": 3,
     "title": "Star Wars: The Force Awakens",
     "body": "Walt Disney Studios Motion Pictures",
     "year": 2015,
@@ -30,9 +33,10 @@
       "src": "media/star_wars_the_force_awakens.jpg",
       "alt": "star_wars_the_force_awakens"
     },
-    "board": 3
+    "lane": 3
   },
   {
+    "id": 4,
     "title": "Star Wars: The Force Awakens 222222",
     "body": "Walt Disney Studios Motion Pictures",
     "year": 2015,
@@ -41,9 +45,10 @@
       "src": "media/star_wars_the_force_awakens.jpg",
       "alt": "star_wars_the_force_awakens"
     },
-    "board": 3
+    "lane": 3
   },
   {
+    "id": 5,
     "title": "Star Wars: The Force Awakens 33333",
     "body": "Walt Disney Studios Motion Pictures",
     "year": 2015,
@@ -52,9 +57,10 @@
       "src": "media/star_wars_the_force_awakens.jpg",
       "alt": "star_wars_the_force_awakens"
     },
-    "board": 3
+    "lane": 3
   },
   {
+    "id": 6,
     "title": "Avengers: Infinity War",
     "body": "Walt Disney Studios Motion Pictures",
     "year": 2018,
@@ -63,9 +69,10 @@
       "src": "media/avengers_infinity_war.jpg",
       "alt": "avengers_infinity_war"
     },
-    "board": 4
+    "lane": 4
   },
   {
+    "id": 7,
     "title": "Avengers: Infinity War 22222",
     "body": "Walt Disney Studios Motion Pictures",
     "year": 2018,
@@ -74,6 +81,6 @@
       "src": "media/avengers_infinity_war.jpg",
       "alt": "avengers_infinity_war"
     },
-    "board": 4
+    "lane": 4
   }
 ]

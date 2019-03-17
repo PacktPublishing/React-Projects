@@ -21,7 +21,7 @@ const Loading = styled.div`
 const Tickets = ({loading, data}) => (
   <TicketsWrapper>
     { (loading) && <Loading>{loading}</Loading>}
-    { data.map((ticket) => <Ticket marginRight ticket={ticket} />)}
+    { data.map((ticket) => <Ticket key={ticket.id} marginRight ticket={ticket} />)}
   </TicketsWrapper>
 );
 
