@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import Card from '../components/Feed/Card';
+import Card from '../components/shared/Card';
 
 const FeedWrapper = styled.div`
   display: flex;
