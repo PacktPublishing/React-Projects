@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Card from '../components/Feed/Card';
 
 const QuestionWrapper = styled.div`
   display: flex;
@@ -21,6 +22,25 @@ class Question extends Component {
     };
   }
 
+  async componentDidMount() {
+    const { match } = this.props;
+    try {
+      const data = await fetch(`https://api.stackexchange.com/2.2/questions/${match.params.id}?site=stackoverflow`);
+      const dataJSON = await data.json();
+
+      if (dataJSON) {
+        this.setState({
+          data: dataJSON,
+          loading: false
+        })
+      }
+    } catch(error) {
+      this.setState({
+       loading: error.message
+     })
+    }
+  }
+
   render() {
     const { data, loading } = this.state;
 
@@ -29,7 +49,9 @@ class Question extends Component {
     }
 
     return (
-      <QuestionWrapper></QuestionWrapper>
+      <QuestionWrapper>
+        <Card key={data.items[0].question_id} data={data.items[0]} />
+      </QuestionWrapper>
     );
   }
 }

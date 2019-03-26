@@ -4,7 +4,7 @@ import Owner from './Owner';
 
 const CardWrapper = styled.div`
   text-align: left;
-  padding: 0;
+  padding: 1%;
   background: lightGray;
   border-radius: 5px;
   margin-bottom: 2%;
