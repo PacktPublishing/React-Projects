@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../components/App/Header';
 import Feed from './Feed';
 import Question from './Question';
@@ -29,8 +29,11 @@ class App extends Component {
             <AppWrapper>
             <Header />
             <Router>
-              <Route exact path="/" component={Feed} />
-              <Route path="/questions/:id" component={Question} />
+              <Switch>
+                <Route exact path="/" component={Feed} />
+                <Route path="/questions/:id" component={Question} />
+                <Route path="/questions" component={Feed} />
+              </Switch>
             </Router>
           </AppWrapper>
         </>
