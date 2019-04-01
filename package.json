@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "express": "^4.16.4",
+    "ignore-styles": "^5.0.1",
     "query-string": "^6.4.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
