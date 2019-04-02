@@ -12,6 +12,7 @@
     "query-string": "^6.4.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-helmet": "^5.2.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "styled-components": "^4.2.0"
@@ -20,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ssr": "node server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"

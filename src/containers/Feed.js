@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import queryString from 'query-string'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import Card from '../components/shared/Card';
 
 const FeedWrapper = styled.div`
@@ -83,7 +84,13 @@ class Feed extends Component {
     const { match } = this.props;
 
     if (loading) {
-      return <Loading>{loading}</Loading>
+      return <>
+        <Helmet>
+          <title>My Title</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
+        <Loading>{loading}</Loading>
+      </>
     }
 
     return (
