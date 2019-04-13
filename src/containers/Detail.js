@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import withDataFetching from '../withDataFetching';
-import Heading from '../components/Heading/Heading';
+import SubHeader from '../components/SubHeader/SubHeader';
 import ListItem from '../components/ListItem/ListItem';
 
 const ListWrapper = styled.div`
@@ -19,7 +19,7 @@ const Detail = ({ data, loading, match, history }) => {
 
   return (
     <>
-      { list && <Heading goBack={() => history.goBack()} title={list.title} openForm={() => history.push(`/list/${list.id}/new`)} /> }
+      { list && <SubHeader goBack={() => history.goBack()} title={list.title} openForm={() => history.push(`${match.url}/new`)} /> }
       <ListWrapper>
         { items && items.map(item => <ListItem key={item.id} data={ item } />)}
       </ListWrapper>

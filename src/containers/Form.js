@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import withDataFetching from '../withDataFetching';
-import Heading from '../components/Heading/Heading';
+import SubHeader from '../components/SubHeader/SubHeader';
 import FormItem from '../components/FormItem/FormItem';
 import Button from '../components/Button/Button';
 
@@ -19,7 +19,7 @@ const SubmitButton = styled(Button)`
 
 const Form = ({ data, loading, match, history }) => (
   <>
-    { history && <Heading goBack={() => history.goBack()} title={`Add Item`} /> }
+    { history && <SubHeader goBack={() => history.goBack()} title={`Add Item`} /> }
     <FormWrapper>
       <form>
         <FormItem id="title" label="Title" placeholder="Insert title" />

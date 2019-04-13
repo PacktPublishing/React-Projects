@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import withDataFetching from '../withDataFetching';
+import SubHeader from '../components/SubHeader/SubHeader';
 
 const ListWrapper = styled.div`
   display: flex;
@@ -22,7 +23,6 @@ const ListLink = styled(Link)`
   background: lightGray;
   border-radius: 5px;
   padding: 10px;
-  width: 100%;
   margin-bottom: 2%;
   color: black;
   text-decoration: none
@@ -32,15 +32,18 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Overview = ({loading, data}) => (
-  <ListWrapper>
-    { (loading) && <Loading>{loading}</Loading> }
-    {data.lists && data.lists.map((list) => (
-      <ListLink key={list.id} to={`list/${list.id}`}>
-        <Title>{ list.title }</Title>
-      </ListLink>
-    ))}
-  </ListWrapper>
+const Overview = ({loading, data, match, history}) => (
+  <>
+    { history && <SubHeader title="Your Lists" openForm={() => history.push(`/new`)} /> }
+    <ListWrapper>
+      { (loading) && <Loading>{loading}</Loading> }
+      {data.lists && data.lists.map((list) => (
+        <ListLink key={list.id} to={`list/${list.id}`}>
+          <Title>{ list.title }</Title>
+        </ListLink>
+      ))}
+    </ListWrapper>
+  </>
 );
 
 export default withDataFetching({dataSource: '../../assets/data.json', loadingMessage: "Loading..."})(Overview);

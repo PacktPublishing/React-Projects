@@ -25,7 +25,7 @@ const Input = styled.input`
 
 const FormItem = ({ id, label, type = "text", placeholder = false }) => (
   <FormItemWrapper>
-    <Label for={id}>{label}</Label>
+    <Label htmlFor={id}>{label}</Label>
     <Input type={type} name={id} id={id} placeholder={placeholder} />
   </FormItemWrapper>
 );
