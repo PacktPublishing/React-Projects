@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import withDataFetching from '../HOC';
-import Lane from '../components/Board/Lane';
+import Lane from '../components/Lane/Lane';
 
 const BoardWrapper = styled.div`
   display: flex;

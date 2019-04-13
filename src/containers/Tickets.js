@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import withDataFetching from '../HOC';
-import Ticket from '../components/Board/Ticket';
+import Ticket from '../components/Ticket/Ticket';
 
 const TicketsWrapper = styled.div`
   display: flex;
