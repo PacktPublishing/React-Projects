@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import queryString from 'query-string'
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import Card from '../components/shared/Card';
+import Card from '../components/Card/Card';
 
 const FeedWrapper = styled.div`
   display: flex;

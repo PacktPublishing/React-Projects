@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Owner from './Owner';
+import Owner from '../Owner/Owner';
 
 const CardWrapper = styled.div`
   text-align: left;

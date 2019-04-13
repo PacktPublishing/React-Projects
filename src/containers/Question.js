@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import Card from '../components/shared/Card';
+import Card from '../components/Card/Card';
 
 const QuestionWrapper = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from "react-router-dom";
-import Header from '../components/App/Header';
+import Header from '../components/Header/Header';
 import Feed from './Feed';
 import Question from './Question';
 
