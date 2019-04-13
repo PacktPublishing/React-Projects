@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Lane from '../components/Board/Lane';
+import Lane from '../components/Lane/Lane';
 
 const BoardWrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ class Board extends Component {
 
     return (
       <BoardWrapper>
-        { lanes.map((lane) => <Lane key={board.id} title={board.title} />) }
+        { lanes.map((lane) => <Lane key={lane.id} title={lane.title} />) }
       </BoardWrapper>
     );
   }

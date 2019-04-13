@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Board from './Board';
-import Header from '../components/App/Header';
+import Header from '../components/Header/Header';
 
 const GlobalStyle = createGlobalStyle`
   body {
