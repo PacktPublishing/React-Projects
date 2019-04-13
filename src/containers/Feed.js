@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Card from '../components/shared/Card';
+import Card from '../components/Card/Card';
 
 const FeedWrapper = styled.div`
   display: flex;
