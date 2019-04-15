@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from "react-router-dom";
 import Header from '../components/Header/Header';
@@ -22,23 +22,19 @@ const AppWrapper = styled.div`
 text-align: center;
 `;
 
-class App extends Component {
-  render() {
-    return (
-        <>
-          <GlobalStyle />
-            <AppWrapper>
-            <Header />
-              <Switch>
-                <Route exact path="/" component={Overview} />
-                <Route path="/new" component={Form} />
-                <Route path="/list/:id/new" component={Form} />
-                <Route path="/list/:id" component={Detail} />
-              </Switch>
-          </AppWrapper>
-        </>
-    );
-  }
-}
+const App = () => (
+  <>
+    <GlobalStyle />
+      <AppWrapper>
+      <Header />
+        <Switch>
+          <Route exact path="/" component={Overview} />
+          <Route path="/new" component={Form} />
+          <Route path="/list/:id/new" component={Form} />
+          <Route path="/list/:id" component={Detail} />
+        </Switch>
+    </AppWrapper>
+  </>
+);
 
 export default App;

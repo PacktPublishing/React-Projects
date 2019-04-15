@@ -12,14 +12,11 @@ const ListWrapper = styled.div`
 `;
 
 const Detail = ({ data, loading, match, history }) => {
-  const list = data.lists && data.lists.find(list => list.id === parseInt(match.params.id))
   const items = data.items && data.items.filter(item => item.listId === parseInt(match.params.id))
-
-
 
   return (
     <>
-      { list && <SubHeader goBack={() => history.goBack()} title={list.title} openForm={() => history.push(`${match.url}/new`)} /> }
+      <SubHeader goBack={() => history.goBack()} openForm={() => history.push(`${match.url}/new`)} />
       <ListWrapper>
         { items && items.map(item => <ListItem key={item.id} data={ item } />)}
       </ListWrapper>

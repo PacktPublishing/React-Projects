@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "id": 1, "listId": 1, "title": "Washing pods", "quantity": 1, "price": 6.99 },
+    { "id": 2, "listId": 1, "title": "Rice", "quantity": 1, "price": 0.99 }
+  ]
+}
