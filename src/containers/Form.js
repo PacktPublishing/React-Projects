@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import withDataFetching from '../withDataFetching';
 import SubHeader from '../components/SubHeader/SubHeader';
 import FormItem from '../components/FormItem/FormItem';
 import Button from '../components/Button/Button';
@@ -17,7 +16,7 @@ const SubmitButton = styled(Button)`
   margin: 2% 0;
 `;
 
-const Form = ({ data, match, history }) => (
+const Form = ({ match, history }) => (
   <>
     { history && <SubHeader goBack={() => history.goBack()} title={`Add Item`} /> }
     <FormWrapper>
@@ -31,4 +30,4 @@ const Form = ({ data, match, history }) => (
   </>
 );
 
-export default withDataFetching({dataSource: '../../assets/data.json', loadingMessage: "Loading..."})(Form);
+export default Form;

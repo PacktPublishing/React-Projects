@@ -32,7 +32,7 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Overview = ({loading, data, match, history}) => (
+const Lists = ({loading, data, match, history}) => (
   <>
     { history && <SubHeader title="Your Lists" openForm={() => history.push(`/new`)} /> }
     <ListWrapper>
@@ -46,4 +46,4 @@ const Overview = ({loading, data, match, history}) => (
   </>
 );
 
-export default withDataFetching({dataSource: '../../assets/data.json', loadingMessage: "Loading..."})(Overview);
+export default withDataFetching({dataSource: '../../assets/lists.json', loadingMessage: "Loading..."})(Lists);

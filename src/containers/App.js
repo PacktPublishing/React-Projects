@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from "react-router-dom";
 import Header from '../components/Header/Header';
-import Overview from './Overview';
-import Detail from './Detail';
+import Lists from './Lists';
+import List from './List';
 import Form from './Form';
 
 const GlobalStyle = createGlobalStyle`
@@ -28,10 +28,10 @@ const App = () => (
       <AppWrapper>
       <Header />
         <Switch>
-          <Route exact path="/" component={Overview} />
+          <Route exact path="/" component={Lists} />
           <Route path="/new" component={Form} />
           <Route path="/list/:id/new" component={Form} />
-          <Route path="/list/:id" component={Detail} />
+          <Route path="/list/:id" component={List} />
         </Switch>
     </AppWrapper>
   </>
