@@ -17,7 +17,7 @@ const SubmitButton = styled(Button)`
   margin: 2% 0;
 `;
 
-const Form = ({ data, loading, match, history }) => (
+const Form = ({ data, match, history }) => (
   <>
     { history && <SubHeader goBack={() => history.goBack()} title={`Add Item`} /> }
     <FormWrapper>

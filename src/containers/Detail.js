@@ -11,14 +11,14 @@ const ListWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const Detail = ({ data, loading, match, history }) => {
+const Detail = ({ data, match, history }) => {
   const items = data.items && data.items.filter(item => item.listId === parseInt(match.params.id))
 
   return (
     <>
-      <SubHeader goBack={() => history.goBack()} openForm={() => history.push(`${match.url}/new`)} />
+      { history && <SubHeader goBack={() => history.goBack()} openForm={() => history.push(`${match.url}/new`)} /> }
       <ListWrapper>
-        { items && items.map(item => <ListItem key={item.id} data={ item } />)}
+        { items && items.map(item => <ListItem key={item.id} data={ item } />) }
       </ListWrapper>
     </>
   )
