@@ -11,10 +11,6 @@ const ListWrapper = styled.div`
   margin: 5%;
 `;
 
-const Loading = styled.div`
-  text-align: center;
-`;
-
 const ListLink = styled(Link)`
   display: flex;
   text-align: left;
@@ -32,11 +28,10 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Lists = ({loading, data, match, history}) => (
+const Lists = ({data, match, history}) => (
   <>
     { history && <SubHeader title="Your Lists" openForm={() => history.push(`/new`)} /> }
     <ListWrapper>
-      { (loading) && <Loading>{loading}</Loading> }
       {data.lists && data.lists.map((list) => (
         <ListLink key={list.id} to={`list/${list.id}`}>
           <Title>{ list.title }</Title>
