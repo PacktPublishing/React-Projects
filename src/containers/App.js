@@ -29,7 +29,6 @@ const App = () => (
       <Header />
         <Switch>
           <Route exact path="/" component={Lists} />
-          <Route path="/new" component={Form} />
           <Route path="/list/:id/new" component={Form} />
           <Route path="/list/:id" component={List} />
         </Switch>

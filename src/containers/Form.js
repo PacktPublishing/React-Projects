@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SubHeader from '../components/SubHeader/SubHeader';
+import SubHeader from '../components/Header/SubHeader';
 import FormItem from '../components/FormItem/FormItem';
 import Button from '../components/Button/Button';
 

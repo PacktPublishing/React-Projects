@@ -23,10 +23,10 @@ const Input = styled.input`
   border: 1px solid lightGrey;
 `
 
-const FormItem = ({ id, label, type = "text", placeholder = false }) => (
+const FormItem = ({ id, label, type = "text", placeholder = "", value, handleOnChange }) => (
   <FormItemWrapper>
     <Label htmlFor={id}>{label}</Label>
-    <Input type={type} name={id} id={id} placeholder={placeholder} />
+    <Input type={type} name={id} id={id} placeholder={placeholder} value={value} onChange={(e) => handleOnChange(id, e)} />
   </FormItemWrapper>
 );
 
