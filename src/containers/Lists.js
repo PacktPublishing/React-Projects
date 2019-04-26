@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import withDataFetching from '../withDataFetching';
 import SubHeader from '../components/Header/SubHeader';
 
 const ListWrapper = styled.div`
@@ -33,17 +32,22 @@ const Loading = styled.span`
   text-align: center;
 `;
 
-const Lists = ({data, loading, match, history}) => (!loading) ? (
-  <>
-    { history && <SubHeader title="Your Lists" /> }
-    <ListWrapper>
-      {data.lists && data.lists.map((list) => (
-        <ListLink key={list.id} to={`list/${list.id}`}>
-          <Title>{ list.title }</Title>
-        </ListLink>
-      ))}
-    </ListWrapper>
-  </>
-) : <Loading>{loading}</Loading>;
+const Lists = ({lists, loading = false, getListsRequest, match, history}) => {
+  React.useEffect(() => {
+    getListsRequest()
+  }, [])
 
-export default withDataFetching({dataSource: '../../assets/lists.json', loadingMessage: "Loading..."})(Lists);
+  return (!loading) ? (
+    <>
+      { history && <SubHeader title="Your Lists" /> }
+      <ListWrapper>
+        {lists && lists.map((list) => (
+          <ListLink key={list.id} to={`list/${list.id}`}>
+            <Title>{ list.title }</Title>
+          </ListLink>
+        ))}
+      </ListWrapper>
+    </>
+  ) : <Loading>{loading}</Loading>;
+}
+export default Lists;
