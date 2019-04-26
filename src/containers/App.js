@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from "react-router-dom";
-import ListsContextProvider, { ListsContext } from '../context/ListsContextProvider';
-import ItemsContextProvider, { ItemsContext } from '../context/ItemsContextProvider';
+import GlobalContext from '../context/GlobalContext';
 import Header from '../components/Header/Header';
 import Lists from './Lists';
 import List from './List';
@@ -29,27 +28,13 @@ const App = () => (
     <GlobalStyle />
       <AppWrapper>
       <Header />
-        <ListsContextProvider>
-          <ItemsContextProvider>
-            <ListsContext.Consumer>
-              {
-                ({ list, lists, loading: listsLoading, getListsRequest, getListRequest }) => (
-                  <ItemsContext.Consumer>
-                    {
-                      ({ items, loading: itemsLoading, getItemsRequest, addItemRequest }) => (
-                        <Switch>
-                          <Route exact path="/" render={props => lists && <Lists lists={lists} loading={listsLoading} getListsRequest={getListsRequest} {...props} />} />
-                          <Route path="/list/:id/new" render={props => <Form addItemRequest={addItemRequest} {...props} />} />
-                          <Route path="/list/:id" render={props => list && items && <List list={list} items={items} loading={itemsLoading} getListRequest={getListRequest} getItemsRequest={getItemsRequest} {...props} /> } />
-                        </Switch>
-                      )
-                    }
-                  </ItemsContext.Consumer>
-                )
-              }
-            </ListsContext.Consumer>
-          </ItemsContextProvider>
-        </ListsContextProvider>
+        <GlobalContext>
+          <Switch>
+            <Route exact path="/" component={Lists} />
+            <Route path="/list/:id/new" component={Form} />
+            <Route path="/list/:id" component={List} />
+          </Switch>
+        </GlobalContext>
     </AppWrapper>
   </>
 );

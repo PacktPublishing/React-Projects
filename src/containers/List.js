@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ListsContext } from '../context/ListsContextProvider';
+import { ItemsContext } from '../context/ItemsContextProvider';
 import SubHeader from '../components/Header/SubHeader';
 import ListItem from '../components/ListItem/ListItem';
 
@@ -15,10 +17,16 @@ const Loading = styled.span`
   text-align: center;
 `;
 
-const List = ({ items, loading, list, getListRequest, getItemsRequest, match, history }) => {
+// const List = ({ items, loading, list, getListRequest, getItemsRequest, match, history }) => {
+const List = ({ match, history }) => {
+  const { list, getListRequest } = React.useContext(ListsContext)
+  const { loading, items, getItemsRequest } = React.useContext(ItemsContext)
+
   React.useEffect(() => {
     getListRequest(match.params.id)
-    getItemsRequest(match.params.id)
+    if (!items.length > 0) {
+      getItemsRequest(match.params.id)
+    }
   }, [])
 
   return (!loading) ? (

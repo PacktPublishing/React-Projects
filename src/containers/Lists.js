@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ListsContext } from '../context/ListsContextProvider';
 import SubHeader from '../components/Header/SubHeader';
 
 const ListWrapper = styled.div`
@@ -32,7 +33,9 @@ const Loading = styled.span`
   text-align: center;
 `;
 
-const Lists = ({lists, loading = false, getListsRequest, match, history}) => {
+///const Lists = ({lists, loading = false, getListsRequest, match, history}) => {
+const Lists = ({ match, history }) => {
+  const { lists, loading, getListsRequest } = React.useContext(ListsContext)
   React.useEffect(() => {
     getListsRequest()
   }, [])
