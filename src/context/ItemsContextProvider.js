@@ -1,5 +1,4 @@
 import React from 'react';
-import withDataFetching from '../withDataFetching';
 
 export const ItemsContext = React.createContext();
 
@@ -100,4 +99,4 @@ const ItemsContextProvider = ({ children }) => {
   );
 }
 
-export default withDataFetching({dataSource: 'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items', loadingMessage: "Loading..."})(ItemsContextProvider);
+export default ItemsContextProvider;
