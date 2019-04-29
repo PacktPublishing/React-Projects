@@ -46,4 +46,4 @@ const Lists = ({data, loading, match, history}) => (!loading) ? (
   </>
 ) : <Loading>{loading}</Loading>;
 
-export default withDataFetching({dataSource: '../../assets/lists.json', loadingMessage: "Loading..."})(Lists);
+export default withDataFetching({dataSource: 'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/lists', loadingMessage: "Loading..."})(Lists);
