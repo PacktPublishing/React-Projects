@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the <Header /> component should render 1`] = `
+<ForwardRef>
+  <ForwardRef>
+    Hotel Reviews
+  </ForwardRef>
+</ForwardRef>
+`;
+
+exports[`the <Header /> component should render with a dynamic title 1`] = `
+<ForwardRef>
+  <ForwardRef>
+    Test Application
+  </ForwardRef>
+</ForwardRef>
+`;

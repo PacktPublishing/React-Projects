@@ -16,10 +16,10 @@ const Title = styled.h1`
   pointer-events: none;
 `;
 
-const Header = () => (
+const Header = ({ title = 'Hotel Reviews'}) => (
   <HeaderWrapper>
     <Title>
-      Hotel Reviews
+      {title}
     </Title>
   </HeaderWrapper>
 );
