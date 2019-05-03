@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the <SubHeader /> component should render 1`] = `
+<ForwardRef>
+  <ForwardRef />
+</ForwardRef>
+`;
+
+exports[`the <SubHeader /> component should render with a dynamic title 1`] = `
+<ForwardRef>
+  <ForwardRef>
+    Test Application
+  </ForwardRef>
+</ForwardRef>
+`;
+
+exports[`the <SubHeader /> component should render with a form button 1`] = `
+<ForwardRef>
+  <ForwardRef />
+  <ForwardRef
+    onClick={[Function]}
+  >
+    + Add Review
+  </ForwardRef>
+</ForwardRef>
+`;
+
+exports[`the <SubHeader /> component should render with a goback button 1`] = `
+<ForwardRef>
+  <ForwardRef
+    onClick={[Function]}
+  >
+    &lt; Go Back
+  </ForwardRef>
+  <ForwardRef />
+</ForwardRef>
+`;
