@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const Button = styled.button`
+const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,5 +15,11 @@ const Button = styled.button`
   font-size: inherit;
   cursor: pointer;
 `;
+
+const Button = ({ children, onClick }) => (
+  <ButtonWrapper onClick={onClick}>
+    {children}
+  </ButtonWrapper>
+)
 
 export default Button;
