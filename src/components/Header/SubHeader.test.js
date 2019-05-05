@@ -1,35 +1,30 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
-import SubHeader from './SubHeader'
+import { shallow } from 'enzyme';
+import SubHeader, { Title, SubHeaderButton } from './SubHeader'
 
 describe('the <SubHeader /> component', () => {
-  const renderer = new ShallowRenderer();
-
-  it('should render', () => {
-    renderer.render(<SubHeader />);
-    const result = renderer.getRenderOutput();
-
-    expect(result).toMatchSnapshot();
-  })
-
   it('should render with a dynamic title', () => {
-    renderer.render(<SubHeader title="Test Application" />);
-    const result = renderer.getRenderOutput();
+    const title = "Test Application";
+    const component = shallow(<SubHeader title={title} />);
 
-    expect(result).toMatchSnapshot();
+    expect(component.find(Title).text()).toEqual(title);
   })
 
-  it('should render with a goback button', () => {
-    renderer.render(<SubHeader goBack={() => {}} />);
-    const result = renderer.getRenderOutput();
+  it('should render with buttons and handle the onClick events', () => {
+    const mockGoBack = jest.fn();
+    const mockOpenForm = jest.fn();
+    const component = shallow(<SubHeader goBack={mockGoBack} openForm={mockOpenForm} />);
 
-    expect(result).toMatchSnapshot();
-  })
+    const goBackButton = component.find(SubHeaderButton).at(0);
+    expect(goBackButton.exists()).toBe(true)
 
-  it('should render with a form button', () => {
-    renderer.render(<SubHeader openForm={() => {}} />);
-    const result = renderer.getRenderOutput();
+    const openFormButton = component.find(SubHeaderButton).at(1);
+    expect(openFormButton.exists()).toBe(true)
 
-    expect(result).toMatchSnapshot();
+    goBackButton.simulate('click');
+    expect(mockGoBack).toHaveBeenCalled();
+
+    openFormButton.simulate('click');
+    expect(mockOpenForm).toHaveBeenCalled();
   })
 })
