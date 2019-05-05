@@ -5,7 +5,7 @@ import { HotelsContext } from '../../context/HotelsContextProvider';
 import SubHeader from '../Header/SubHeader';
 import HotelItem from './HotelItem';
 
-const HotelItemsWrapper = styled.div`
+export const HotelItemsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -17,7 +17,7 @@ const HotelLink = styled(Link)`
   text-decoration: none
 `;
 
-const Loading = styled.span`
+export const Loading = styled.span`
   width: 100%;
   text-align: center;
 `;
