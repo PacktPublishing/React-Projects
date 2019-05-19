@@ -1,0 +1,86 @@
+{
+  "products": [
+      {
+        "id": 13407,
+        "title": "Licensed Plastic Computer",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 56358,
+        "title": "Tasty Cotton Pants",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 55009,
+        "title": "Intelligent Plastic Table",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 60027,
+        "title": "Intelligent Frozen Chips",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 31205,
+        "title": "Generic Cotton Soap",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 60592,
+        "title": "Gorgeous Metal Bacon",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 22860,
+        "title": "Sleek Rubber Bike",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 42200,
+        "title": "Intelligent Plastic Mouse",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 87879,
+        "title": "Incredible Cotton Table",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      },
+      {
+        "id": 35764,
+        "title": "Practical Fresh Table",
+        "thumbnail": "http://lorempixel.com/food/480",
+        "price": 178
+      }
+    ],
+    "categories": [
+      {
+        "id": 72237,
+        "title": "Automotive"
+      },
+      {
+        "id": 83788,
+        "title": "Baby"
+      },
+      {
+        "id": 52117,
+        "title": "Electronics"
+      },
+      {
+        "id": 80530,
+        "title": "Automotive"
+      },
+      {
+        "id": 25536,
+        "title": "Jewelery"
+      }
+    ]
+}
