@@ -13,17 +13,20 @@ const typeDefs = gql`
     title: String!
   }
   type Cart {
+    total: Float
+    products: [Product]
+  }
+  input CartInput {
     productId: Int!
-    productTitle: String
-    price: Float
   }
   type Query {
     product: Product
     products(limit: Int): [Product]
     categories: [Category]
+    cart: Cart
   }
   type Mutation {
-    addToCart(productId: Int!, productTitle: String, price: Float): Cart
+    addToCart(input: CartInput!): Cart
   }
 `;
 

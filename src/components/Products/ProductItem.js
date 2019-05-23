@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const HotelItemWrapper = styled.div`
+const ProductItemWrapper = styled.div`
   display: flex;
   text-align: left;
   align-items: center;
@@ -21,11 +21,11 @@ const Thumbnail = styled.img`
   border-radius: 5px;
 `
 
-const HotelItem = ({ data }) => (
-  <HotelItemWrapper>
+const ProductItem = ({ data }) => (
+  <ProductItemWrapper>
     <Thumbnail src={data.thumbnail} width={200} />
     <Title>{data.title}</Title>
-  </HotelItemWrapper>
+  </ProductItemWrapper>
 );
 
-export default HotelItem;
+export default ProductItem;

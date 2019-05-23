@@ -1,11 +1,9 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from "react-router-dom";
-import GlobalContext from '../context/GlobalContext';
 import Header from './Header/Header';
-import Hotels from './Hotels/Hotels';
-import Detail from './Detail/Detail';
-import Form from './Form/Form';
+import Products from './Products/Products';
+import Cart from './Cart/Cart';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,13 +26,10 @@ const App = () => (
     <GlobalStyle />
       <AppWrapper>
       <Header />
-        <GlobalContext>
-          <Switch>
-            <Route exact path="/" component={Hotels} />
-            <Route path="/hotel/:id/new" component={Form} />
-            <Route path="/hotel/:id" component={Detail} />
-          </Switch>
-        </GlobalContext>
+      <Switch>
+        <Route exact path="/" component={Products} />
+        <Route path="/cart" component={Cart} />
+      </Switch>
     </AppWrapper>
   </>
 );
