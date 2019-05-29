@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import {Query} from 'react-apollo';
 import SubHeader from "../Header/SubHeader";
 import ProductItem from "../Products/ProductItem";
 import Totals from "./Totals";
+import GET_CART from "./constants";
 
 const CartWrapper = styled.div`
   display: flex;
@@ -22,35 +24,32 @@ export const Loading = styled.span`
   text-align: center;
 `;
 
-const Cart = ({ match, history, loading, products }) => {
-  const isEmpty = products.length === 0 ? "Cart is empty" : false;
-
-  return (
-    <>
-      {history && (
-        <SubHeader goBack={() => history.goBack()} title="Cart (0)" />
-      )}
-
-      {!loading && !isEmpty ? (
-        <CartWrapper>
-          <CartItemsWrapper>
-            {products &&
-              products.map(product => (
+const Cart = ({ match, history }) => (
+  <>
+    {history && (
+      <SubHeader goBack={() => history.goBack()} title="Cart" />
+    )}
+    <Query query={GET_CART}>
+      {({ loading, error, data }) => {
+        if (loading) {
+          return (<Loading>"Loading..."</Loading>);
+        }
+        if (error) {
+          return (<Loading>{error.message}</Loading>);
+        }
+        return (
+          <CartWrapper>
+            <CartItemsWrapper>
+              {data.cart && data.cart.products.map((product) => (
                 <ProductItem key={product.id} data={product} />
               ))}
-          </CartItemsWrapper>
-          <Totals price={23} />
-        </CartWrapper>
-      ) : (
-        <Loading>{loading || isEmpty}</Loading>
-      )}
-    </>
-  );
-};
-
-Cart.defaultProps = {
-  loading: false,
-  products: []
-};
+            </CartItemsWrapper>
+            <Totals count={data.cart.total} />
+          </CartWrapper>
+        );
+      }}
+    </Query>
+  </>
+);
 
 export default Cart;

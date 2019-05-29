@@ -4,6 +4,8 @@ const product = {
   id: faker.random.number,
   title: faker.commerce.productName,
   thumbnail: faker.image.imageUrl(
+    400,
+    400,
     faker.random.arrayElement(["fashion", "transport", "technics", "food"])
   ),
   price: faker.commerce.price()
@@ -23,6 +25,7 @@ const resolvers = {
   Query: () => ({
     product: () => product,
     products: (obj, args) => {
+      console.log(args)
       const { limit } = args
       return Array.from(Array(limit), () => product)
     },

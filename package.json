@@ -3,19 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-client": "^2.6.0",
+    "apollo-link-http": "^1.5.14",
     "apollo-server": "2.1.0",
     "faker": "4.1.0",
-    "graphql": "14.3.0",
+    "graphql": "^14.3.1",
+    "graphql-tag": "^2.10.1",
     "graphql-tools": "4.0.4",
     "nodemon": "^1.19.0",
     "react": "^16.8.5",
+    "react-apollo": "^2.5.6",
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "styled-components": "^4.2.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js & react-scripts start",
+    "start-both": "nodemon server/index.js & react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

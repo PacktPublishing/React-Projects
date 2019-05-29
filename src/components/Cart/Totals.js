@@ -20,10 +20,9 @@ const Total = styled.span`
   text-align: right;
 `
 
-const Totals = ({ price }) => (
+const Totals = ({ count }) => (
   <TotalsWrapper>
-    <Total>{`Total: $23`}</Total>
-    <Total>{`Shipping: $0`}</Total>
+    <Total>{`Total products: ${count}`}</Total>
   </TotalsWrapper>
 )
 

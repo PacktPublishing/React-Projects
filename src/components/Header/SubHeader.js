@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
+import CartButton from '../Cart/CartButton';
 
 const SubHeaderWrapper = styled.div`
   width: 100%;
@@ -30,7 +31,7 @@ const SubHeader = ({ goBack, title, goToCart = false }) => (
   <SubHeaderWrapper>
     { goBack && <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton> }
     <Title>{ title }</Title>
-    { goToCart && <SubHeaderButton onClick={goToCart}>{`Cart (0)`}</SubHeaderButton> }
+    { goToCart && <CartButton onClick={goToCart} /> }
   </SubHeaderWrapper>
 );
 
