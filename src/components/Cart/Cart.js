@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Query} from 'react-apollo';
 import SubHeader from "../Header/SubHeader";
 import ProductItem from "../Products/ProductItem";
 import Totals from "./Totals";
-import GET_CART from "./constants";
 
 const CartWrapper = styled.div`
   display: flex;
@@ -24,32 +22,32 @@ export const Loading = styled.span`
   text-align: center;
 `;
 
-const Cart = ({ match, history }) => (
+const Cart = ({ match, history, loading, cart }) => (
   <>
     {history && (
-      <SubHeader goBack={() => history.goBack()} title="Cart" />
+      <SubHeader title="Cart" goToCart={() => history.push('/cart')} />
     )}
-    <Query query={GET_CART}>
-      {({ loading, error, data }) => {
-        if (loading) {
-          return (<Loading>"Loading..."</Loading>);
-        }
-        if (error) {
-          return (<Loading>{error.message}</Loading>);
-        }
-        return (
-          <CartWrapper>
-            <CartItemsWrapper>
-              {data.cart && data.cart.products.map((product) => (
-                <ProductItem key={product.id} data={product} />
-              ))}
-            </CartItemsWrapper>
-            <Totals count={data.cart.total} />
-          </CartWrapper>
-        );
-      }}
-    </Query>
+    {!loading ? (
+      <CartWrapper>
+        <CartItemsWrapper>
+          {cart.products && cart.products.map((product) => (
+            <ProductItem key={product.id} data={product} />
+          ))}
+        </CartItemsWrapper>
+        <Totals count={cart.total} />
+      </CartWrapper>
+    ) : (
+      <Loading>{loading}</Loading>
+    )}
   </>
 );
+
+Cart.defaultProps = {
+  loading: false,
+  cart: {
+    products: [],
+    total: 0
+  }
+}
 
 export default Cart;
