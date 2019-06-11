@@ -1,19 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
+import Home from './Screens/Home';
+import Detail from './Screens/Detail';
+import Settings from './Screens/Settings';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const HomeStack = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: { title: 'Home' }
   },
+  Detail: {
+    screen: Detail,
+    navigationOptions: { title: 'Detail' }
+  }
 });
+
+const SettingsStack = createStackNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions: { title: 'Settings' }
+  }
+});
+
+const AppNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Settings: SettingsStack
+}, { initialRouteName: 'Home' });
+
+export default createAppContainer(AppNavigator);
