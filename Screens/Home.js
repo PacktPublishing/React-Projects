@@ -1,20 +1,51 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
+import styled from 'styled-components/native';
+import ListingItem from '../Components/Listing/ListingItem'
 
-const Home = ({ navigation }) => (
-  <View style={styles.container}>
-    <Text>Open up App.js to start working on your app!</Text>
-    <Button onPress={() => navigation.navigate('Detail')} title="Go to Detail" />
-  </View>
-);
+const Home = ({ navigation }) => {
+  const [loading, setLoading] = React.useState(true)
+  const [data, setData] = React.useState([])
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const fetchAPI = async () => {
+    try {
+      const data = await fetch('https://my-json-server.typicode.com/pranayfpackt/-React-Projects/listings');
+      const dataJSON = await data.json();
+
+      if (dataJSON) {
+        setData(dataJSON)
+        setLoading(false)
+      }
+    } catch(error) {
+      setLoading(error.message)
+    }
+  }
+
+  React.useEffect(() => {
+    fetchAPI()
+  }, [])
+
+  return (
+    <ListingsWrapper>
+      {!loading && <Listings
+        data={data}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({item}) => <ListingItem item={item} navigation={navigation} />}
+      />}
+    </ListingsWrapper>
+  )
+};
+
+const ListingsWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`
+
+const Listings = styled(FlatList)`
+  width: 100%;
+  padding: 2%;
+`;
 
 export default Home;
