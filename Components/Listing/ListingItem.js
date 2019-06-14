@@ -8,7 +8,7 @@ const ListingItemWrapper = styled(TouchableOpacity)`
   padding: 2%;
   background-color: #eee;
   border-radius: 5px;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 `;
 
 export const Title = styled(Text)`
@@ -20,7 +20,7 @@ export const Title = styled(Text)`
 export const Price = styled(Text)`
   font-weight: bold;
   font-size: 20px;
-  color: #556;
+  color: blue;
 `
 
 const Thumbnail = styled(Image)`

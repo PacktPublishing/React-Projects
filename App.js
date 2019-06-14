@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Platform } from "react-native";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
@@ -26,6 +27,29 @@ const SettingsStack = createStackNavigator({
 const AppNavigator = createBottomTabNavigator({
   Home: HomeStack,
   Settings: SettingsStack
-}, { initialRouteName: 'Home' });
+}, {
+  initialRouteName: 'Home',
+  defaultNavigationOptions: ({ navigation }) => ({
+    // tabBarIcon: () => {
+    tabBarIcon: ({ tintColor }) => {
+      const { routeName } = navigation.state;
+
+      let iconName;
+      if (routeName === 'Home') {
+        //iconName = `ios-home`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+      } else if (routeName === 'Settings') {
+        //iconName = `ios-settings`;
+        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
+      }
+
+      return <Ionicons name={iconName} size={20} color={tintColor} />;
+    },
+    tabBarOptions: {
+      activeTintColor: 'blue',
+      inactiveTintColor: '#556',
+    },
+  })
+});
 
 export default createAppContainer(AppNavigator);
