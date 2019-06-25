@@ -7,7 +7,7 @@ import Game from './Screens/Game';
 import Leaderboard from './Screens/Leaderboard';
 
 const Tabs = createBottomTabNavigator({
-  Start: Start,
+  Start: Game,
   Leaderboard: Leaderboard
 }, {
   initialRouteName: 'Start',
@@ -25,7 +25,7 @@ const Tabs = createBottomTabNavigator({
       return <Ionicons name={iconName} size={20} color={tintColor} />;
     },
     tabBarOptions: {
-      activeTintColor: 'blue',
+      activeTintColor: 'purple',
       inactiveTintColor: '#556',
     },
   })
