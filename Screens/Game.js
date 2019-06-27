@@ -1,63 +1,78 @@
 import React from "react";
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import Slot from '../Components/Game/Slot';
+import Board from '../Components/Board/Board';
+import Actions from '../Components/Actions/Actions';
+import Player from '../Components/Player/Player';
+import checkSlots from '../utils/checkSlots';
+import { AppContext } from '../context/AppContext'
 
-let slots = Array(9).fill(0).map(index => ({id: index, checked: false}));
+const init = (initialState) => ({
+  slots: Array(9).fill(0).map(index => ({ id: index, checked: null })),
+  player1: [],
+  player2: []
+})
 
-  const reducer = (state, action) => {
-    switch(action.type){
-      case 'checkSlot':
-          state[action.payload] = { ...state[action.payload], checked: true};
-        return state
-        default:
-          return state
-    }
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'checkSlot':
+      state.slots[action.payload.index] = { ...state.slots[action.payload.index], checked: action.payload.player };
+      state[`player${action.payload.player}`] = [...state[`player${action.payload.player}`], action.payload.index];
+      return state
+    case 'resetSlots':
+        return init(action.payload)
+    default:
+      return state
   }
-
-const Game = () => {
-  const [state, dispatch] = React.useReducer(reducer, slots);
-
-  // const setSlot = (index) => dispatch({ type: 'checkSlot', payload: index })
-
-  const [yes, setYes] = React.useState('no')
-
-
-const setSlot = (index) => {
-  console.log('hi')
-  dispatch({ type: 'checkSlot', payload: index })
-  setYes(!yes)
 }
 
-  console.log(yes)
+const Game = ({ navigation, initialState}) => {
+  const { setPlayerWins } = React.useContext(AppContext);
+  const [state, dispatch] = React.useReducer(reducer, initialState, init);
+  const [player, setPlayer] = React.useState(1)
+  const [winner, setWinner] = React.useState(null)
 
-return <BoardWrapper><Board>
-{state.map((slot, index) => <Slot
-        key={index}
-        index={index}
-        handleOnPress={setSlot}
-        filled={slot.checked}
-      />)}
-</Board></BoardWrapper>
+  const setSlot = (index) => {
+    dispatch({ type: 'checkSlot', payload: { index, player } })
+
+    setPlayer(player === 1 ? 2 : 1)
+  }
+
+  const resetSlots = () => {
+    dispatch({ type: 'resetSlots', payload: initialState })
+    setPlayer(winner)
+    setWinner(null)
+  }
+
+  const checkWinner = (player) => {
+    const slots = state[`player${player}`];
+    if (slots.length >= 3) {
+      if (checkSlots(slots)) {
+        setWinner(player)
+        setPlayerWins(player)
+      }
+    }
+
+    return false
+  }
+
+  React.useEffect(() => {
+    checkWinner(player === 1 ? 2 : 1)
+  }, [player])
+
+  return (
+    <GameWrapper>
+      <Player player={player} winner={winner} />
+      <Board slots={state.slots} winner={winner} setSlot={setSlot} />
+      <Actions winner={winner} player={player} resetSlots={resetSlots} navigation={navigation} />
+    </GameWrapper>
+  )
 };
 
-const BoardWrapper = styled(View)`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-
-`
-
-const Board = styled(View)` 
-display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  height: ${Dimensions.get('window').width * 0.9};
-  width: ${Dimensions.get('window').width * 0.9}
-background-color: pink;
+const GameWrapper = styled(View)`
+  flex: 1
+  align-items: stretch;
+  margin: 60px 0;
 `
 
 export default Game;

@@ -1,22 +1,35 @@
 import React from "react";
-import { FlatList, View, Button } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 const Start = ({ navigation }) => (
   <StartWrapper>
-    <Button
-        onPress={() => navigation.navigate('Game')}
-        title="Info"
-        color="#000"
-      />
+    <StartButton onPress={() => navigation.navigate('Game')}>
+      <StartButtonText>Start Game</StartButtonText>
+    </StartButton>
   </StartWrapper>
 );
 
 const StartWrapper = styled(View)`
   flex: 1;
-  background-color: #fff;
   align-items: center;
   justify-content: center;
 `
+
+const StartButton = styled(TouchableOpacity)`
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 150;
+  backgroundColor: purple;
+`
+
+const StartButtonText = styled(Text)`
+  color: white;
+  font-size: 48px;
+`
+
 
 export default Start;
