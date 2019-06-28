@@ -2,18 +2,23 @@ import React from "react";
 import { View, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Slot from '../Slot/Slot';
+import Winner from '../Winner/Winner';
 
 const Board = ({ slots, winner, setSlot }) => (
     <BoardWrapper>
         <SlotsWrapper>
-            {slots.map((slot, index) =>
-                <Slot
-                    key={index}
-                    index={index}
-                    handleOnPress={!winner ? setSlot : () => { }}
-                    checked={slot.checked}
-                />
-            )}
+            {
+                winner 
+                ? <Winner />
+                : slots.map((slot, index) =>
+                    <Slot
+                        key={index}
+                        index={index}
+                        handleOnPress={!winner ? setSlot : () => { }}
+                        filled={slot.filled}
+                    />
+                )
+            }
         </SlotsWrapper>
     </BoardWrapper>
 )

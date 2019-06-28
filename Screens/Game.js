@@ -6,9 +6,10 @@ import Actions from '../Components/Actions/Actions';
 import Player from '../Components/Player/Player';
 import checkSlots from '../utils/checkSlots';
 import { AppContext } from '../context/AppContext'
+import { ANIMATION_DURATION } from '../utils/constants';
 
 const init = (initialState) => ({
-  slots: Array(9).fill(0).map(index => ({ id: index, checked: null })),
+  slots: Array(9).fill(0).map(index => ({ id: index, filled: null })),
   player1: [],
   player2: []
 })
@@ -16,7 +17,7 @@ const init = (initialState) => ({
 const reducer = (state, action) => {
   switch (action.type) {
     case 'checkSlot':
-      state.slots[action.payload.index] = { ...state.slots[action.payload.index], checked: action.payload.player };
+      state.slots[action.payload.index] = { ...state.slots[action.payload.index], filled: action.payload.player };
       state[`player${action.payload.player}`] = [...state[`player${action.payload.player}`], action.payload.index];
       return state
     case 'resetSlots':
@@ -48,8 +49,10 @@ const Game = ({ navigation, initialState}) => {
     const slots = state[`player${player}`];
     if (slots.length >= 3) {
       if (checkSlots(slots)) {
-        setWinner(player)
-        setPlayerWins(player)
+        setTimeout(() => {
+          setWinner(player)
+          setPlayerWins(player)
+        }, ANIMATION_DURATION)
       }
     }
 
