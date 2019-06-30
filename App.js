@@ -4,10 +4,7 @@ import AppContainer from './AppContainer';
 
 const App = () => (
   <AppContextProvider>
-
-
-<AppContainer />
-
+    <AppContainer />
   </AppContextProvider>
 )
 

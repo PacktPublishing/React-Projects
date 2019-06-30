@@ -27,4 +27,13 @@ const AppContextProvider = ({ children }) => {
     )
 }
 
+export const useAppContext = () => {
+ const { scores, setPlayerWins } = React.useContext(AppContext)
+
+ return {
+     scores,
+     setPlayerWins
+ }
+}
+
 export default AppContextProvider;

@@ -5,7 +5,7 @@ import Board from '../Components/Board/Board';
 import Actions from '../Components/Actions/Actions';
 import Player from '../Components/Player/Player';
 import checkSlots from '../utils/checkSlots';
-import { AppContext } from '../context/AppContext'
+import { useAppContext } from '../context/AppContext'
 import { ANIMATION_DURATION } from '../utils/constants';
 
 const init = (initialState) => ({
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 }
 
 const Game = ({ navigation, initialState}) => {
-  const { setPlayerWins } = React.useContext(AppContext);
+  const { setPlayerWins } = useAppContext();
   const [state, dispatch] = React.useReducer(reducer, initialState, init);
   const [player, setPlayer] = React.useState(1)
   const [winner, setWinner] = React.useState(null)

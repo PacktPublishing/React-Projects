@@ -8,7 +8,7 @@ const Actions = ({ winner, resetSlots, navigation }) => (
         {winner && (
             <>
                 <Button onPress={() => resetSlots()} title="Start again" />
-                <Button onPress={() => navigation.navigate('Leaderboard')} title="View scores" />
+                <Button onPress={() => navigation.navigate('LeaderBoard')} title="View scores" />
             </>
         )}
     </ActionsWrapper>

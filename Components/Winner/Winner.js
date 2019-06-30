@@ -2,17 +2,6 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import Lottie from 'lottie-react-native';
 
-// const Winner = () => (
-//   <Lottie
-//     autoPlay
-//     style={{
-//       width: '100%',
-//       height: '100%'       
-//     }}
-//     source={ require('../../assets/winner.json') }
-//   />
-// );
-
 const Winner = () => {
   const progressValue = new Animated.Value(0);
 
