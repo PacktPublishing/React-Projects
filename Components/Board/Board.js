@@ -11,7 +11,7 @@ const Board = ({ slots, winner, setSlot }) => (
                     key={index}
                     index={index}
                     handleOnPress={!winner ? setSlot : () => { }}
-                    checked={slot.checked}
+                    filled={slot.filled}
                 />
             )}
         </SlotsWrapper>

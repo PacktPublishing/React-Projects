@@ -4,11 +4,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
 import Start from './Screens/Start';
 import Game from './Screens/Game';
-import Leaderboard from './Screens/Leaderboard';
+import LeaderBoard from './Screens/LeaderBoard';
 
 const Tabs = createBottomTabNavigator({
   Start: Start,
-  Leaderboard: Leaderboard
+  LeaderBoard: LeaderBoard
 }, {
     initialRouteName: 'Start',
     defaultNavigationOptions: ({ navigation }) => ({
@@ -18,7 +18,7 @@ const Tabs = createBottomTabNavigator({
         let iconName;
         if (routeName === 'Start') {
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-        } else if (routeName === 'Leaderboard') {
+        } else if (routeName === 'LeaderBoard') {
           iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-star`;
         }
 

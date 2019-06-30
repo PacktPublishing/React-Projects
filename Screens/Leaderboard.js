@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { AppContext } from '../context/AppContext';
 
-const Leaderboard = () => {
+const LeaderBoard = () => {
   const {scores} = React.useContext(AppContext)
 
   return (
@@ -50,4 +50,4 @@ const PlayerScoreNumber = styled(Text)`
   font-weight: bold;
 `
 
-export default Leaderboard;
+export default LeaderBoard;
