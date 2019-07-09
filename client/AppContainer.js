@@ -4,24 +4,26 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   createStackNavigator,
   createBottomTabNavigator,
+  createSwitchNavigator,
   createAppContainer
 } from "react-navigation";
 import Conversations from "./Screens/Conversations";
 import Conversation from "./Screens/Conversation";
 import Settings from "./Screens/Settings";
+import Login from "./Screens/Login";
 
 const ConversationsStack = createStackNavigator({
   Conversations: {
     screen: Conversations,
-    navigationOptions: { title: 'All conversationss' }
+    navigationOptions: { title: "All conversationss" }
   },
   Conversation: {
     screen: Conversation,
-    navigationOptions: { title: 'Conversation' }
+    navigationOptions: { title: "Conversation" }
   }
 });
 
-const Tabs = createBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
   {
     Conversations: ConversationsStack,
     Settings
@@ -49,4 +51,14 @@ const Tabs = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(Tabs);
+const SwitchNavigator = createSwitchNavigator(
+  {
+    Main: TabNavigator,
+    Auth: Login
+  },
+  {
+    initialRouteName: "Auth"
+  }
+);
+
+export default createAppContainer(SwitchNavigator);
