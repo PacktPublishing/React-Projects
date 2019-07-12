@@ -19,6 +19,7 @@ const typeDefs = gql`
   }
   type Query {
     conversations(limit: Int): [Conversation]
+    conversationsAuth(limit: Int): [Conversation]
     conversation(userName: String!): Conversation
   }
   type Mutation {

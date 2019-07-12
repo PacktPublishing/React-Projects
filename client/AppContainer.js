@@ -16,7 +16,7 @@ import AuthLoading from "./Screens/AuthLoading";
 const ConversationsStack = createStackNavigator({
   Conversations: {
     screen: Conversations,
-    navigationOptions: { title: "All conversationss" }
+    navigationOptions: { title: "All conversations" }
   },
   Conversation: {
     screen: Conversation,
@@ -37,7 +37,7 @@ const TabNavigator = createBottomTabNavigator(
 
         let iconName;
         if (routeName === "Conversations") {
-          iconName = `${Platform.OS === "ios" ? "ios" : "md"}-home`;
+          iconName = `${Platform.OS === "ios" ? "ios" : "md"}-chatbubbles`;
         } else if (routeName === "Settings") {
           iconName = `${Platform.OS === "ios" ? "ios" : "md"}-star`;
         }
@@ -55,7 +55,7 @@ const TabNavigator = createBottomTabNavigator(
 const SwitchNavigator = createSwitchNavigator(
   {
     Main: TabNavigator,
-    Auth: Login,
+    Login,
     AuthLoading
   },
   {

@@ -25,16 +25,16 @@ const mockConversation = (userName = false) => ({
 
 const resolvers = {
   Query: {
-    conversations: (_, { limit }, { token }) => {
+    conversationsAuth: (_, { limit = 10 }, { token }) => {
       let isValid;
       const bearerToken = token.split(" ");
 
       if (bearerToken) {
-        isValid = JsonWebToken.verify(bearerToken[1], jwtSecret, (error) => {
+        isValid = JsonWebToken.verify(bearerToken[1], jwtSecret, error => {
           if (error) {
-            return false
+            return false;
           }
-          return true
+          return true;
         });
       }
 
@@ -51,9 +51,24 @@ const resolvers = {
 
         return mockedConversations;
       }
-      throw new AuthenticationError('Please provide (valid) authentication details');
+      throw new AuthenticationError(
+        "Please provide (valid) authentication details"
+      );
     },
-    conversation: (_, { userName }) => mockConversation(userName)
+    conversation: (_, { userName }) => mockConversation(userName),
+    conversations: (_, { limit = 10 }) => {
+      const mockedConversations = Array.from(Array(limit), () =>
+        mockConversation()
+      );
+
+      setInterval(() => {
+        pubsub.publish(UPDATED_CONVERSATIONS, {
+          updatedConversations: [...mockedConversations, mockConversation()]
+        });
+      }, 3000);
+
+      return mockedConversations;
+    }
   },
   Mutation: {
     sendMessage: (_, { to, text }) => {
@@ -98,7 +113,9 @@ const resolvers = {
           token
         };
       }
-      throw new AuthenticationError('Please provide (valid) authentication details');
+      throw new AuthenticationError(
+        "Please provide (valid) authentication details"
+      );
     }
   },
   Subscription: {

@@ -1,19 +1,39 @@
 import React from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, View } from "react-native";
+import { Subscription } from "react-apollo";
+import { GET_CART } from "../constants";
+import ConversationItem from "../Components/Conversations/ConversationItem";
+import styled from "styled-components/native";
 
 const Conversations = ({ navigation }) => (
-  <View style={styles.container}>
-    <Text>All conversations</Text>
-  </View>
+  <ConversationsWrapper>
+    <Subscription subscription={GET_CART}>
+      {({ loading, error, data }) => {
+        console.log(data);
+        
+        return (
+          <ConversationsList
+            data={data.conversations}
+            keyExtractor={item => item.userName}
+            renderItem={({ item }) => {
+              return <ConversationItem item={item} />;
+            }}
+          />
+        );
+      }}
+    </Subscription>
+  </ConversationsWrapper>
 );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const ConversationsWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ConversationsList = styled(FlatList)`
+  width: 100%;
+`;
 
 export default Conversations;

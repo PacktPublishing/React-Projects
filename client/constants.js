@@ -11,8 +11,11 @@ export const LOGIN_USER = gql`
 
 export const GET_CART = gql`
 query {
-conversations {
+  updatedConversations {
 userName
+messages {
+  text
+}
 }
 }
 
