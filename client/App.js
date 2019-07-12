@@ -23,7 +23,7 @@ const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: "http://localhost:4000/graphql"
+    uri: "https://spicy-monkey-45.localtunnel.me/graphql"
   }),
   cache
 });

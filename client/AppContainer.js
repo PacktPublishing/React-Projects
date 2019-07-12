@@ -11,6 +11,7 @@ import Conversations from "./Screens/Conversations";
 import Conversation from "./Screens/Conversation";
 import Settings from "./Screens/Settings";
 import Login from "./Screens/Login";
+import AuthLoading from "./Screens/AuthLoading";
 
 const ConversationsStack = createStackNavigator({
   Conversations: {
@@ -54,10 +55,11 @@ const TabNavigator = createBottomTabNavigator(
 const SwitchNavigator = createSwitchNavigator(
   {
     Main: TabNavigator,
-    Auth: Login
+    Auth: Login,
+    AuthLoading
   },
   {
-    initialRouteName: "Auth"
+    initialRouteName: "AuthLoading"
   }
 );
 

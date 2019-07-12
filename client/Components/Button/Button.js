@@ -15,7 +15,7 @@ const StyledButton = styled(TouchableOpacity)`
   align-items: center;
   justify-content: space-around;
   border-radius: 15px;
-  background-color: purple;
+  background-color: green;
   margin-bottom: 10px;
 `;
 

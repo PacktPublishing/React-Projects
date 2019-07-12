@@ -1,26 +1,56 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { AsyncStorage, Alert, View, TextInput } from "react-native";
 import styled from "styled-components/native";
+import { Mutation } from "react-apollo";
 import Button from "../Components/Button/Button";
+import { LOGIN_USER } from "../constants";
 
 const Login = ({ navigation }) => {
-  const [userName, setUserName] = React.useState("Your username");
-  const [password, setPassword] = React.useState("Your password");
+  const [userName, setUserName] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  // console.log(getToken());
 
   return (
-    <LoginWrapper>
-      <StyledTextInput
-        onChangeText={text => setUserName(text)}
-        value={userName}
-        textContentType="username"
-      />
-      <StyledTextInput
-        onChangeText={text => setPassword(text)}
-        value={password}
-        textContentType="password"
-      />
-      <Button title="Login" />
-    </LoginWrapper>
+    <Mutation mutation={LOGIN_USER}>
+      {(loginUser, { loading, error }) => (
+        <LoginWrapper>
+          <StyledTextInput
+            onChangeText={text => setUserName(text)}
+            value={userName}
+            placeholder="Your username"
+            textContentType="username"
+          />
+          <StyledTextInput
+            onChangeText={text => setPassword(text)}
+            value={password}
+            placeholder="Your password"
+            textContentType="password"
+          />
+          <Button
+            title={loading ? "Loading..." : "Login"}
+            onPress={() => {
+              loginUser({ variables: { userName, password } })
+                .then(({ data }) => {
+                  const { token } = data.loginUser;
+
+                  AsyncStorage.setItem("token", token).then(value => {
+                    navigation.navigate("Main");
+                  });
+                })
+                .catch(error => {
+                  if (error) {
+                    Alert.alert(
+                      "Error",
+                      error.graphQLErrors.map(({ message }) => message)[0]
+                    );
+                  }
+                });
+            }}
+          />
+        </LoginWrapper>
+      )}
+    </Mutation>
   );
 };
 
