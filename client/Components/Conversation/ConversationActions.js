@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, Text, KeyboardAvoidingView } from "react-native";
+import { Platform, KeyboardAvoidingView } from "react-native";
 import styled from "styled-components/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Mutation } from "react-apollo";
