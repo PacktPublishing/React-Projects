@@ -1,27 +1,22 @@
-const { ApolloServer } = require("apollo-server");
+const express = require("express");
+const { createServer } = require("http");
+const { ApolloServer } = require("apollo-server-express");
 
 const resolvers = require("./resolvers.js");
 const typeDefs = require("./typeDefs.js");
 
-const {
-  makeExecutableSchema,
-  addMockFunctionsToSchema
-} = require("graphql-tools");
-
-const schema = makeExecutableSchema({
-  typeDefs
-});
-
-addMockFunctionsToSchema({
-  schema,
-  mocks: resolvers
-});
+const app = express();
 
 const server = new ApolloServer({
-  schema,
+  typeDefs,
   resolvers
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+server.applyMiddleware({ app, path: "/graphql" });
+
+const httpServer = createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+httpServer.listen({ port: 4000 }, () => {
+  console.log("Apollo Server on http://localhost:4000/graphql");
 });
