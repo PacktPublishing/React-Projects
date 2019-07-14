@@ -1,38 +1,34 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import { Route, Switch } from "react-router-dom";
-import Header from './Header/Header';
-import Products from './Products/Products';
-import Cart from './Cart/Cart';
+import Header from "./Header/Header";
+import Products from "./Products/Products";
+import Cart from "./Cart/Cart";
 
-import { ApolloClient} from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { HttpLink } from "apollo-link-http";
+import { ApolloProvider } from "react-apollo";
 
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://localhost:4000/'
+    uri: "http://localhost:4000/graphql"
   }),
   cache,
   resolvers: {
     Mutation: {
-      setLimit: (_, args) => {
-      const { limit } = args
-
-      cache.writeData({
-        data: {
+      setLimit: (_, { limit }) => {
+        cache.writeData({
+          data: {
             limit
-        },
-      });
+          }
+        });
 
-      return limit
-
-
+        return limit;
+      }
     }
-  }
   },
   typeDefs: `
     extend type Query {
@@ -43,8 +39,8 @@ const client = new ApolloClient({
 
 cache.writeData({
   data: {
-      limit: 5
-  },
+    limit: 5
+  }
 });
 
 const GlobalStyle = createGlobalStyle`
@@ -60,13 +56,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 const App = () => (
   <ApolloProvider client={client}>
     <GlobalStyle />
-      <AppWrapper>
+    <AppWrapper>
       <Header />
       <Switch>
         <Route exact path="/" component={Products} />

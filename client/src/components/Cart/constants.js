@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const GET_CART_TOTAL = gql`
   query getCartTotal {
@@ -11,7 +11,7 @@ export const GET_CART_TOTAL = gql`
 export const ADD_TO_CART = gql`
   mutation addToCart($productId: Int!) {
     addToCart(input: { productId: $productId }) {
-        total
+      total
     }
   }
 `;
@@ -29,4 +29,4 @@ const GET_CART = gql`
   }
 `;
 
-export default GET_CART
+export default GET_CART;

@@ -1,5 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+
+const Header = ({ title = "Ecommerce Store" }) => (
+  <HeaderWrapper>
+    <Title>{title}</Title>
+  </HeaderWrapper>
+);
 
 const HeaderWrapper = styled.div`
   background-color: royalBlue;
@@ -15,13 +21,5 @@ const HeaderWrapper = styled.div`
 const Title = styled.h1`
   pointer-events: none;
 `;
-
-const Header = ({ title = 'Ecommerce Store'}) => (
-  <HeaderWrapper>
-    <Title>
-      {title}
-    </Title>
-  </HeaderWrapper>
-);
 
 export default Header;

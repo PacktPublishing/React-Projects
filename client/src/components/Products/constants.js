@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const GET_LIMIT = gql`
   query getLimit {
@@ -16,4 +16,4 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-export default GET_PRODUCTS
+export default GET_PRODUCTS;

@@ -1,5 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+
+const Button = ({ children, onClick }) => (
+  <ButtonWrapper onClick={onClick}>{children}</ButtonWrapper>
+);
 
 const ButtonWrapper = styled.button`
   display: flex;
@@ -15,11 +19,5 @@ const ButtonWrapper = styled.button`
   font-size: inherit;
   cursor: pointer;
 `;
-
-const Button = ({ children, onClick }) => (
-  <ButtonWrapper onClick={onClick}>
-    {children}
-  </ButtonWrapper>
-)
 
 export default Button;
