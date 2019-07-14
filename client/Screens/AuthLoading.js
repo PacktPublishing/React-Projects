@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 const AuthLoading = ({ navigation }) => {
   React.useEffect(() => {
     AsyncStorage.getItem("token").then(value => {
-      navigation.navigate(value ? "Main" : "Auth");
+      navigation.navigate(value ? "Main" : "Login");
     });
   }, [navigation]);
 

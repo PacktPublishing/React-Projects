@@ -1,27 +1,26 @@
 import React from "react";
-import { AsyncStorage, Alert, View, TextInput } from "react-native";
+import { AsyncStorage, Alert, View } from "react-native";
 import styled from "styled-components/native";
 import { Mutation } from "react-apollo";
 import Button from "../Components/Button/Button";
+import TextInput from "../Components/TextInput/TextInput";
 import { LOGIN_USER } from "../constants";
 
 const Login = ({ navigation }) => {
   const [userName, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  // console.log(getToken());
-
   return (
     <Mutation mutation={LOGIN_USER}>
-      {(loginUser, { loading, error }) => (
+      {(loginUser, { loading }) => (
         <LoginWrapper>
-          <StyledTextInput
+          <TextInput
             onChangeText={text => setUserName(text)}
             value={userName}
             placeholder="Your username"
             textContentType="username"
           />
-          <StyledTextInput
+          <TextInput
             onChangeText={text => setPassword(text)}
             value={password}
             placeholder="Your password"
@@ -59,18 +58,6 @@ const LoginWrapper = styled(View)`
   background-color: #fff;
   align-items: center;
   justify-content: center;
-`;
-
-const StyledTextInput = styled(TextInput)`
-  width: 90%;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 15px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  font-size: 20px;
 `;
 
 export default Login;

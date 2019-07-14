@@ -3,8 +3,12 @@ import { Platform, Text, View, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styled from "styled-components/native";
 
-const ConversationItem = ({ item }) => (
-  <ConversationItemWrapper>
+const ConversationItem = ({ item, navigation }) => (
+  <ConversationItemWrapper
+    onPress={() =>
+      navigation.navigate("Conversation", { userName: item.userName })
+    }
+  >
     <ThumbnailWrapper>
       <Ionicons
         name={`${Platform.OS === "ios" ? "ios" : "md"}-contact`}

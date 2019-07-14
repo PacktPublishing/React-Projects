@@ -1,27 +1,29 @@
 import React from "react";
-import { FlatList, View } from "react-native";
-import { Subscription } from "react-apollo";
-import { GET_CART } from "../constants";
-import ConversationItem from "../Components/Conversations/ConversationItem";
+import { FlatList, Text, View } from "react-native";
+import { Query } from "react-apollo";
+import { GET_CONVERSATIONS } from "../constants";
+import ConversationItem from "../Components/Conversation/ConversationItem";
 import styled from "styled-components/native";
 
 const Conversations = ({ navigation }) => (
   <ConversationsWrapper>
-    <Subscription subscription={GET_CART}>
-      {({ loading, error, data }) => {
-        console.log(data);
-        
+    <Query query={GET_CONVERSATIONS}>
+      {({ loading, data }) => {
+        if (loading) {
+          <ConversationsText>Loading...</ConversationsText>;
+        }
+
         return (
           <ConversationsList
             data={data.conversations}
-            keyExtractor={item => item.userName}
-            renderItem={({ item }) => {
-              return <ConversationItem item={item} />;
-            }}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item }) => (
+              <ConversationItem item={item} navigation={navigation} />
+            )}
           />
         );
       }}
-    </Subscription>
+    </Query>
   </ConversationsWrapper>
 );
 
@@ -34,6 +36,11 @@ const ConversationsWrapper = styled(View)`
 
 const ConversationsList = styled(FlatList)`
   width: 100%;
+`;
+
+const ConversationsText = styled(Text)`
+  font-size: 20px;
+  color: black;
 `;
 
 export default Conversations;

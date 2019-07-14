@@ -3,18 +3,34 @@ const JsonWebToken = require("jsonwebtoken");
 const Bcrypt = require("bcryptjs");
 const faker = require("faker");
 
-const UPDATED_CONVERSATION = "UPDATED_CONVERSATION";
-const UPDATED_CONVERSATIONS = "UPDATED_CONVERSATIONS";
+const MESSAGE_ADDED = "MESSAGE_ADDED";
 
 const jwtSecret = "34%%##@#FGFKFL";
 
 const pubsub = new PubSub();
 
+const isTokenValid = token => {
+  const bearerToken = token.split(" ");
+
+  if (bearerToken) {
+    return JsonWebToken.verify(bearerToken[1], jwtSecret, error => {
+      if (error) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  return false;
+};
+
 const mockMessage = (userName = false) => ({
   id: faker.random.number,
-  userName: Math.round(Math.random()) ? "me" : userName || faker.name.firstName,
-  text: faker.hacker.phrase,
-  read: 0
+  userName: Math.round(userName ? userName : Math.random())
+    ? "me"
+    : faker.name.firstName,
+  text: faker.hacker.phrase
 });
 
 const mockConversation = (userName = false) => ({
@@ -25,73 +41,36 @@ const mockConversation = (userName = false) => ({
 
 const resolvers = {
   Query: {
-    conversationsAuth: (_, { limit = 10 }, { token }) => {
-      let isValid;
-      const bearerToken = token.split(" ");
-
-      if (bearerToken) {
-        isValid = JsonWebToken.verify(bearerToken[1], jwtSecret, error => {
-          if (error) {
-            return false;
-          }
-          return true;
-        });
-      }
+    conversation: (_, { userName }) => mockConversation(userName),
+    conversations: (_, { limit = 10 }) =>
+      Array.from(Array(limit), () => mockConversation())
+  },
+  Mutation: {
+    sendMessage: (_, { to, text }, { token }) => {
+      const isValid = token ? isTokenValid(token) : false;
 
       if (isValid) {
-        const mockedConversations = Array.from(Array(limit), () =>
-          mockConversation()
-        );
+        let conversation = mockConversation(to);
+        const messageAdded = {
+          id: faker.random.number,
+          userName: "me",
+          text
+        };
 
-        setInterval(() => {
-          pubsub.publish(UPDATED_CONVERSATIONS, {
-            updatedConversations: [...mockedConversations, mockConversation()]
-          });
-        }, 3000);
+        conversation = {
+          ...conversation,
+          messages: [...conversation.messages, messageAdded]
+        };
 
-        return mockedConversations;
+        pubsub.publish(MESSAGE_ADDED, {
+          messageAdded
+        });
+
+        return conversation;
       }
       throw new AuthenticationError(
         "Please provide (valid) authentication details"
       );
-    },
-    conversation: (_, { userName }) => mockConversation(userName),
-    conversations: (_, { limit = 10 }) => {
-      const mockedConversations = Array.from(Array(limit), () =>
-        mockConversation()
-      );
-
-      setInterval(() => {
-        pubsub.publish(UPDATED_CONVERSATIONS, {
-          updatedConversations: [...mockedConversations, mockConversation()]
-        });
-      }, 3000);
-
-      return mockedConversations;
-    }
-  },
-  Mutation: {
-    sendMessage: (_, { to, text }) => {
-      let conversation = mockConversation(to);
-
-      conversation = {
-        ...conversation,
-        messages: [
-          ...conversation.messages,
-          {
-            id: faker.random.number,
-            userName: "me",
-            text,
-            read: 0
-          }
-        ]
-      };
-
-      pubsub.publish(UPDATED_CONVERSATION, {
-        updatedConversation: conversation
-      });
-
-      return conversation;
     },
     loginUser: async (_, { userName, password }) => {
       let isValid;
@@ -119,11 +98,16 @@ const resolvers = {
     }
   },
   Subscription: {
-    updatedConversation: {
-      subscribe: () => pubsub.asyncIterator(UPDATED_CONVERSATION)
-    },
-    updatedConversations: {
-      subscribe: () => pubsub.asyncIterator([UPDATED_CONVERSATIONS])
+    messageAdded: {
+      subscribe: (_, { userName }) => {
+        setInterval(() => {
+          pubsub.publish(MESSAGE_ADDED, {
+            messageAdded: mockMessage(userName)
+          });
+        }, 9000);
+
+        return pubsub.asyncIterator(MESSAGE_ADDED, { userName });
+      }
     }
   }
 };
