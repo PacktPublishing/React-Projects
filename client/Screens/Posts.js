@@ -1,31 +1,51 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, View, ScrollView, RefreshControl } from "react-native";
 import styled from "styled-components/native";
 import { GET_POSTS } from "../constants";
-import PostItem from "../Components/Post/PostItem"
+import PostItem from "../Components/Post/PostItem";
 
-const Posts = ({ navigation }) => (
-  <PostsWrapper>
-    <Query query={GET_POSTS}>
-      {({ loading, data }) => {
-        if (loading) {
-          return <PostsText>Loading...</PostsText>;
-        }
+const Posts = ({ navigation }) => {
+  const [refreshing, setRefreshing] = React.useState(false);
 
-        return (
-          <PostsList
-            data={data.posts}
-            keyExtractor={item => String(item.id)}
-            renderItem={({ item }) => (
-              <PostItem item={item} navigation={navigation} />
-            )}
-          />
-        );
-      }}
-    </Query>
-  </PostsWrapper>
-);
+  const handleRefresh = refetch => {
+    setRefreshing(true);
+
+    refetch().then(() => setRefreshing(false));
+  };
+
+  return (
+    <PostsWrapper>
+      <Query query={GET_POSTS} pollInterval={0}>
+        {({ loading, data, refetch }) => {
+          if (loading && !refreshing) {
+            return <PostsText>Loading...</PostsText>;
+          }
+
+          return (
+            <ScrollView
+              style={{ width: "100%" }}
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={() => handleRefresh(refetch)}
+                />
+              }
+            >
+              <PostsList
+                data={data.posts}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item }) => (
+                  <PostItem item={item} navigation={navigation} />
+                )}
+              />
+            </ScrollView>
+          );
+        }}
+      </Query>
+    </PostsWrapper>
+  );
+};
 
 const PostsWrapper = styled(View)`
   flex: 1;
