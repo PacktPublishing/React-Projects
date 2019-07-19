@@ -11,11 +11,11 @@ import { ApolloProvider } from "react-apollo";
 import AppContainer from "./AppContainer";
 
 const httpLink = new HttpLink({
-  uri: "https://hot-octopus-86.localtunnel.me/graphql"
+  uri: "https://little-elephant-48.localtunnel.me/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: "ws://hot-octopus-86.localtunnel.me/graphql",
+  uri: "ws://little-elephant-48.localtunnel.me/graphql",
   options: {
     reconnect: true
   }

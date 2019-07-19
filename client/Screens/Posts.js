@@ -1,6 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { FlatList, Text, View, ScrollView, RefreshControl } from "react-native";
+import { Button, FlatList, Text, View, ScrollView, RefreshControl } from "react-native";
 import styled from "styled-components/native";
 import { GET_POSTS } from "../constants";
 import PostItem from "../Components/Post/PostItem";
@@ -10,12 +10,13 @@ const Posts = ({ navigation }) => {
 
   const handleRefresh = refetch => {
     setRefreshing(true);
-
+ 
     refetch().then(() => setRefreshing(false));
   };
 
   return (
     <PostsWrapper>
+      <Button onPress={() => navigation.navigate('MyModal')} title="Open modal" />
       <Query query={GET_POSTS} pollInterval={0}>
         {({ loading, data, refetch }) => {
           if (loading && !refreshing) {
