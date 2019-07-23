@@ -40,3 +40,12 @@ export const GET_POSTS = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation addPost($image: String!, $text: String!) {
+    addPost(image: $image, text: $text) {
+      image
+      text
+    }
+  }
+`;

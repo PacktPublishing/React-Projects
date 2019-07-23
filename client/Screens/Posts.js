@@ -16,7 +16,6 @@ const Posts = ({ navigation }) => {
 
   return (
     <PostsWrapper>
-      <Button onPress={() => navigation.navigate('MyModal')} title="Open modal" />
       <Query query={GET_POSTS} pollInterval={0}>
         {({ loading, data, refetch }) => {
           if (loading && !refreshing) {
@@ -63,5 +62,11 @@ const PostsText = styled(Text)`
   font-size: 20px;
   color: black;
 `;
+
+Posts.navigationOptions = ({ navigation}) => ({
+  headerRight: (
+   <Button onPress={() => navigation.navigate('AddPost')} title="Add Post" />
+  ),
+});
 
 export default Posts;

@@ -58,12 +58,12 @@ const SwitchNavigator = createSwitchNavigator(
     Main: TabNavigator,
     Login,
     AuthLoading,
-    MyModal: AddPost
+    AddPost,
   },
   {
     mode: "modal",
     initialRouteName: "AuthLoading"
-  }
+  },
 );
 
 export default createAppContainer(SwitchNavigator);
