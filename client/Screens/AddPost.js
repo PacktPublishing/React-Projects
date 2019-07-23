@@ -8,34 +8,64 @@ import {
   View
 } from "react-native";
 import styled from "styled-components/native";
-import Button from "../Components/Button/Button";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
+import { connectActionSheet } from "@expo/react-native-action-sheet";
+import { Mutation } from "react-apollo";
+import { ADD_POST, GET_POSTS } from "../constants";
+import Button from "../Components/Button/Button";
 
-const AddPost = ({ navigation }) => {
+const AddPost = ({ navigation, showActionSheetWithOptions }) => {
   const [imageUrl, setImageUrl] = React.useState(false);
 
-  const pickImageAsync = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 4]
-    });
+  const addImageAsync = async (camera = false) => {
+    const result = !camera
+      ? await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 4]
+        })
+      : await ImagePicker.launchCameraAsync({
+          allowsEditing: true,
+          aspect: [4, 4]
+        });
 
     if (!result.cancelled) {
       setImageUrl(result.uri);
     }
   };
 
+  const openActionSheet = () => {
+    const options = ["Camera", "Camera roll", "Cancel"];
+    const cancelButtonIndex = 2;
+
+    showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex
+      },
+      buttonIndex => {
+        if (buttonIndex === 0 || buttonIndex === 1) {
+          addImageAsync(buttonIndex === 0 ? true : false);
+        }
+      }
+    );
+  };
+
   const getPermissionAsync = async () => {
     if (Platform.OS === "ios") {
-      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-      if (status !== "granted") {
+      const { status: statusCamera } = await Permissions.askAsync(
+        Permissions.CAMERA
+      );
+      const { status: statusCameraRoll } = await Permissions.askAsync(
+        Permissions.CAMERA_ROLL
+      );
+      if (statusCamera !== "granted" || statusCameraRoll !== "granted") {
         alert(
           "Sorry, you need camera roll permissions! Go to 'Settings > Expo' to enable these."
         );
       } else {
-        pickImageAsync();
+        openActionSheet();
       }
     }
   };
@@ -43,14 +73,32 @@ const AddPost = ({ navigation }) => {
   return (
     <AddPostWrapper>
       <AddPostText>Add Post</AddPostText>
-      <UploadImage onPress={() => getPermissionAsync()}>
-        {imageUrl ? (
-          <Image source={{ uri: imageUrl }} style={{ width: '100%', height: '100%' }} />
-        ) : (
-          <AddPostText>Upload image</AddPostText>
+      <Mutation mutation={ADD_POST} refetchQueries={[{ query: GET_POSTS }]}>
+        {addPost => (
+          <>
+            <UploadImage onPress={() => getPermissionAsync()}>
+              {imageUrl ? (
+                <Image
+                  source={{ uri: imageUrl }}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              ) : (
+                <AddPostText>Upload image</AddPostText>
+              )}
+            </UploadImage>
+            {imageUrl && (
+              <Button
+                onPress={() => {
+                  addPost({ variables: { image: imageUrl } }).then(() =>
+                    navigation.navigate("Main")
+                  );
+                }}
+                title="Submit"
+              />
+            )}
+          </>
         )}
-      </UploadImage>
-
+      </Mutation>
       <Button onPress={() => navigation.navigate("Main")} title="Cancel" />
     </AddPostWrapper>
   );
@@ -79,4 +127,8 @@ const UploadImage = styled(TouchableOpacity)`
   justify-content: center;
 `;
 
-export default AddPost;
+//export default AddPost;
+
+const ConnectedApp = connectActionSheet(AddPost);
+
+export default ConnectedApp;

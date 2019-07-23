@@ -15,7 +15,6 @@ export const GET_POST = gql`
       id
       userName
       image
-      text
       stars {
         userName
       }
@@ -34,7 +33,6 @@ export const GET_POSTS = gql`
       id
       userName
       image
-      text
       totalStars
       totalComments
     }
@@ -42,10 +40,9 @@ export const GET_POSTS = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($image: String!, $text: String!) {
-    addPost(image: $image, text: $text) {
+  mutation addPost($image: String!) {
+    addPost(image: $image) {
       image
-      text
     }
   }
 `;

@@ -37,14 +37,13 @@ const mockComment = (userName = false) => ({
   text: faker.hacker.phrase
 });
 
-const mockPost = ({ userName = false, image = false, text = false }) => {
+const mockPost = ({ userName = false, image = false }) => {
   const totalStars = Math.floor(Math.random() * 50) + 1;
   const totalComments = Math.floor(Math.random() * 5) + 1;
   return {
     id: faker.random.number,
     userName: userName || faker.name.firstName,
     image: image || faker.image.technics(600, 600),
-    text: text || faker.hacker.phrase,
     totalStars,
     totalComments,
     stars: Array.from(Array(totalStars), () => mockStar()),
@@ -63,7 +62,7 @@ const resolvers = {
     posts: _ => posts.reverse()
   },
   Mutation: {
-    addPost: (_, { image, text = "" }, { token }) => {
+    addPost: (_, { image }, { token }) => {
       const isValid = token ? isTokenValid(token) : false;
 
       if (isValid) {
@@ -73,7 +72,6 @@ const resolvers = {
           image,
           totalComments: 0,
           totalStars: 0,
-          text,
           stars,
           comments
         };

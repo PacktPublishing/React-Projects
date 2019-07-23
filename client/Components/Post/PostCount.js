@@ -13,12 +13,14 @@ const PostCount = ({ stars, comments, marginBottom }) => (
         />
         <CountText>
           {!comments
-            ? ` Starred by ${stars[0].userName} and ${stars.length - 1} others`
+            ? stars.length
+              ? `Starred by ${stars[0].userName} and ${stars.length - 1} others`
+              : "No stars"
             : stars}
         </CountText>
       </CountWrapper>
 
-      {comments && (
+      {comments.length && (
         <CountWrapper>
           <Ionicons
             name={`${Platform.OS === "ios" ? "ios" : "md"}-chatbubbles`}

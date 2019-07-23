@@ -8,14 +8,15 @@ import { split } from "apollo-link";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 import { ApolloProvider } from "react-apollo";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import AppContainer from "./AppContainer";
 
 const httpLink = new HttpLink({
-  uri: "https://little-elephant-48.localtunnel.me/graphql"
+  uri: "https://smooth-turkey-35.localtunnel.me/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: "ws://little-elephant-48.localtunnel.me/graphql",
+  uri: "ws://smooth-turkey-35.localtunnel.me/graphql",
   options: {
     reconnect: true
   }
@@ -23,6 +24,9 @@ const wsLink = new WebSocketLink({
 
 const authLink = setContext(async (_, { headers }) => {
   const token = await AsyncStorage.getItem("token");
+
+console.log(token);
+
 
   return {
     headers: {
@@ -53,7 +57,9 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <AppContainer />
+    <ActionSheetProvider>
+      <AppContainer />
+    </ActionSheetProvider>
   </ApolloProvider>
 );
 

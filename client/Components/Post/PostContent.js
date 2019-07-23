@@ -7,7 +7,6 @@ const PostContent = ({ item }) => (
     <PostContentThumbnail source={{ uri: item.image }} />
     <PostContentDetails>
       <UserName>{item.userName}</UserName>
-      <PostText>{item.text}</PostText>
     </PostContentDetails>
   </PostContentWrapper>
 );
@@ -28,10 +27,6 @@ const PostContentDetails = styled(View)`
 const UserName = styled(Text)`
   font-weight: bold;
   font-size: 16px;
-`;
-
-const PostText = styled(Text)`
-  font-size: 14px;
 `;
 
 PostContent.defaultProps = {
