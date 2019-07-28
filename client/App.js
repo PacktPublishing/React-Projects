@@ -9,14 +9,16 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 import { ApolloProvider } from "react-apollo";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { Notifications } from "expo";
 import AppContainer from "./AppContainer";
+import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from "./constants";
 
 const httpLink = new HttpLink({
-  uri: "https://smooth-turkey-35.localtunnel.me/graphql"
+  uri: "https://jolly-bird-96.localtunnel.me/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: "ws://smooth-turkey-35.localtunnel.me/graphql",
+  uri: "ws://jolly-bird-96.localtunnel.me/graphql",
   options: {
     reconnect: true
   }
@@ -24,9 +26,6 @@ const wsLink = new WebSocketLink({
 
 const authLink = setContext(async (_, { headers }) => {
   const token = await AsyncStorage.getItem("token");
-
-console.log(token);
-
 
   return {
     headers: {
@@ -52,15 +51,63 @@ const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   link: authLink.concat(link),
-  cache
+  cache,
+  resolvers: {
+    Mutation: {
+      addNotification: async (_, { id, title, body }) => {
+        const { data } = await client.query({ query: GET_NOTIFICATIONS })
+
+        cache.writeData({
+          data: {
+            notifications: [
+              ...data.notifications,
+              { id, title, body, __typename: "notifications" }
+            ]
+          }
+        });
+      }
+    }
+  },
+  typeDefs: `
+    type Notification {
+      id: Number!
+      title: String!
+      body: String!
+    }
+    extend type Query {
+        notifications: [Notification]!
+    }
+  `
 });
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <ActionSheetProvider>
-      <AppContainer />
-    </ActionSheetProvider>
-  </ApolloProvider>
-);
+cache.writeData({
+  data: {
+    notifications: []
+  }
+});
+
+const App = () => {
+  React.useEffect(() => {
+    Notifications.addListener(handleNotification);
+  });
+
+  const handleNotification = ({ data }) => {
+    client.mutate({
+      mutation: ADD_NOTIFICATION,
+      variables: {
+        id: Math.floor(Math.random() * 500) + 1,
+        title: data.title,
+        body: data.body
+      }
+    });
+  };
+  return (
+    <ApolloProvider client={client}>
+      <ActionSheetProvider>
+        <AppContainer />
+      </ActionSheetProvider>
+    </ApolloProvider>
+  );
+};
 
 export default App;

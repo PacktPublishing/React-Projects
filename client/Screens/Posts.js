@@ -1,16 +1,28 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { Button, FlatList, Text, View, ScrollView, RefreshControl } from "react-native";
+import {
+  Button,
+  FlatList,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl
+} from "react-native";
 import styled from "styled-components/native";
 import { GET_POSTS } from "../constants";
 import PostItem from "../Components/Post/PostItem";
+import registerForPushNotificationsAsync from "../utils/registerForPushNotificationsAsync";
 
 const Posts = ({ navigation }) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
+  React.useEffect(() => {
+    registerForPushNotificationsAsync();
+  }, []);
+
   const handleRefresh = refetch => {
     setRefreshing(true);
- 
+
     refetch().then(() => setRefreshing(false));
   };
 
@@ -63,10 +75,10 @@ const PostsText = styled(Text)`
   color: black;
 `;
 
-Posts.navigationOptions = ({ navigation}) => ({
+Posts.navigationOptions = ({ navigation }) => ({
   headerRight: (
-   <Button onPress={() => navigation.navigate('AddPost')} title="Add Post" />
-  ),
+    <Button onPress={() => navigation.navigate("AddPost")} title="Add Post" />
+  )
 });
 
 export default Posts;
