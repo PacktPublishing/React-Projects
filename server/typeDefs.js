@@ -22,6 +22,7 @@ const typeDefs = gql`
   type User {
     userName: String!
     token: String!
+    expoToken: String!
   }
   type Query {
     posts: [Post]
@@ -30,10 +31,7 @@ const typeDefs = gql`
   type Mutation {
     addPost(image: String!): Post
     loginUser(userName: String!, password: String!): User
-  }
-  type Subscription {
-    commentAdded(userName: String!): Comment
-    starAdded(userName: String!): Star
+    storeExpoToken(expoToken: String!): User
   }
 `;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { ApolloConsumer, Query } from "react-apollo";
 import {
   Button,
   FlatList,
@@ -9,15 +9,28 @@ import {
   RefreshControl
 } from "react-native";
 import styled from "styled-components/native";
-import { GET_POSTS } from "../constants";
+import { GET_POSTS, STORE_EXPO_TOKEN } from "../constants";
 import PostItem from "../Components/Post/PostItem";
 import registerForPushNotificationsAsync from "../utils/registerForPushNotificationsAsync";
 
-const Posts = ({ navigation }) => {
+const PostsContainer = ({ navigation }) => (
+  <ApolloConsumer>
+    {client => <Posts client={client} navigation={navigation} />}
+  </ApolloConsumer>
+);
+
+const Posts = ({ client, navigation }) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   React.useEffect(() => {
-    registerForPushNotificationsAsync();
+    registerForPushNotificationsAsync().then(expoToken => {
+      return client.mutate({
+        mutation: STORE_EXPO_TOKEN,
+        variables: {
+          expoToken
+        }
+      });
+    });
   }, []);
 
   const handleRefresh = refetch => {
@@ -75,10 +88,10 @@ const PostsText = styled(Text)`
   color: black;
 `;
 
-Posts.navigationOptions = ({ navigation }) => ({
+PostsContainer.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <Button onPress={() => navigation.navigate("AddPost")} title="Add Post" />
   )
 });
 
-export default Posts;
+export default PostsContainer;

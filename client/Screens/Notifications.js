@@ -24,11 +24,9 @@ const Notifications = () => {
             <FlatList
               data={data.notifications}
               keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => {
-                console.log(item);
-
-                return <Notification title={item.title} body={item.body} />;
-              }}
+              renderItem={({ item }) => (
+                <Notification title={item.title} body={item.body} />
+              )}
             />
           );
         }}

@@ -4,24 +4,14 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { setContext } from "apollo-link-context";
 import { HttpLink } from "apollo-link-http";
-import { split } from "apollo-link";
-import { WebSocketLink } from "apollo-link-ws";
-import { getMainDefinition } from "apollo-utilities";
 import { ApolloProvider } from "react-apollo";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { Notifications } from "expo";
 import AppContainer from "./AppContainer";
 import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from "./constants";
 
-const httpLink = new HttpLink({
-  uri: "https://jolly-bird-96.localtunnel.me/graphql"
-});
-
-const wsLink = new WebSocketLink({
-  uri: "ws://jolly-bird-96.localtunnel.me/graphql",
-  options: {
-    reconnect: true
-  }
+const link = new HttpLink({
+  uri: "https://giant-baboon-63.localtunnel.me/graphql"
 });
 
 const authLink = setContext(async (_, { headers }) => {
@@ -35,18 +25,6 @@ const authLink = setContext(async (_, { headers }) => {
   };
 });
 
-const link = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === "OperationDefinition" &&
-      definition.operation === "subscription"
-    );
-  },
-  wsLink,
-  httpLink
-);
-
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
@@ -55,7 +33,7 @@ const client = new ApolloClient({
   resolvers: {
     Mutation: {
       addNotification: async (_, { id, title, body }) => {
-        const { data } = await client.query({ query: GET_NOTIFICATIONS })
+        const { data } = await client.query({ query: GET_NOTIFICATIONS });
 
         cache.writeData({
           data: {
@@ -75,7 +53,7 @@ const client = new ApolloClient({
       body: String!
     }
     extend type Query {
-        notifications: [Notification]!
+      notifications: [Notification]!
     }
   `
 });

@@ -9,6 +9,14 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const STORE_EXPO_TOKEN = gql`
+  mutation storeExpoToken($expoToken: String!) {
+    storeExpoToken(expoToken: $expoToken) {
+      expoToken
+    }
+  }
+`;
+
 export const GET_POST = gql`
   query getPost($userName: String!) {
     post(userName: $userName) {
@@ -59,6 +67,6 @@ export const GET_NOTIFICATIONS = gql`
 
 export const ADD_NOTIFICATION = gql`
   mutation {
-    addNotification(title: $title, body: $body) @client
+    addNotification(id: $id, title: $title, body: $body) @client
   }
 `;
