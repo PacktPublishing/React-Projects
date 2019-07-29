@@ -5,7 +5,6 @@ const typeDefs = gql`
     id: Int!
     userName: String!
     image: String!
-    text: String!
     totalStars: Float!
     totalComments: Float!
     stars: [Star]
@@ -23,18 +22,16 @@ const typeDefs = gql`
   type User {
     userName: String!
     token: String!
+    expoToken: String!
   }
   type Query {
     posts: [Post]
     post(userName: String!): Post
   }
   type Mutation {
-    addPost(image: String!, text: String!): Post
+    addPost(image: String!): Post
     loginUser(userName: String!, password: String!): User
-  }
-  type Subscription {
-    commentAdded(userName: String!): Comment
-    starAdded(userName: String!): Star
+    storeExpoToken(expoToken: String!): User
   }
 `;
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const { createServer } = require("http");
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 
 const resolvers = require("./resolvers.js");
 const typeDefs = require("./typeDefs.js");
