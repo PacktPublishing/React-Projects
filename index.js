@@ -1,7 +1,8 @@
-import React from "react";
 import { AppRegistry } from "react-360";
-import App from "./src/App";
+import Panel from "./Components/Panel";
+import Navigation from "./Components/Navigation";
+import Helicopter from "./Components/Helicopter";
 
-const virtual_reality = () => <App />;
-
-AppRegistry.registerComponent("virtual_reality", () => virtual_reality);
+AppRegistry.registerComponent("Panel", () => Panel);
+AppRegistry.registerComponent("Navigation", () => Navigation);
+AppRegistry.registerComponent("Helicopter", () => Helicopter);
