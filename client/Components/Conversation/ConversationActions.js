@@ -2,12 +2,13 @@ import React from "react";
 import { Platform, KeyboardAvoidingView } from "react-native";
 import styled from "styled-components/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Mutation } from "react-apollo";
+import { useMutation } from "react-apollo";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
 import { SEND_MESSAGE } from "../../constants";
 
 const ConversationActions = ({ userName }) => {
+  const [sendMessage] = useMutation(SEND_MESSAGE);
   const [message, setMessage] = React.useState("");
 
   return (
@@ -15,34 +16,30 @@ const ConversationActions = ({ userName }) => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
       behavior={Platform.OS === "ios" ? "padding" : null}
     >
-      <Mutation mutation={SEND_MESSAGE}>
-        {sendMessage => (
-          <>
-            <TextInput
-              width={75}
-              marginBottom={0}
-              onChangeText={setMessage}
-              placeholder="Your message"
-              value={message}
+      <>
+        <TextInput
+          width={75}
+          marginBottom={0}
+          onChangeText={setMessage}
+          placeholder="Your message"
+          value={message}
+        />
+        <Button
+          width={20}
+          padding={10}
+          onPress={() => {
+            sendMessage({ variables: { to: userName, text: message } });
+            setMessage("");
+          }}
+          title={
+            <Ionicons
+              name={`${Platform.OS === "ios" ? "ios" : "md"}-send`}
+              size={42}
+              color="white"
             />
-            <Button
-              width={20}
-              padding={10}
-              onPress={() => {
-                sendMessage({ variables: { to: userName, text: message } });
-                setMessage("");
-              }}
-              title={
-                <Ionicons
-                  name={`${Platform.OS === "ios" ? "ios" : "md"}-send`}
-                  size={42}
-                  color="white"
-                />
-              }
-            />
-          </>
-        )}
-      </Mutation>
+          }
+        />
+      </>
     </ConversationActionsWrapper>
   );
 };

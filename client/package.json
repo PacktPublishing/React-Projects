@@ -8,8 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
     "apollo-cache-inmemory": "^1.6.2",
-    "apollo-client": "^2.6.3",
+    "apollo-client": "^2.6.4",
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
     "apollo-link-ws": "^1.0.18",
@@ -18,7 +19,7 @@
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
     "react": "16.8.3",
-    "react-apollo": "^2.5.8",
+    "react-apollo": "^3.0.1",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-web": "^0.11.4",
