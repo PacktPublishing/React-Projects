@@ -22,7 +22,7 @@ const typeDefs = gql`
   type User {
     userName: String!
     token: String!
-    expoToken: String!
+    expoToken: String
   }
   type Query {
     posts: [Post]

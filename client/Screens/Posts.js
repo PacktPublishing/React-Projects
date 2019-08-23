@@ -1,30 +1,29 @@
 import React from "react";
-import { Query } from "react-apollo";
 import { FlatList, Text, View } from "react-native";
 import styled from "styled-components/native";
 import { GET_POSTS } from "../constants";
 import PostItem from "../Components/Post/PostItem";
+import { useQuery } from "@apollo/react-hooks";
 
 const Posts = ({ navigation }) => {
+  const { loading, data } = useQuery(GET_POSTS);
+
+  console.log(data);
+  
+
   return (
     <PostsWrapper>
-      <Query query={GET_POSTS}>
-        {({ loading, data }) => {
-          if (loading) {
-            return <PostsText>Loading...</PostsText>;
-          }
-
-          return (
-            <PostsList
-              data={data.posts}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => (
-                <PostItem item={item} navigation={navigation} />
-              )}
-            />
-          );
-        }}
-      </Query>
+      {loading ? (
+        <PostsText>{loading ? "Loading..." : "Empty"}</PostsText>
+      ) : (
+        <PostsList
+          data={data.posts}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => (
+            <PostItem item={item} navigation={navigation} />
+          )}
+        />
+      )}
     </PostsWrapper>
   );
 };

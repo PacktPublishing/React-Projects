@@ -1,36 +1,30 @@
 import React from "react";
 import { Text, FlatList, View } from "react-native";
 import styled from "styled-components/native";
-import { Query } from "react-apollo";
 import Notification from "../Components/Notification/Notification";
 import { GET_NOTIFICATIONS } from "../constants";
+import { useMutation } from "@apollo/react-hooks";
 
 const Notifications = () => {
+  const [{ loading, data }] = useMutation(GET_NOTIFICATIONS);
+
   return (
     <NotificationsWrapper>
-      <Query query={GET_NOTIFICATIONS}>
-        {({ loading, data }) => {
-          if (loading || !data.notifications.length) {
-            return (
-              <NotificationsBody>
-                <NotificationsText>
-                  {loading ? "Loading..." : "Empty"}
-                </NotificationsText>
-              </NotificationsBody>
-            );
-          }
- 
-          return (
-            <FlatList
-              data={data.notifications}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => (
-                <Notification title={item.title} body={item.body} />
-              )}
-            />
-          );
-        }}
-      </Query>
+      {loading || !data.notifications.length ? (
+        <NotificationsBody>
+          <NotificationsText>
+            {loading ? "Loading..." : "Empty"}
+          </NotificationsText>
+        </NotificationsBody>
+      ) : (
+        <FlatList
+          data={data.notifications}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => (
+            <Notification title={item.title} body={item.body} />
+          )}
+        />
+      )}
     </NotificationsWrapper>
   );
 };

@@ -15,7 +15,6 @@ export const GET_POST = gql`
       id
       userName
       image
-      text
       stars {
         userName
       }
@@ -34,7 +33,6 @@ export const GET_POSTS = gql`
       id
       userName
       image
-      text
       totalStars
       totalComments
     }

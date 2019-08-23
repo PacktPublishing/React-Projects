@@ -73,7 +73,7 @@ const resolvers = {
         return {
           userName,
           token,
-          expoToken
+          expoToken: localExpoToken
         };
       }
       throw new AuthenticationError(

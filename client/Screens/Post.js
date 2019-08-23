@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, FlatList, ScrollView, View } from "react-native";
 import styled from "styled-components/native";
-import { Query } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 import CommentForm from "../Components/Comment/CommentForm";
 import PostCount from "../Components/Post/PostCount";
 import PostContent from "../Components/Post/PostContent";
@@ -9,34 +9,29 @@ import { GET_POST } from "../constants";
 import Comment from "../Components/Comment/Comment";
 
 const Post = ({ navigation }) => {
+  const { loading, data } = useQuery(GET_POST);
   const userName = navigation.getParam("userName", "");
+
+  const { post } = data;
 
   return (
     <PostWrapper>
       <PostBody>
-        <Query query={GET_POST} variables={{ userName }}>
-          {({ loading, data }) => {
-            if (loading) {
-              return <PostText>Loading...</PostText>;
-            }
-
-            const { post } = data;
-
-            return (
-              <>
-                <PostContent item={post} />
-                <PostCount stars={post.stars} marginBottom={2} />
-                <FlatList
-                  data={post.comments}
-                  keyExtractor={item => String(item.id)}
-                  renderItem={({ item }) => (
-                    <Comment userName={item.userName} text={item.text} />
-                  )}
-                />
-              </>
-            );
-          }}
-        </Query>
+        {loading ? (
+          <PostText>Loading...</PostText>
+        ) : (
+          <>
+            <PostContent item={post} />
+            <PostCount stars={post.stars} marginBottom={2} />
+            <FlatList
+              data={post.comments}
+              keyExtractor={item => String(item.id)}
+              renderItem={({ item }) => (
+                <Comment userName={item.userName} text={item.text} />
+              )}
+            />
+          </>
+        )}
       </PostBody>
       <CommentForm userName={userName} />
     </PostWrapper>
