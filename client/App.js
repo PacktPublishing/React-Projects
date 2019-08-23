@@ -4,14 +4,15 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { setContext } from "apollo-link-context";
 import { HttpLink } from "apollo-link-http";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { Notifications } from "expo";
 import AppContainer from "./AppContainer";
 import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from "./constants";
 
 const link = new HttpLink({
-  uri: "https://giant-baboon-63.localtunnel.me/graphql"
+  // uri: [LOCALTUNNEL_URL],
+  uri: "https://quiet-owl-41.localtunnel.me/graphql"
 });
 
 const authLink = setContext(async (_, { headers }) => {

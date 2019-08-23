@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloConsumer, Query } from "react-apollo";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import {
   Button,
   FlatList,
@@ -13,23 +13,14 @@ import { GET_POSTS, STORE_EXPO_TOKEN } from "../constants";
 import PostItem from "../Components/Post/PostItem";
 import registerForPushNotificationsAsync from "../utils/registerForPushNotificationsAsync";
 
-const PostsContainer = ({ navigation }) => (
-  <ApolloConsumer>
-    {client => <Posts client={client} navigation={navigation} />}
-  </ApolloConsumer>
-);
-
-const Posts = ({ client, navigation }) => {
+const Posts = ({ navigation }) => {
+  const { loading, data, refetch } = useQuery(GET_POSTS, { pollInterval: 0 });
+  const [storeExpoToken] = useMutation(STORE_EXPO_TOKEN);
   const [refreshing, setRefreshing] = React.useState(false);
 
   React.useEffect(() => {
     registerForPushNotificationsAsync().then(expoToken => {
-      return client.mutate({
-        mutation: STORE_EXPO_TOKEN,
-        variables: {
-          expoToken
-        }
-      });
+      return storeExpoToken({ variables: { expoToken } });
     });
   }, []);
 
@@ -41,33 +32,27 @@ const Posts = ({ client, navigation }) => {
 
   return (
     <PostsWrapper>
-      <Query query={GET_POSTS} pollInterval={0}>
-        {({ loading, data, refetch }) => {
-          if (loading && !refreshing) {
-            return <PostsText>Loading...</PostsText>;
+      {loading && !refreshing ? (
+        <PostsText>Loading...</PostsText>
+      ) : (
+        <ScrollView
+          style={{ width: "100%" }}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => handleRefresh(refetch)}
+            />
           }
-
-          return (
-            <ScrollView
-              style={{ width: "100%" }}
-              refreshControl={
-                <RefreshControl
-                  refreshing={refreshing}
-                  onRefresh={() => handleRefresh(refetch)}
-                />
-              }
-            >
-              <PostsList
-                data={data.posts}
-                keyExtractor={item => String(item.id)}
-                renderItem={({ item }) => (
-                  <PostItem item={item} navigation={navigation} />
-                )}
-              />
-            </ScrollView>
-          );
-        }}
-      </Query>
+        >
+          <PostsList
+            data={data.posts}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item }) => (
+              <PostItem item={item} navigation={navigation} />
+            )}
+          />
+        </ScrollView>
+      )}
     </PostsWrapper>
   );
 };
@@ -88,10 +73,10 @@ const PostsText = styled(Text)`
   color: black;
 `;
 
-PostsContainer.navigationOptions = ({ navigation }) => ({
+Posts.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <Button onPress={() => navigation.navigate("AddPost")} title="Add Post" />
   )
 });
 
-export default PostsContainer;
+export default Posts;

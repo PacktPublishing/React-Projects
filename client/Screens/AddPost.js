@@ -11,11 +11,14 @@ import styled from "styled-components/native";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { connectActionSheet } from "@expo/react-native-action-sheet";
-import { Mutation } from "react-apollo";
+import { useMutation } from "@apollo/react-hooks";
 import { ADD_POST, GET_POSTS } from "../constants";
 import Button from "../Components/Button/Button";
 
 const AddPost = ({ navigation, showActionSheetWithOptions }) => {
+  const [addPost] = useMutation(ADD_POST, {
+    refetchQueries: [{ query: GET_POSTS }]
+  });
   const [imageUrl, setImageUrl] = React.useState(false);
 
   const addImageAsync = async (camera = false) => {
@@ -73,32 +76,27 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
   return (
     <AddPostWrapper>
       <AddPostText>Add Post</AddPostText>
-      <Mutation mutation={ADD_POST} refetchQueries={[{ query: GET_POSTS }]}>
-        {addPost => (
-          <>
-            <UploadImage onPress={() => getPermissionAsync()}>
-              {imageUrl ? (
-                <Image
-                  source={{ uri: imageUrl }}
-                  style={{ width: "100%", height: "100%" }}
-                />
-              ) : (
-                <AddPostText>Upload image</AddPostText>
-              )}
-            </UploadImage>
-            {imageUrl && (
-              <Button
-                onPress={() => {
-                  addPost({ variables: { image: imageUrl } }).then(() =>
-                    navigation.navigate("Main")
-                  );
-                }}
-                title="Submit"
-              />
-            )}
-          </>
+
+      <UploadImage onPress={() => getPermissionAsync()}>
+        {imageUrl ? (
+          <Image
+            source={{ uri: imageUrl }}
+            style={{ width: "100%", height: "100%" }}
+          />
+        ) : (
+          <AddPostText>Upload image</AddPostText>
         )}
-      </Mutation>
+      </UploadImage>
+      {imageUrl && (
+        <Button
+          onPress={() => {
+            addPost({ variables: { image: imageUrl } }).then(() =>
+              navigation.navigate("Main")
+            );
+          }}
+          title="Submit"
+        />
+      )}
       <Button onPress={() => navigation.navigate("Main")} title="Cancel" />
     </AddPostWrapper>
   );
