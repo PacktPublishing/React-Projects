@@ -9,15 +9,15 @@ import { GET_POST } from "../constants";
 import Comment from "../Components/Comment/Comment";
 
 const Post = ({ navigation }) => {
-  const { loading, data } = useQuery(GET_POST, { variables: { userName } });
   const userName = navigation.getParam("userName", "");
+  const { loading, data } = useQuery(GET_POST, { variables: { userName } });
 
   const { post } = data;
 
   return (
     <PostWrapper>
       <PostBody>
-        {loading ? (
+        {loading || !post ? (
           <PostText>Loading...</PostText>
         ) : (
           <>
