@@ -21,8 +21,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-web": "^0.11.4",
     "react-navigation": "^3.11.0",
-    "styled-components": "^4.3.2",
-    "subscriptions-transport-ws": "^0.9.16"
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"
