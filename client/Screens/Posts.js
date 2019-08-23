@@ -8,9 +8,6 @@ import { useQuery } from "@apollo/react-hooks";
 const Posts = ({ navigation }) => {
   const { loading, data } = useQuery(GET_POSTS);
 
-  console.log(data);
-  
-
   return (
     <PostsWrapper>
       {loading ? (
