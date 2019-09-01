@@ -4,9 +4,9 @@ import { Query } from "react-apollo";
 import SubHeader from "../Header/SubHeader";
 import ProductItem from "./ProductItem";
 import Filters from "./Filters";
-import GET_PRODUCTS, { GET_LIMIT } from "./constants";
+import { GET_PRODUCTS, GET_LIMIT } from "../../constants";
 
-const Products = ({ match, history }) => (
+const Products = ({ history }) => (
   <>
     {history && (
       <SubHeader
@@ -15,7 +15,7 @@ const Products = ({ match, history }) => (
       />
     )}
     <Query query={GET_LIMIT}>
-      {({ loading, error, data }) => (
+      {({ data }) => (
         <>
           <Filters limit={parseInt(data.limit)} />
           <Query

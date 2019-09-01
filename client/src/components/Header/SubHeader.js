@@ -18,6 +18,7 @@ const SubHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   background: cornflowerBlue;
+  padding: 1% 0;
 `;
 
 const Title = styled.h2`

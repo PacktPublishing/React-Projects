@@ -9,7 +9,10 @@ const app = express();
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: ({ req, connection }) => ({
+    token: req ? req.headers.authorization : connection.context.authorization
+  })
 });
 
 server.applyMiddleware({ app, path: "/graphql" });

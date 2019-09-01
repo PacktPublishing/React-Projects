@@ -1,7 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import Button from "../Button/Button";
-import GET_CART, { ADD_TO_CART, GET_CART_TOTAL } from "./constants";
+import { GET_CART, ADD_TO_CART, GET_CART_TOTAL } from "../../constants";
 
 const AddToCartButton = ({ productId }) => (
   <Mutation

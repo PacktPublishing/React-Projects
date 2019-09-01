@@ -12,9 +12,14 @@ const typeDefs = gql`
     id: Int!
     title: String!
   }
+  type User {
+    userName: String!
+    token: String!
+  }
   type Cart {
     total: Float
     products: [Product]
+    complete: Boolean
   }
   input CartInput {
     productId: Int!
@@ -27,6 +32,8 @@ const typeDefs = gql`
   }
   type Mutation {
     addToCart(input: CartInput!): Cart
+    completeCart: Cart
+    loginUser(userName: String!, password: String!): User
   }
 `;
 
