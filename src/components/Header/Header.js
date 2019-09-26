@@ -21,7 +21,7 @@ const Logo = styled.img`
 const Header = () => (
   <HeaderWrapper>
     <Logo src={logo} alt='logo' />
-    <p>My Github Portfolio</p>
+    <h1>My Github Portfolio</h1>
   </HeaderWrapper>
 );
 
