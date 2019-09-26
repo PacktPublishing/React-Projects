@@ -25,11 +25,12 @@ const List = ({ items, title }) => (
   <>
     <Title>{title}</Title>
     <ListWrapper>
-      { items.map((item) =>
+      {items.map(item => (
         <ListItem key={item.label}>
-          <Label>{item.label}</Label>{item.value}
+          <Label>{item.label}</Label>
+          {item.value}
         </ListItem>
-      )}
+      ))}
     </ListWrapper>
   </>
 );

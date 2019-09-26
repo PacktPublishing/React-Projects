@@ -16,19 +16,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 class App extends Component {
   render() {
     return (
-        <>
-          <GlobalStyle />
-            <AppWrapper>
-            <Header />
-            <Profile />
-          </AppWrapper>
-        </>
+      <>
+        <GlobalStyle />
+        <AppWrapper>
+          <Header />
+          <Profile />
+        </AppWrapper>
+      </>
     );
   }
 }
