@@ -1,86 +1,44 @@
 [
   {
     "id": 1,
-    "title": "Avatar",
-    "body": "20th Century Fox",
-    "year": 2009,
-    "amount": "$2,787,965,087",
-    "img": {
-      "src": "media/avatar.jpg",
-      "alt": "avatar"
-    },
+    "title": "Fix navigation bug",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas dictum libero, vel tristique odio pulvinar vitae.",
     "lane": 1
   },
   {
     "id": 2,
-    "title": "Titanic",
-    "body": "20th Century Fox",
-    "year": 1997,
-    "amount": "$2,187,463,944",
-    "img": {
-      "src": "media/titanic.jpg",
-      "alt": "titanic"
-    },
+    "title": "Release new website",
+    "body": "hasellus eleifend lacus vitae est ultrices placerat. Nunc at risus id risus venenatis laoreet sit amet cursus neque.",
     "lane": 2
   },
   {
     "id": 3,
-    "title": "Star Wars: The Force Awakens",
-    "body": "Walt Disney Studios Motion Pictures",
-    "year": 2015,
-    "amount": "$2,068,223,624",
-    "img": {
-      "src": "media/star_wars_the_force_awakens.jpg",
-      "alt": "star_wars_the_force_awakens"
-    },
+    "title": "Change button color",
+    "body": "Suspendisse ac lorem a neque tempus luctus non aliquam sapien. Cras ut lacus bibendum, placerat nibh eu, tempus neque.",
     "lane": 3
   },
   {
     "id": 4,
-    "title": "Star Wars: The Force Awakens 222222",
-    "body": "Walt Disney Studios Motion Pictures",
-    "year": 2015,
-    "amount": "$2,068,223,624",
-    "img": {
-      "src": "media/star_wars_the_force_awakens.jpg",
-      "alt": "star_wars_the_force_awakens"
-    },
+    "title": "Deploy server on acceptance environment",
+    "body": "Pellentesque pharetra fermentum sapien, aliquet ultrices ligula mattis porttitor.",
     "lane": 3
   },
   {
     "id": 5,
-    "title": "Star Wars: The Force Awakens 33333",
-    "body": "Walt Disney Studios Motion Pictures",
-    "year": 2015,
-    "amount": "$2,068,223,624",
-    "img": {
-      "src": "media/star_wars_the_force_awakens.jpg",
-      "alt": "star_wars_the_force_awakens"
-    },
+    "title": "Change layout for the content page",
+    "body": "Cras tellus ligula, mattis at facilisis eu, ultricies vel elit. Ut aliquam volutpat lacus, a rutrum sem vulputate non.",
     "lane": 3
   },
   {
     "id": 6,
-    "title": "Avengers: Infinity War",
-    "body": "Walt Disney Studios Motion Pictures",
-    "year": 2018,
-    "amount": "$2,048,359,754",
-    "img": {
-      "src": "media/avengers_infinity_war.jpg",
-      "alt": "avengers_infinity_war"
-    },
+    "title": "Complete the registration flow",
+    "body": "In vel commodo ipsum. Duis id ipsum semper, condimentum ipsum sit amet, maximus massa.",
     "lane": 4
   },
   {
     "id": 7,
-    "title": "Avengers: Infinity War 22222",
-    "body": "Walt Disney Studios Motion Pictures",
-    "year": 2018,
-    "amount": "$2,048,359,754",
-    "img": {
-      "src": "media/avengers_infinity_war.jpg",
-      "alt": "avengers_infinity_war"
-    },
+    "title": "Create new database instance",
+    "body": " Curabitur nec sem lorem. Donec venenatis, arcu vitae malesuada consequat, dolor ante placerat mi, in fermentum diam ipsum id libero.",
     "lane": 4
   }
 ]

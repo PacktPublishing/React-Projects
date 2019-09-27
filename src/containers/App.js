@@ -17,27 +17,34 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 class App extends Component {
   render() {
     const lanes = [
-      { id: 1, title: "To Do"},
-      { id: 2, title: "In Progress"},
-      { id: 3, title: "Review"},
-      { id: 4, title: "Done"}
-    ]
+      { id: 1, title: 'To Do' },
+      { id: 2, title: 'In Progress' },
+      { id: 3, title: 'Review' },
+      { id: 4, title: 'Done' },
+    ];
 
     return (
-        <>
-          <GlobalStyle />
-            <AppWrapper>
-            <Header />
-            <Board lanes={lanes} dataSource={'../../assets/data.json'} loadingMessage="Loading..." />
-            <Tickets dataSource={'../../assets/data.json'} loadingMessage="Loading..." />
-          </AppWrapper>
-        </>
+      <>
+        <GlobalStyle />
+        <AppWrapper>
+          <Header />
+          <Board
+            lanes={lanes}
+            dataSource={'../../assets/data.json'}
+            loadingMessage='Loading...'
+          />
+          <Tickets
+            dataSource={'../../assets/data.json'}
+            loadingMessage='Loading...'
+          />
+        </AppWrapper>
+      </>
     );
   }
 }

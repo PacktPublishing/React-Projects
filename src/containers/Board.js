@@ -16,27 +16,27 @@ const BoardWrapper = styled.div`
 
 class Board extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      tickets: []
-    }
+      tickets: [],
+    };
     this.onDragOver = this.onDragOver.bind(this);
     this.onDrop = this.onDrop.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.data !== this.props.data) {
-        this.setState({ tickets: this.props.data })
+      this.setState({ tickets: this.props.data });
     }
   }
   onDragStart = (element, id) => {
-    console.log("dragstart:", id);
-    element.dataTransfer.setData("id", id);
+    console.log('dragstart:', id);
+    element.dataTransfer.setData('id', id);
   };
-  onDragOver = (element) => {
+  onDragOver = element => {
     element.preventDefault();
   };
   onDrop = (element, laneId) => {
-    const id = element.dataTransfer.getData("id");
+    const id = element.dataTransfer.getData('id');
 
     const tickets = this.state.tickets.filter(ticket => {
       if (ticket.id === id) {
@@ -47,15 +47,15 @@ class Board extends React.Component {
 
     this.setState({
       ...this.state,
-      tickets
+      tickets,
     });
   };
   render() {
-    const {lanes, loading} = this.props;
+    const { lanes, loading } = this.props;
 
     return (
       <BoardWrapper>
-        { lanes.map((lane) =>
+        {lanes.map(lane => (
           <Lane
             key={lane.id}
             laneId={lane.id}
@@ -64,9 +64,11 @@ class Board extends React.Component {
             onDragStart={this.onDragStart}
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}
-            tickets={this.state.tickets.filter((ticket) => ticket.lane === lane.id)}
+            tickets={this.state.tickets.filter(
+              ticket => ticket.lane === lane.id,
+            )}
           />
-        )}
+        ))}
       </BoardWrapper>
     );
   }

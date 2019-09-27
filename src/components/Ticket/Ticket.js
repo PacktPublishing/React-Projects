@@ -8,7 +8,7 @@ const TicketWrapper = styled.div`
 
   &:not(:last-child) {
     margin-bottom: 5%;
-    margin-right: ${props => !!props.marginRight ? '1%' : '0'};
+    margin-right: ${props => (!!props.marginRight ? '1%' : '0')};
   }
 `;
 
@@ -24,7 +24,7 @@ const Body = styled.p`
 const Ticket = ({ marginRight, onDragStart, ticket }) => (
   <TicketWrapper
     draggable
-    onDragStart={(e) => onDragStart && onDragStart(e, ticket.id)}
+    onDragStart={e => onDragStart && onDragStart(e, ticket.id)}
     marginRight={marginRight}
   >
     <Title>{ticket.title}</Title>

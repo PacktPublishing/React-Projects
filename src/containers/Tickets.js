@@ -15,13 +15,15 @@ const TicketsWrapper = styled.div`
 `;
 
 const Loading = styled.div`
-    text-align: center;
-`
+  text-align: center;
+`;
 
-const Tickets = ({loading, data}) => (
+const Tickets = ({ loading, data }) => (
   <TicketsWrapper>
-    { (loading) && <Loading>{loading}</Loading>}
-    { data.map((ticket) => <Ticket key={ticket.id} marginRight ticket={ticket} />)}
+    {loading && <Loading>{loading}</Loading>}
+    {data.map(ticket => (
+      <Ticket key={ticket.id} marginRight ticket={ticket} />
+    ))}
   </TicketsWrapper>
 );
 

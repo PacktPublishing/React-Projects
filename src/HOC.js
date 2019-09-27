@@ -6,7 +6,7 @@ export default function withDataFetching(WrappedComponent) {
       super(props);
       this.state = {
         data: [],
-        loading: props.loadingMessage
+        loading: props.loadingMessage,
       };
     }
 
@@ -18,13 +18,13 @@ export default function withDataFetching(WrappedComponent) {
         if (dataJSON) {
           this.setState({
             data: dataJSON,
-            loading: false
-          })
+            loading: false,
+          });
         }
-      } catch(error) {
+      } catch (error) {
         this.setState({
-         loading: error.message
-       })
+          loading: error.message,
+        });
       }
     }
 
@@ -33,7 +33,7 @@ export default function withDataFetching(WrappedComponent) {
 
       return <WrappedComponent data={data} loading={loading} {...this.props} />;
     }
-  };
+  }
 
   WithDataFetching.displayName = `WithDataFetching(${WrappedComponent.name})`;
 
