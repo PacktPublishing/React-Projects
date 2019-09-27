@@ -16,30 +16,34 @@ export const Loading = styled.span`
   text-align: center;
 `;
 
-const Products = ({ match, history, loading, products }) => {
-  const isEmpty = products.length === 0 ? "No products available" : false;
+const Products = ({ history, loading, products }) => {
+  const isEmpty = products.length === 0 ? 'No products available' : false;
 
   return (
     <>
       {history && (
-        <SubHeader title="Available products" goToCart={() => history.push('/cart')} />
+        <SubHeader
+          title='Available products'
+          goToCart={() => history.push('/cart')}
+        />
       )}
       {!loading && !isEmpty ? (
         <ProductItemsWrapper>
-          {products && products.map((product) => (
-            <ProductItem key={product.id} data={product} />
-          ))}
+          {products &&
+            products.map(product => (
+              <ProductItem key={product.id} data={product} />
+            ))}
         </ProductItemsWrapper>
       ) : (
         <Loading>{loading || isEmpty}</Loading>
       )}
     </>
-  )
+  );
 };
 
 Products.defaultProps = {
   loading: false,
-  products: []
-}
+  products: [],
+};
 
 export default Products;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import Header from './Header/Header';
 import Products from './Products/Products';
 import Cart from './Cart/Cart';
@@ -18,17 +18,17 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 const App = () => (
   <>
     <GlobalStyle />
-      <AppWrapper>
+    <AppWrapper>
       <Header />
       <Switch>
-        <Route exact path="/" component={Products} />
-        <Route path="/cart" component={Cart} />
+        <Route exact path='/' component={Products} />
+        <Route path='/cart' component={Cart} />
       </Switch>
     </AppWrapper>
   </>

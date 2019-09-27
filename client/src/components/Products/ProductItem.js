@@ -16,11 +16,11 @@ const ProductItemWrapper = styled.div`
 
 export const Title = styled.h3`
   margin-left: 2%;
-`
+`;
 
 const Thumbnail = styled.img`
   border-radius: 5px;
-`
+`;
 
 const ProductItem = ({ data }) => (
   <ProductItemWrapper>

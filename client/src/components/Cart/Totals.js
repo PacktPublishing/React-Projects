@@ -18,12 +18,12 @@ const Total = styled.span`
   color: white;
   font-weight: bold;
   text-align: right;
-`
+`;
 
 const Totals = ({ count }) => (
   <TotalsWrapper>
     <Total>{`Total products: ${count}`}</Total>
   </TotalsWrapper>
-)
+);
 
 export default Totals;

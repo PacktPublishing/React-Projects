@@ -29,9 +29,11 @@ export const SubHeaderButton = styled(Button)`
 
 const SubHeader = ({ goBack, title, goToCart = false }) => (
   <SubHeaderWrapper>
-    { goBack && <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton> }
-    <Title>{ title }</Title>
-    { goToCart && <CartButton onClick={goToCart} /> }
+    {goBack && (
+      <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton>
+    )}
+    <Title>{title}</Title>
+    {goToCart && <CartButton onClick={goToCart} />}
   </SubHeaderWrapper>
 );
 

@@ -1,24 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../Button/Button";
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../Button/Button';
 
 const Login = () => {
-  const [userName, setUserName] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [userName, setUserName] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   return (
     <LoginWrapper>
       <TextInput
         onChange={e => setUserName(e.target.value)}
         value={userName}
-        placeholder="Your username"
+        placeholder='Your username'
       />
       <TextInput
         onChange={e => setPassword(e.target.value)}
         value={password}
-        placeholder="Your password"
+        placeholder='Your password'
       />
-      <Button color="royalBlue">Login</Button>
+      <Button color='royalBlue'>Login</Button>
     </LoginWrapper>
   );
 };

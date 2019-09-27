@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../Button/Button";
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../Button/Button';
 
 const Checkout = () => {
   return (
     <CheckoutWrapper>
       <p>This is the checkout, press the button below to complete:</p>
-      <Button color="royalBlue">Complete checkout</Button>
+      <Button color='royalBlue'>Complete checkout</Button>
       )}
     </CheckoutWrapper>
   );

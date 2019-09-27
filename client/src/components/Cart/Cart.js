@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import SubHeader from "../Header/SubHeader";
-import ProductItem from "../Products/ProductItem";
-import Totals from "./Totals";
+import React from 'react';
+import styled from 'styled-components';
+import SubHeader from '../Header/SubHeader';
+import ProductItem from '../Products/ProductItem';
+import Totals from './Totals';
 
 const CartWrapper = styled.div`
   display: flex;
@@ -22,17 +22,18 @@ export const Loading = styled.span`
   text-align: center;
 `;
 
-const Cart = ({ match, history, loading, cart }) => (
+const Cart = ({ history, loading, cart }) => (
   <>
     {history && (
-      <SubHeader title="Cart" goToCart={() => history.push('/cart')} />
+      <SubHeader title='Cart' goToCart={() => history.push('/cart')} />
     )}
     {!loading ? (
       <CartWrapper>
         <CartItemsWrapper>
-          {cart.products && cart.products.map((product) => (
-            <ProductItem key={product.id} data={product} />
-          ))}
+          {cart.products &&
+            cart.products.map(product => (
+              <ProductItem key={product.id} data={product} />
+            ))}
         </CartItemsWrapper>
         <Totals count={cart.total} />
       </CartWrapper>
@@ -46,8 +47,8 @@ Cart.defaultProps = {
   loading: false,
   cart: {
     products: [],
-    total: 0
-  }
-}
+    total: 0,
+  },
+};
 
 export default Cart;

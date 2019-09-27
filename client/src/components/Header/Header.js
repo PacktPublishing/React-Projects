@@ -16,11 +16,9 @@ const Title = styled.h1`
   pointer-events: none;
 `;
 
-const Header = ({ title = 'Ecommerce Store'}) => (
+const Header = ({ title = 'Ecommerce Store' }) => (
   <HeaderWrapper>
-    <Title>
-      {title}
-    </Title>
+    <Title>{title}</Title>
   </HeaderWrapper>
 );
 
