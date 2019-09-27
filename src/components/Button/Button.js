@@ -17,9 +17,7 @@ const ButtonWrapper = styled.button`
 `;
 
 const Button = ({ children, onClick }) => (
-  <ButtonWrapper onClick={onClick}>
-    {children}
-  </ButtonWrapper>
-)
+  <ButtonWrapper onClick={onClick}>{children}</ButtonWrapper>
+);
 
 export default Button;

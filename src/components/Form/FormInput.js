@@ -21,7 +21,7 @@ const Input = styled.input`
   border-radius: 5px;
   padding: 10px;
   border: 1px solid lightGrey;
-`
+`;
 
 const TextArea = styled.textarea`
   flex-basis: 60%;
@@ -30,16 +30,27 @@ const TextArea = styled.textarea`
   border-radius: 5px;
   padding: 10px;
   border: 1px solid lightGrey;
-`
+`;
 
-const FormInput = ({ id, label, type = "text", handleOnChange, ...otherProps }) => (
+const FormInput = ({
+  id,
+  label,
+  type = 'text',
+  handleOnChange,
+  ...otherProps
+}) => (
   <FormInputWrapper>
     <Label htmlFor={id}>{label}</Label>
-    {
-      (type === "textarea")
-        ? <TextArea id={id} onChange={(e) => handleOnChange(id, e)} {...otherProps} />
-        : <Input id={id} type={type} onChange={(e) => handleOnChange(id, e)} {...otherProps} />
-    }
+    {type === 'textarea' ? (
+      <TextArea id={id} onChange={e => handleOnChange(id, e)} {...otherProps} />
+    ) : (
+      <Input
+        id={id}
+        type={type}
+        onChange={e => handleOnChange(id, e)}
+        {...otherProps}
+      />
+    )}
   </FormInputWrapper>
 );
 
