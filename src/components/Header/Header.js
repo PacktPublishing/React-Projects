@@ -18,9 +18,7 @@ const Title = styled.h1`
 
 const Header = () => (
   <HeaderWrapper>
-    <Title>
-      Q&A Feed
-    </Title>
+    <Title>Q&A Feed</Title>
   </HeaderWrapper>
 );
 

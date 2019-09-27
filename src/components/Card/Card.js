@@ -22,11 +22,11 @@ const Meta = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 2%;
-`
+`;
 
 const Count = styled.div`
   flex-basis: 80%;
-`
+`;
 
 const Card = ({ data }) => (
   <CardWrapper>

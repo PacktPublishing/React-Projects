@@ -18,25 +18,27 @@ class Feed extends Component {
     super(props);
     this.state = {
       data: [],
-      loading: 'Loading...'
+      loading: 'Loading...',
     };
   }
 
   async componentDidMount() {
     try {
-      const data = await fetch('https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow');
+      const data = await fetch(
+        'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow',
+      );
       const dataJSON = await data.json();
 
       if (dataJSON) {
         this.setState({
           data: dataJSON,
-          loading: false
-        })
+          loading: false,
+        });
       }
-    } catch(error) {
+    } catch (error) {
       this.setState({
-       loading: error.message
-     })
+        loading: error.message,
+      });
     }
   }
 
@@ -44,12 +46,14 @@ class Feed extends Component {
     const { data, loading } = this.state;
 
     if (loading) {
-      return <Loading>{loading}</Loading>
+      return <Loading>{loading}</Loading>;
     }
 
     return (
       <FeedWrapper>
-        { data.items.map((item) => <Card key={item.question_id} data={item} />) }
+        {data.items.map(item => (
+          <Card key={item.question_id} data={item} />
+        ))}
       </FeedWrapper>
     );
   }
