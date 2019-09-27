@@ -6,7 +6,7 @@ const withDataFetching = props => WrappedComponent => {
       super(props);
       this.state = {
         data: [],
-        loading: props.loadingMessage
+        loading: props.loadingMessage,
       };
     }
 
@@ -18,13 +18,13 @@ const withDataFetching = props => WrappedComponent => {
         if (dataJSON) {
           this.setState({
             data: dataJSON,
-            loading: false
-          })
+            loading: false,
+          });
         }
-      } catch(error) {
+      } catch (error) {
         this.setState({
-         loading: error.message
-       })
+          loading: error.message,
+        });
       }
     }
 
@@ -33,11 +33,11 @@ const withDataFetching = props => WrappedComponent => {
 
       return <WrappedComponent data={data} loading={loading} {...this.props} />;
     }
-  };
+  }
 
   WithDataFetching.displayName = `WithDataFetching(${WrappedComponent.name})`;
 
   return WithDataFetching;
-}
+};
 
 export default withDataFetching;

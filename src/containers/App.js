@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Lists from './Lists';
 import List from './List';
@@ -19,19 +19,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
 const App = () => (
   <>
     <GlobalStyle />
-      <AppWrapper>
+    <AppWrapper>
       <Header />
-        <Switch>
-          <Route exact path="/" component={Lists} />
-          <Route path="/list/:id/new" component={Form} />
-          <Route path="/list/:id" component={List} />
-        </Switch>
+      <Switch>
+        <Route exact path='/' component={Lists} />
+        <Route path='/list/:id/new' component={Form} />
+        <Route path='/list/:id' component={List} />
+      </Switch>
     </AppWrapper>
   </>
 );

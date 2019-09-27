@@ -21,12 +21,25 @@ const Input = styled.input`
   border-radius: 5px;
   padding: 10px;
   border: 1px solid lightGrey;
-`
+`;
 
-const FormItem = ({ id, label, type = "text", placeholder = "", value, handleOnChange }) => (
+const FormItem = ({
+  id,
+  label,
+  type = 'text',
+  placeholder = '',
+  value,
+  handleOnChange,
+}) => (
   <FormItemWrapper>
     <Label htmlFor={id}>{label}</Label>
-    <Input type={type} name={id} id={id} placeholder={placeholder} value={value} />
+    <Input
+      type={type}
+      name={id}
+      id={id}
+      placeholder={placeholder}
+      value={value}
+    />
   </FormItemWrapper>
 );
 

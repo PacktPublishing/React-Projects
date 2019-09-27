@@ -17,16 +17,29 @@ const Loading = styled.span`
 `;
 
 const List = ({ data, loading, match, history }) => {
-  const items = data.items && data.items.filter(item => item.listId === parseInt(match.params.id))
+  const items =
+    data.items &&
+    data.items.filter(item => item.listId === parseInt(match.params.id));
 
-  return (!loading) ? (
+  return !loading ? (
     <>
-      { history && <SubHeader goBack={() => history.goBack()} openForm={() => history.push(`${match.url}/new`)} /> }
+      {history && (
+        <SubHeader
+          goBack={() => history.goBack()}
+          openForm={() => history.push(`${match.url}/new`)}
+        />
+      )}
       <ListItemWrapper>
-        { items && items.map(item => <ListItem key={item.id} data={ item } />) }
+        {items && items.map(item => <ListItem key={item.id} data={item} />)}
       </ListItemWrapper>
     </>
-) : <Loading>{loading}</Loading>
+  ) : (
+    <Loading>{loading}</Loading>
+  );
 };
 
-export default withDataFetching({dataSource: 'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items', loadingMessage: "Loading..."})(List);
+export default withDataFetching({
+  dataSource:
+    'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items',
+  loadingMessage: 'Loading...',
+})(List);

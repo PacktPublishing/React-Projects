@@ -18,9 +18,7 @@ const Title = styled.h1`
 
 const Header = () => (
   <HeaderWrapper>
-    <Title>
-      Personal Shopping List
-    </Title>
+    <Title>Personal Shopping List</Title>
   </HeaderWrapper>
 );
 

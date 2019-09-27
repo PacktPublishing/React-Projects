@@ -10,7 +10,7 @@ const ListItemWrapper = styled.div`
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 2%;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Title = styled.h3`
@@ -21,7 +21,7 @@ const Total = styled.span`
   flex-basis: 15%;
   font-weight: bold;
   text-align: right;
-`
+`;
 
 const ListItem = ({ data }) => (
   <ListItemWrapper>

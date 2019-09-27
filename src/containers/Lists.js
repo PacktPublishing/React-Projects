@@ -21,7 +21,7 @@ const ListLink = styled(Link)`
   padding: 10px;
   margin-bottom: 2%;
   color: black;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Title = styled.h3`
@@ -33,17 +33,25 @@ const Loading = styled.span`
   text-align: center;
 `;
 
-const Lists = ({data, loading, match, history}) => (!loading) ? (
-  <>
-    { history && <SubHeader title="Your Lists" /> }
-    <ListWrapper>
-      {data.lists && data.lists.map((list) => (
-        <ListLink key={list.id} to={`list/${list.id}`}>
-          <Title>{ list.title }</Title>
-        </ListLink>
-      ))}
-    </ListWrapper>
-  </>
-) : <Loading>{loading}</Loading>;
+const Lists = ({ data, loading, match, history }) =>
+  !loading ? (
+    <>
+      {history && <SubHeader title='Your Lists' />}
+      <ListWrapper>
+        {data.lists &&
+          data.lists.map(list => (
+            <ListLink key={list.id} to={`list/${list.id}`}>
+              <Title>{list.title}</Title>
+            </ListLink>
+          ))}
+      </ListWrapper>
+    </>
+  ) : (
+    <Loading>{loading}</Loading>
+  );
 
-export default withDataFetching({dataSource: 'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/lists', loadingMessage: "Loading..."})(Lists);
+export default withDataFetching({
+  dataSource:
+    'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/lists',
+  loadingMessage: 'Loading...',
+})(Lists);
