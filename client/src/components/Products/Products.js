@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { Query } from "react-apollo";
-import SubHeader from "../Header/SubHeader";
-import ProductItem from "./ProductItem";
-import Filters from "./Filters";
-import { GET_PRODUCTS, GET_LIMIT } from "../../constants";
+import React from 'react';
+import styled from 'styled-components';
+import { Query } from 'react-apollo';
+import SubHeader from '../Header/SubHeader';
+import ProductItem from './ProductItem';
+import Filters from './Filters';
+import { GET_PRODUCTS, GET_LIMIT } from '../../constants';
 
 const Products = ({ history }) => (
   <>
     {history && (
       <SubHeader
-        title="Available products"
-        goToCart={() => history.push("/cart")}
+        title='Available products'
+        goToCart={() => history.push('/cart')}
       />
     )}
     <Query query={GET_LIMIT}>

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const Header = ({ title = "Ecommerce Store" }) => (
+const Header = ({ title = 'Ecommerce Store' }) => (
   <HeaderWrapper>
     <Title>{title}</Title>
   </HeaderWrapper>

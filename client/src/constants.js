@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const GET_CART_TOTAL = gql`
   query getCartTotal {
@@ -46,18 +46,18 @@ export const GET_PRODUCTS = gql`
 `;
 
 export const LOGIN_USER = gql`
- mutation loginUser($userName: String!, $password: String!) {
-   loginUser(userName: $userName, password: $password) {
-     userName
-     token
-   }
- }
+  mutation loginUser($userName: String!, $password: String!) {
+    loginUser(userName: $userName, password: $password) {
+      userName
+      token
+    }
+  }
 `;
 
 export const COMPLETE_CART = gql`
- mutation completeCart {
-   completeCart {
-     complete
-   }
- }
+  mutation completeCart {
+    completeCart {
+      complete
+    }
+  }
 `;

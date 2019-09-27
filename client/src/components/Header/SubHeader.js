@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../Button/Button";
-import CartButton from "../Cart/CartButton";
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../Button/Button';
+import CartButton from '../Cart/CartButton';
 
 const SubHeader = ({ goBack, title, goToCart = false }) => (
   <SubHeaderWrapper>

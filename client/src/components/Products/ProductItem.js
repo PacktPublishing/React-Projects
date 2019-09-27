@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import AddToCartButton from "../Cart/AddToCartButton";
+import React from 'react';
+import styled from 'styled-components';
+import AddToCartButton from '../Cart/AddToCartButton';
 
 const ProductItem = ({ data }) => (
   <ProductItemWrapper>

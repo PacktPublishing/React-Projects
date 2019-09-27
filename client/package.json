@@ -1,6 +1,6 @@
 {
-  "name": "shopping-list",
-  "version": "0.1.0",
+  "name": "shopping-list-client",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.2",

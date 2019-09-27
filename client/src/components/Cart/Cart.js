@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import { Query } from "react-apollo";
-import { Link } from "react-router-dom";
-import SubHeader from "../Header/SubHeader";
-import ProductItem from "../Products/ProductItem";
-import Button from "../Button/Button";
-import Totals from "./Totals";
-import { GET_CART } from "../../constants";
+import React from 'react';
+import styled from 'styled-components';
+import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
+import SubHeader from '../Header/SubHeader';
+import ProductItem from '../Products/ProductItem';
+import Button from '../Button/Button';
+import Totals from './Totals';
+import { GET_CART } from '../../constants';
 
 const Cart = ({ history }) => (
   <>
-    {history && <SubHeader goBack={() => history.goBack()} title="Cart" />}
+    {history && <SubHeader goBack={() => history.goBack()} title='Cart' />}
     <Query query={GET_CART}>
       {({ loading, error, data }) => {
         if (loading) {
@@ -29,8 +29,8 @@ const Cart = ({ history }) => (
             </CartItemsWrapper>
             <Totals count={data.cart.total} />
             {data.cart && data.cart.products.length > 0 && (
-              <Link to="/checkout">
-                <Button color="royalBlue">Checkout</Button>
+              <Link to='/checkout'>
+                <Button color='royalBlue'>Checkout</Button>
               </Link>
             )}
           </CartWrapper>

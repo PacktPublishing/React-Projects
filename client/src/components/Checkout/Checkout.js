@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { useMutation } from "react-apollo";
-import Button from "../Button/Button";
-import { COMPLETE_CART } from "../../constants";
+import React from 'react';
+import styled from 'styled-components';
+import { useMutation } from 'react-apollo';
+import Button from '../Button/Button';
+import { COMPLETE_CART } from '../../constants';
 
 const Checkout = () => {
   const [completeCart, { data }] = useMutation(COMPLETE_CART);
@@ -14,7 +14,7 @@ const Checkout = () => {
       ) : (
         <>
           <p>This is the checkout, press the button below to complete:</p>
-          <Button color="royalBlue" onClick={completeCart}>
+          <Button color='royalBlue' onClick={completeCart}>
             Complete checkout
           </Button>
         </>

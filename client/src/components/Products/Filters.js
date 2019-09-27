@@ -1,13 +1,13 @@
-import React from "react";
-import { ApolloConsumer } from "react-apollo";
+import React from 'react';
+import { ApolloConsumer } from 'react-apollo';
 
 const Filters = ({ limit }) => (
   <ApolloConsumer>
     {client => (
       <>
-        <label htmlFor="limit">Number of products: </label>
+        <label htmlFor='limit'>Number of products: </label>
         <select
-          id="limit"
+          id='limit'
           value={limit}
           onChange={e => {
             client.writeData({ data: { limit: e.target.value } });

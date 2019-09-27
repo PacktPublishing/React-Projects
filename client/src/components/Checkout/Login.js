@@ -1,38 +1,38 @@
-import React from "react";
-import styled from "styled-components";
-import { useMutation } from "react-apollo";
-import Button from "../Button/Button";
-import { LOGIN_USER } from "../../constants";
+import React from 'react';
+import styled from 'styled-components';
+import { useMutation } from 'react-apollo';
+import Button from '../Button/Button';
+import { LOGIN_USER } from '../../constants';
 
 const Login = ({ history }) => {
   const [loginUser] = useMutation(LOGIN_USER);
-  const [userName, setUserName] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  
+  const [userName, setUserName] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   return (
     <LoginWrapper>
       <TextInput
         onChange={e => setUserName(e.target.value)}
         value={userName}
-        placeholder="Your username"
+        placeholder='Your username'
       />
       <TextInput
         onChange={e => setPassword(e.target.value)}
         value={password}
-        placeholder="Your password"
+        placeholder='Your password'
       />
       <Button
-        color="royalBlue"
+        color='royalBlue'
         onClick={async () => {
           const { data } = await loginUser({
-            variables: { userName, password }
+            variables: { userName, password },
           });
 
           if (data.loginUser && data.loginUser.token) {
-            sessionStorage.setItem("token", data.loginUser.token);
-            return history.push("/checkout");
+            sessionStorage.setItem('token', data.loginUser.token);
+            return history.push('/checkout');
           } else {
-            alert("Please provide (valid) authentication details");
+            alert('Please provide (valid) authentication details');
           }
         }}
       >
