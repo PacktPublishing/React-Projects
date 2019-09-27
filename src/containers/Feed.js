@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card/Card';
 
+const ROOT_API = 'https://api.stackexchange.com/2.2/';
+
 const FeedWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -25,7 +27,7 @@ class Feed extends Component {
   async componentDidMount() {
     try {
       const data = await fetch(
-        'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow',
+        `${ROOT_API}questions?order=desc&sort=activity&tagged=reactjs&site=stackoverflow`,
       );
       const dataJSON = await data.json();
 
