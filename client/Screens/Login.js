@@ -11,13 +11,13 @@ const Login = () => {
   return (
     <LoginWrapper>
       <TextInput
-        onChangeText={text => setUserName(text)}
+        onChangeText={setUserName}
         value={userName}
         placeholder='Your username'
         textContentType='username'
       />
       <TextInput
-        onChangeText={text => setPassword(text)}
+        onChangeText={setPassword}
         value={password}
         placeholder='Your password'
         textContentType='password'
