@@ -1,13 +1,13 @@
-import React from "react";
-import { Text, View } from "react-native";
-import { Query } from "react-apollo";
-import styled from "styled-components/native";
-import { GET_CONVERSATION } from "../constants";
-import ConversationActions from "../Components/Conversation/ConversationActions";
-import ConversationBody from "../Components/Conversation/ConversationBody";
+import React from 'react';
+import { Text, View } from 'react-native';
+import { Query } from 'react-apollo';
+import styled from 'styled-components/native';
+import { GET_CONVERSATION } from '../constants';
+import ConversationActions from '../Components/Conversation/ConversationActions';
+import ConversationBody from '../Components/Conversation/ConversationBody';
 
 const Conversation = ({ navigation }) => {
-  const userName = navigation.getParam("userName", "");
+  const userName = navigation.getParam('userName', '');
 
   return (
     <ConversationWrapper>

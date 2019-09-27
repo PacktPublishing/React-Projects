@@ -1,16 +1,16 @@
-const { AuthenticationError, PubSub } = require("apollo-server");
-const JsonWebToken = require("jsonwebtoken");
-const Bcrypt = require("bcryptjs");
-const faker = require("faker");
+const { AuthenticationError, PubSub } = require('apollo-server');
+const JsonWebToken = require('jsonwebtoken');
+const Bcrypt = require('bcryptjs');
+const faker = require('faker');
 
-const MESSAGE_ADDED = "MESSAGE_ADDED";
+const MESSAGE_ADDED = 'MESSAGE_ADDED';
 
-const jwtSecret = "34%%##@#FGFKFL";
+const jwtSecret = '34%%##@#FGFKFL';
 
 const pubsub = new PubSub();
 
 const isTokenValid = token => {
-  const bearerToken = token.split(" ");
+  const bearerToken = token.split(' ');
 
   if (bearerToken) {
     return JsonWebToken.verify(bearerToken[1], jwtSecret, error => {
@@ -28,22 +28,22 @@ const isTokenValid = token => {
 const mockMessage = (userName = false) => ({
   id: faker.random.number,
   userName: Math.round(userName ? userName : Math.random())
-    ? "me"
+    ? 'me'
     : faker.name.firstName,
-  text: faker.hacker.phrase
+  text: faker.hacker.phrase,
 });
 
 const mockConversation = (userName = false) => ({
   id: faker.random.number,
   userName: userName || faker.name.firstName,
-  messages: Array.from(Array(!userName ? 1 : 3), () => mockMessage(userName))
+  messages: Array.from(Array(!userName ? 1 : 3), () => mockMessage(userName)),
 });
 
 const resolvers = {
   Query: {
     conversation: (_, { userName }) => mockConversation(userName),
     conversations: (_, { limit = 10 }) =>
-      Array.from(Array(limit), () => mockConversation())
+      Array.from(Array(limit), () => mockConversation()),
   },
   Mutation: {
     sendMessage: (_, { to, text }, { token }) => {
@@ -53,30 +53,31 @@ const resolvers = {
         let conversation = mockConversation(to);
         const messageAdded = {
           id: faker.random.number,
-          userName: "me",
-          text
+          userName: 'me',
+          text,
         };
 
         conversation = {
           ...conversation,
-          messages: [...conversation.messages, messageAdded]
+          messages: [...conversation.messages, messageAdded],
         };
 
         pubsub.publish(MESSAGE_ADDED, {
-          messageAdded
+          messageAdded,
         });
 
         return conversation;
       }
       throw new AuthenticationError(
-        "Please provide (valid) authentication details"
+        'Please provide (valid) authentication details',
       );
     },
     loginUser: async (_, { userName, password }) => {
       let isValid;
       const user = {
-        userName: "test",
-        password: "$2b$10$5dwsS5snIRlKu8ka5r7z0eoRyQVAsOtAZHkPJuSx.agOWjchXhSum"
+        userName: 'test',
+        password:
+          '$2b$10$5dwsS5snIRlKu8ka5r7z0eoRyQVAsOtAZHkPJuSx.agOWjchXhSum',
       };
 
       if (userName === user.userName) {
@@ -85,31 +86,31 @@ const resolvers = {
 
       if (isValid) {
         const token = JsonWebToken.sign({ user: user.userName }, jwtSecret, {
-          expiresIn: 3600
+          expiresIn: 3600,
         });
         return {
           userName,
-          token
+          token,
         };
       }
       throw new AuthenticationError(
-        "Please provide (valid) authentication details"
+        'Please provide (valid) authentication details',
       );
-    }
+    },
   },
   Subscription: {
     messageAdded: {
       subscribe: (_, { userName }) => {
         setInterval(() => {
           pubsub.publish(MESSAGE_ADDED, {
-            messageAdded: mockMessage(userName)
+            messageAdded: mockMessage(userName),
           });
         }, 9000);
 
         return pubsub.asyncIterator(MESSAGE_ADDED, { userName });
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 module.exports = resolvers;

@@ -1,27 +1,27 @@
-import React from "react";
-import { Platform, KeyboardAvoidingView } from "react-native";
-import styled from "styled-components/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { useMutation } from "react-apollo";
-import TextInput from "../TextInput/TextInput";
-import Button from "../Button/Button";
-import { SEND_MESSAGE } from "../../constants";
+import React from 'react';
+import { Platform, KeyboardAvoidingView } from 'react-native';
+import styled from 'styled-components/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useMutation } from 'react-apollo';
+import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
+import { SEND_MESSAGE } from '../../constants';
 
 const ConversationActions = ({ userName }) => {
   const [sendMessage] = useMutation(SEND_MESSAGE);
-  const [message, setMessage] = React.useState("");
+  const [message, setMessage] = React.useState('');
 
   return (
     <ConversationActionsWrapper
-      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
-      behavior={Platform.OS === "ios" ? "padding" : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
     >
       <>
         <TextInput
           width={75}
           marginBottom={0}
           onChangeText={setMessage}
-          placeholder="Your message"
+          placeholder='Your message'
           value={message}
         />
         <Button
@@ -29,13 +29,13 @@ const ConversationActions = ({ userName }) => {
           padding={10}
           onPress={() => {
             sendMessage({ variables: { to: userName, text: message } });
-            setMessage("");
+            setMessage('');
           }}
           title={
             <Ionicons
-              name={`${Platform.OS === "ios" ? "ios" : "md"}-send`}
+              name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-send`}
               size={42}
-              color="white"
+              color='white'
             />
           }
         />

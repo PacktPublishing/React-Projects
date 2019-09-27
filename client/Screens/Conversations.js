@@ -1,9 +1,9 @@
-import React from "react";
-import { FlatList, Text, View } from "react-native";
-import { Query } from "react-apollo";
-import { GET_CONVERSATIONS } from "../constants";
-import ConversationItem from "../Components/Conversation/ConversationItem";
-import styled from "styled-components/native";
+import React from 'react';
+import { FlatList, Text, View } from 'react-native';
+import { Query } from 'react-apollo';
+import { GET_CONVERSATIONS } from '../constants';
+import ConversationItem from '../Components/Conversation/ConversationItem';
+import styled from 'styled-components/native';
 
 const Conversations = ({ navigation }) => (
   <ConversationsWrapper>
