@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Animated,
   asset,
@@ -6,15 +6,15 @@ import {
   StyleSheet,
   Text,
   View,
-  VrButton
-} from "react-360";
+  VrButton,
+} from 'react-360';
 
 const backgrounds = [
-  "360_world.jpg",
-  "beach.jpg",
-  "landscape.jpg",
-  "mountain.jpg",
-  "winter.jpg"
+  '360_world.jpg',
+  'beach.jpg',
+  'landscape.jpg',
+  'mountain.jpg',
+  'winter.jpg',
 ];
 
 export default class Navigation extends React.Component {
@@ -22,7 +22,7 @@ export default class Navigation extends React.Component {
     super();
     this.state = {
       currentBackground: 0,
-      opacity: new Animated.Value(0)
+      opacity: new Animated.Value(0),
     };
   }
 
@@ -36,13 +36,13 @@ export default class Navigation extends React.Component {
             ? 0
             : currentBackground + change < 0
             ? backgrounds.length - 1
-            : currentBackground + change
+            : currentBackground + change,
       },
       () => {
         Environment.setBackgroundImage(
-          asset(backgrounds[this.state.currentBackground], { format: "2D" })
+          asset(backgrounds[this.state.currentBackground], { format: '2D' }),
         );
-      }
+      },
     );
   }
 
@@ -55,13 +55,13 @@ export default class Navigation extends React.Component {
         Animated.delay(400),
         Animated.timing(opacity, {
           toValue: 1,
-          duration: 800
-        })
+          duration: 800,
+        }),
       ]),
       {
-        iterations: 10
-      })
-    .start()
+        iterations: 10,
+      },
+    ).start();
   }
 
   render() {
@@ -80,7 +80,9 @@ export default class Navigation extends React.Component {
           onClick={() => this.changeBackground(1)}
           style={[styles.button, styles.buttonRight]}
         >
-          <Animated.Text style={[styles.buttonText, { opacity }]}>{`Next >`}</Animated.Text>
+          <Animated.Text
+            style={[styles.buttonText, { opacity }]}
+          >{`Next >`}</Animated.Text>
         </VrButton>
       </View>
     );
@@ -91,28 +93,28 @@ const styles = StyleSheet.create({
   navigation: {
     width: 800,
     height: 100,
-    backgroundColor: "blue",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row"
+    backgroundColor: 'blue',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   button: {
     padding: 20,
-    backgroundColor: "white",
-    borderColor: "black",
+    backgroundColor: 'white',
+    borderColor: 'black',
     borderWidth: 2,
-    alignItems: "center",
-    width: 200
+    alignItems: 'center',
+    width: 200,
   },
   buttonLeft: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   buttonRight: {
-    marginRight: 10
+    marginRight: 10,
   },
   buttonText: {
     fontSize: 40,
-    fontWeight: "bold",
-    color: "blue"
-  }
+    fontWeight: 'bold',
+    color: 'blue',
+  },
 });
