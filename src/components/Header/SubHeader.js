@@ -28,9 +28,13 @@ export const SubHeaderButton = styled(Button)`
 
 const SubHeader = ({ goBack, title, openForm = false }) => (
   <SubHeaderWrapper>
-    { goBack && <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton> }
-    <Title>{ title }</Title>
-    { openForm && <SubHeaderButton onClick={openForm}>{`+ Add Review`}</SubHeaderButton> }
+    {goBack && (
+      <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton>
+    )}
+    <Title>{title}</Title>
+    {openForm && (
+      <SubHeaderButton onClick={openForm}>{`+ Add Review`}</SubHeaderButton>
+    )}
   </SubHeaderWrapper>
 );
 

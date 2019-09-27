@@ -18,9 +18,7 @@ const Title = styled.h1`
 
 const Header = () => (
   <HeaderWrapper>
-    <Title>
-      Hotel Reviews
-    </Title>
+    <Title>Hotel Reviews</Title>
   </HeaderWrapper>
 );
 

@@ -14,7 +14,7 @@ const HotelItemsWrapper = styled.div`
 
 const HotelLink = styled(Link)`
   color: black;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Loading = styled.span`
@@ -23,23 +23,26 @@ const Loading = styled.span`
 `;
 
 const Hotels = ({ match, history }) => {
-  const { hotels, loading, getHotelsRequest } = React.useContext(HotelsContext)
+  const { hotels, loading, getHotelsRequest } = React.useContext(HotelsContext);
   React.useEffect(() => {
-    getHotelsRequest()
-  }, [])
+    getHotelsRequest();
+  }, []);
 
-  return (!loading) ? (
+  return !loading ? (
     <>
-      { history && <SubHeader title="Your Lists" /> }
+      {history && <SubHeader title='Your Lists' />}
       <HotelItemsWrapper>
-        {hotels && hotels.map((hotel) => (
-          <HotelLink key={hotel.id} to={`hotel/${hotel.id}`}>
-            <HotelItem data={hotel} />
-          </HotelLink>
-        ))}
+        {hotels &&
+          hotels.map(hotel => (
+            <HotelLink key={hotel.id} to={`hotel/${hotel.id}`}>
+              <HotelItem data={hotel} />
+            </HotelLink>
+          ))}
       </HotelItemsWrapper>
     </>
-  ) : <Loading>{loading}</Loading>;
-}
+  ) : (
+    <Loading>{loading}</Loading>
+  );
+};
 
 export default Hotels;

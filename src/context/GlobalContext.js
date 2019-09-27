@@ -2,12 +2,10 @@ import React from 'react';
 import HotelsContextProvider from './HotelsContextProvider';
 import ReviewsContextProvider from './ReviewsContextProvider';
 
-const GlobalContext = ({children}) => {
+const GlobalContext = ({ children }) => {
   return (
     <HotelsContextProvider>
-      <ReviewsContextProvider>
-        {children}
-      </ReviewsContextProvider>
+      <ReviewsContextProvider>{children}</ReviewsContextProvider>
     </HotelsContextProvider>
   );
 };

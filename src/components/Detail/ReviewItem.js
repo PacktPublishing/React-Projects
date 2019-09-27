@@ -9,7 +9,7 @@ const ReviewItemWrapper = styled.div`
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 2%;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Title = styled.h3`
@@ -21,11 +21,11 @@ const Title = styled.h3`
 const Rating = styled.span`
   font-weight: bold;
   text-align: right;
-`
+`;
 
 const Description = styled.div`
   text-align: left;
-`
+`;
 
 const ReviewItem = ({ data }) => (
   <ReviewItemWrapper>

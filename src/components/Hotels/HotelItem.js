@@ -10,16 +10,16 @@ const HotelItemWrapper = styled.div`
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 2%;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Title = styled.h3`
   margin-left: 2%;
-`
+`;
 
 const Thumbnail = styled.img`
   border-radius: 5px;
-`
+`;
 
 const HotelItem = ({ data }) => (
   <HotelItemWrapper>
