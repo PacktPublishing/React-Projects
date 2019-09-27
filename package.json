@@ -1,4 +1,7 @@
 {
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -9,13 +12,12 @@
   },
   "dependencies": {
     "expo": "^33.0.0",
-    "lottie-react-native": "^2.6.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-web": "^0.11.4",
     "react-navigation": "^3.11.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"

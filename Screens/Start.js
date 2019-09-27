@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -14,7 +14,7 @@ const StartWrapper = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const StartButton = styled(TouchableOpacity)`
   width: 300px;
@@ -23,13 +23,12 @@ const StartButton = styled(TouchableOpacity)`
   align-items: center;
   justify-content: space-around;
   border-radius: 150;
-  backgroundColor: purple;
-`
+  backgroundcolor: purple;
+`;
 
 const StartButtonText = styled(Text)`
   color: white;
   font-size: 48px;
-`
-
+`;
 
 export default Start;

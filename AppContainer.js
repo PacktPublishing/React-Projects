@@ -1,15 +1,21 @@
-import React from "react";
-import { Platform } from "react-native";
+import React from 'react';
+import { Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createAppContainer,
+} from 'react-navigation';
 import Start from './Screens/Start';
 import Game from './Screens/Game';
 import LeaderBoard from './Screens/LeaderBoard';
 
-const Tabs = createBottomTabNavigator({
-  Start: Start,
-  LeaderBoard: LeaderBoard
-}, {
+const Tabs = createBottomTabNavigator(
+  {
+    Start: Start,
+    LeaderBoard: LeaderBoard,
+  },
+  {
     initialRouteName: 'Start',
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
@@ -28,8 +34,9 @@ const Tabs = createBottomTabNavigator({
         activeTintColor: 'purple',
         inactiveTintColor: '#556',
       },
-    })
-  });
+    }),
+  },
+);
 
 const AppNavigator = createStackNavigator(
   {
@@ -44,7 +51,7 @@ const AppNavigator = createStackNavigator(
     initialRouteName: 'Start',
     mode: 'modal',
     headerMode: 'none',
-  }
+  },
 );
 
 export default createAppContainer(AppNavigator);
