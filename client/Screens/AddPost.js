@@ -1,13 +1,13 @@
-import React from "react";
-import { Text, View } from "react-native";
-import styled from "styled-components/native";
-import Button from "../Components/Button/Button";
+import React from 'react';
+import { Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import Button from '../Components/Button/Button';
 
 const AddPost = ({ navigation }) => {
   return (
     <AddPostWrapper>
       <AddPostText>Add Post</AddPostText>
-      <Button onPress={() => navigation.navigate("Main")} title="Cancel" />
+      <Button onPress={() => navigation.navigate('Main')} title='Cancel' />
     </AddPostWrapper>
   );
 };

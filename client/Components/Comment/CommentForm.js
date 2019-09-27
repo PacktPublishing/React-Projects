@@ -1,23 +1,23 @@
-import React from "react";
-import { Platform, View } from "react-native";
-import styled from "styled-components/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import TextInput from "../TextInput/TextInput";
-import Button from "../Button/Button";
+import React from 'react';
+import { Platform, View } from 'react-native';
+import styled from 'styled-components/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
 
 const CommentForm = () => {
-  const [comment, setComment] = React.useState("");
+  const [comment, setComment] = React.useState('');
 
   return (
     <CommentFormWrapper
-      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
-      behavior={Platform.OS === "ios" ? "padding" : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
     >
       <TextInput
         width={75}
         marginBottom={0}
         onChangeText={setComment}
-        placeholder="Your comment"
+        placeholder='Your comment'
         value={comment}
       />
       <Button
@@ -25,9 +25,9 @@ const CommentForm = () => {
         padding={10}
         title={
           <Ionicons
-            name={`${Platform.OS === "ios" ? "ios" : "md"}-send`}
+            name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-send`}
             size={42}
-            color="white"
+            color='white'
           />
         }
       />

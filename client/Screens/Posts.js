@@ -1,9 +1,9 @@
-import React from "react";
-import { FlatList, Text, View } from "react-native";
-import styled from "styled-components/native";
-import { GET_POSTS } from "../constants";
-import PostItem from "../Components/Post/PostItem";
-import { useQuery } from "@apollo/react-hooks";
+import React from 'react';
+import { FlatList, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import { GET_POSTS } from '../constants';
+import PostItem from '../Components/Post/PostItem';
+import { useQuery } from '@apollo/react-hooks';
 
 const Posts = ({ navigation }) => {
   const { loading, data } = useQuery(GET_POSTS);
@@ -11,7 +11,7 @@ const Posts = ({ navigation }) => {
   return (
     <PostsWrapper>
       {loading ? (
-        <PostsText>{loading ? "Loading..." : "Empty"}</PostsText>
+        <PostsText>{loading ? 'Loading...' : 'Empty'}</PostsText>
       ) : (
         <PostsList
           data={data.posts}

@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, FlatList, View } from "react-native";
-import styled from "styled-components/native";
-import Notification from "../Components/Notification/Notification";
-import { GET_NOTIFICATIONS } from "../constants";
-import { useMutation } from "@apollo/react-hooks";
+import React from 'react';
+import { Text, FlatList, View } from 'react-native';
+import styled from 'styled-components/native';
+import Notification from '../Components/Notification/Notification';
+import { GET_NOTIFICATIONS } from '../constants';
+import { useMutation } from '@apollo/react-hooks';
 
 const Notifications = () => {
   const [{ loading, data }] = useMutation(GET_NOTIFICATIONS);
@@ -13,7 +13,7 @@ const Notifications = () => {
       {loading || !data.notifications.length ? (
         <NotificationsBody>
           <NotificationsText>
-            {loading ? "Loading..." : "Empty"}
+            {loading ? 'Loading...' : 'Empty'}
           </NotificationsText>
         </NotificationsBody>
       ) : (

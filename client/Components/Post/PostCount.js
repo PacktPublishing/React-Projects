@@ -1,14 +1,14 @@
-import React from "react";
-import { Platform, Text, View } from "react-native";
-import styled from "styled-components/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import React from 'react';
+import { Platform, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const PostCount = ({ stars, comments, marginBottom }) => (
   <PostCountWrapper marginBottom={marginBottom}>
     <PostCountDetails>
       <CountWrapper>
         <Ionicons
-          name={`${Platform.OS === "ios" ? "ios" : "md"}-star`}
+          name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-star`}
           size={20}
         />
         <CountText>
@@ -21,7 +21,7 @@ const PostCount = ({ stars, comments, marginBottom }) => (
       {comments && (
         <CountWrapper>
           <Ionicons
-            name={`${Platform.OS === "ios" ? "ios" : "md"}-chatbubbles`}
+            name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-chatbubbles`}
             size={20}
           />
           <CountText>{comments}</CountText>
@@ -62,7 +62,7 @@ const CountText = styled(Text)`
 
 PostCount.defaultProps = {
   comments: false,
-  marginBottom: 0
+  marginBottom: 0,
 };
 
 export default PostCount;
