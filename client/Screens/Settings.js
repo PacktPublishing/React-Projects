@@ -1,11 +1,11 @@
-import React from "react";
-import { AsyncStorage, View } from "react-native";
-import styled from "styled-components/native";
-import Button from "../Components/Button/Button";
+import React from 'react';
+import { View } from 'react-native';
+import styled from 'styled-components/native';
+import Button from '../Components/Button/Button';
 
 const Settings = () => (
   <SettingsWrapper>
-    <Button title="Log out" />
+    <Button title='Log out' />
   </SettingsWrapper>
 );
 

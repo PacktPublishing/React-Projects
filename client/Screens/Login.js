@@ -1,28 +1,28 @@
-import React from "react";
-import { View } from "react-native";
-import styled from "styled-components/native";
-import Button from "../Components/Button/Button";
-import TextInput from "../Components/TextInput/TextInput";
+import React from 'react';
+import { View } from 'react-native';
+import styled from 'styled-components/native';
+import Button from '../Components/Button/Button';
+import TextInput from '../Components/TextInput/TextInput';
 
 const Login = () => {
-  const [userName, setUserName] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [userName, setUserName] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   return (
     <LoginWrapper>
       <TextInput
         onChangeText={text => setUserName(text)}
         value={userName}
-        placeholder="Your username"
-        textContentType="username"
+        placeholder='Your username'
+        textContentType='username'
       />
       <TextInput
         onChangeText={text => setPassword(text)}
         value={password}
-        placeholder="Your password"
-        textContentType="password"
+        placeholder='Your password'
+        textContentType='password'
       />
-      <Button title={loading ? "Loading..." : "Login"} />
+      <Button title={loading ? 'Loading...' : 'Login'} />
     </LoginWrapper>
   );
 };

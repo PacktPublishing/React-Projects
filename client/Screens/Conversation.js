@@ -1,10 +1,10 @@
-import React from "react";
-import { Dimensions, Text, FlatList, ScrollView, View } from "react-native";
-import styled from "styled-components/native";
-import ConversationActions from "../Components/Conversation/ConversationActions";
+import React from 'react';
+import { Dimensions, Text, FlatList, ScrollView, View } from 'react-native';
+import styled from 'styled-components/native';
+import ConversationActions from '../Components/Conversation/ConversationActions';
 
 const Conversation = ({ navigation }) => {
-  const userName = navigation.getParam("userName", "");
+  const userName = navigation.getParam('userName', '');
 
   return (
     <ConversationWrapper>
@@ -28,7 +28,7 @@ const ConversationBody = styled(ScrollView)`
   width: 100%;
   padding: 2%;
   display: flex;
-  height: ${Dimensions.get("window").height * 0.6};
+  height: ${Dimensions.get('window').height * 0.6};
 `;
 
 const ConversationBodyText = styled(Text)`
