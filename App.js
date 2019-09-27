@@ -1,7 +1,11 @@
-import React from "react";
-import { Platform } from "react-native";
+import React from 'react';
+import { Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from "react-navigation";
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createAppContainer,
+} from 'react-navigation';
 import Home from './Screens/Home';
 import Detail from './Screens/Detail';
 import Settings from './Screens/Settings';
@@ -9,47 +13,50 @@ import Settings from './Screens/Settings';
 const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
-    navigationOptions: { title: 'Home' }
+    navigationOptions: { title: 'Home' },
   },
   Detail: {
     screen: Detail,
-    navigationOptions: { title: 'Detail' }
-  }
+    navigationOptions: { title: 'Detail' },
+  },
 });
 
 const SettingsStack = createStackNavigator({
   Settings: {
     screen: Settings,
-    navigationOptions: { title: 'Settings' }
-  }
+    navigationOptions: { title: 'Settings' },
+  },
 });
 
-const AppNavigator = createBottomTabNavigator({
-  Home: HomeStack,
-  Settings: SettingsStack
-}, {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-    // tabBarIcon: () => {
-    tabBarIcon: ({ tintColor }) => {
-      const { routeName } = navigation.state;
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Settings: SettingsStack,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+      // tabBarIcon: () => {
+      tabBarIcon: ({ tintColor }) => {
+        const { routeName } = navigation.state;
 
-      let iconName;
-      if (routeName === 'Home') {
-        //iconName = `ios-home`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
-      } else if (routeName === 'Settings') {
-        //iconName = `ios-settings`;
-        iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
-      }
+        let iconName;
+        if (routeName === 'Home') {
+          //iconName = `ios-home`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-home`;
+        } else if (routeName === 'Settings') {
+          //iconName = `ios-settings`;
+          iconName = `${Platform.OS === 'ios' ? 'ios' : 'md'}-settings`;
+        }
 
-      return <Ionicons name={iconName} size={20} color={tintColor} />;
-    },
-    tabBarOptions: {
-      activeTintColor: 'blue',
-      inactiveTintColor: '#556',
-    },
-  })
-});
+        return <Ionicons name={iconName} size={20} color={tintColor} />;
+      },
+      tabBarOptions: {
+        activeTintColor: 'blue',
+        inactiveTintColor: '#556',
+      },
+    }),
+  },
+);
 
 export default createAppContainer(AppNavigator);
