@@ -17,7 +17,7 @@ const Avatar = styled.img`
 
 const Name = styled.h3`
   margin-left: 5%;
-`
+`;
 
 const Owner = ({ data }) => (
   <OwnerWrapper>

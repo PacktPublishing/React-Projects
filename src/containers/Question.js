@@ -14,31 +14,35 @@ const Loading = styled.div`
   text-align: center;
 `;
 
+const ROOT_API = 'https://api.stackexchange.com/2.2/';
+
 class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      loading: 'Loading...'
+      loading: 'Loading...',
     };
   }
 
   async componentDidMount() {
     const { match } = this.props;
     try {
-      const data = await fetch(`https://api.stackexchange.com/2.2/questions/${match.params.id}?site=stackoverflow`);
+      const data = await fetch(
+        `${ROOT_API}questions/${match.params.id}?site=stackoverflow`,
+      );
       const dataJSON = await data.json();
 
       if (dataJSON) {
         this.setState({
           data: dataJSON,
-          loading: false
-        })
+          loading: false,
+        });
       }
-    } catch(error) {
+    } catch (error) {
       this.setState({
-       loading: error.message
-     })
+        loading: error.message,
+      });
     }
   }
 
@@ -47,12 +51,14 @@ class Question extends Component {
     const { data, loading } = this.state;
 
     if (loading) {
-      return <>
-        <Helmet>
-          <title>{`Q&A Feed - Question #${match.params.id}`}</title>
-        </Helmet>
-        <Loading>{loading}</Loading>
-      </>
+      return (
+        <>
+          <Helmet>
+            <title>{`Q&A Feed - Question #${match.params.id}`}</title>
+          </Helmet>
+          <Loading>{loading}</Loading>
+        </>
+      );
     }
 
     return (

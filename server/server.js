@@ -16,7 +16,7 @@ app.get('/*', (req, res) => {
   const app = ReactDOMServer.renderToString(
     <Router location={req.url} context={context}>
       <App />
-    </Router>
+    </Router>,
   );
   const helmet = Helmet.renderStatic();
 
@@ -28,7 +28,10 @@ app.get('/*', (req, res) => {
     }
 
     data = data.replace('<div id="root"></div>', `<div id="root">${app}</div>`);
-    data = data.replace('<meta name="helmet"/>', `${helmet.title.toString()}${helmet.meta.toString()}`);
+    data = data.replace(
+      '<meta name="helmet"/>',
+      `${helmet.title.toString()}${helmet.meta.toString()}`,
+    );
 
     return res.send(data);
   });

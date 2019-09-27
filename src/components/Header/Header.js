@@ -21,12 +21,13 @@ const Header = () => (
   <>
     <Helmet>
       <title>Q&A Feed</title>
-      <meta name="description" content="This is a Community Feed project build with React" />
+      <meta
+        name='description'
+        content='This is a Community Feed project build with React'
+      />
     </Helmet>
     <HeaderWrapper>
-      <Title>
-        Q&A Feed
-      </Title>
+      <Title>Q&A Feed</Title>
     </HeaderWrapper>
   </>
 );
