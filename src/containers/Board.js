@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import withDataFetching from '../HOC';
+import withDataFetching from '../withDataFetching';
 import Lane from '../components/Lane/Lane';
 
 const BoardWrapper = styled.div`
