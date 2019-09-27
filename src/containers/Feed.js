@@ -14,8 +14,8 @@ const Loading = styled.div`
 `;
 
 class Feed extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       data: [],
       loading: 'Loading...',
