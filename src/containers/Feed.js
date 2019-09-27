@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card/Card';
 
-const ROOT_API = 'https://api.stackexchange.com/2.2/';
-
 const FeedWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -14,6 +12,8 @@ const FeedWrapper = styled.div`
 const Loading = styled.div`
   text-align: center;
 `;
+
+const ROOT_API = 'https://api.stackexchange.com/2.2/';
 
 class Feed extends Component {
   constructor() {
