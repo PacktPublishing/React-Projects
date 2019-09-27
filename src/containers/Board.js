@@ -16,15 +16,17 @@ const BoardWrapper = styled.div`
 class Board extends Component {
   render() {
     const lanes = [
-      { id: 1, title: "To Do" },
-      { id: 2, title: "In Progress" },
-      { id: 3, title: "Review" },
-      { id: 4, title: "Done" }
-    ]
+      { id: 1, title: 'To Do' },
+      { id: 2, title: 'In Progress' },
+      { id: 3, title: 'Review' },
+      { id: 4, title: 'Done' },
+    ];
 
     return (
       <BoardWrapper>
-        { lanes.map((lane) => <Lane key={lane.id} title={lane.title} />) }
+        {lanes.map(lane => (
+          <Lane key={lane.id} title={lane.title} />
+        ))}
       </BoardWrapper>
     );
   }
