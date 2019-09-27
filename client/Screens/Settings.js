@@ -1,15 +1,15 @@
-import React from "react";
-import { AsyncStorage, View } from "react-native";
-import styled from "styled-components/native";
-import Button from "../Components/Button/Button";
+import React from 'react';
+import { AsyncStorage, View } from 'react-native';
+import styled from 'styled-components/native';
+import Button from '../Components/Button/Button';
 
 const Settings = ({ navigation }) => (
   <SettingsWrapper>
     <Button
-      title="Log out"
+      title='Log out'
       onPress={() => {
-        AsyncStorage.removeItem("token").then(() =>
-          navigation.navigate("AuthLoading")
+        AsyncStorage.removeItem('token').then(() =>
+          navigation.navigate('AuthLoading'),
         );
       }}
     />

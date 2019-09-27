@@ -1,4 +1,7 @@
 {
+  "name": "social-media-client",
+  "version": "1.0.0",
+  "description": "",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",

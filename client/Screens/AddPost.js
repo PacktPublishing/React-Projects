@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import {
   Dimensions,
   Image,
   Platform,
   TouchableOpacity,
   Text,
-  View
-} from "react-native";
-import styled from "styled-components/native";
-import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
-import { connectActionSheet } from "@expo/react-native-action-sheet";
-import { useMutation } from "@apollo/react-hooks";
-import { ADD_POST, GET_POSTS } from "../constants";
-import Button from "../Components/Button/Button";
+  View,
+} from 'react-native';
+import styled from 'styled-components/native';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+import { connectActionSheet } from '@expo/react-native-action-sheet';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_POST, GET_POSTS } from '../constants';
+import Button from '../Components/Button/Button';
 
 const AddPost = ({ navigation, showActionSheetWithOptions }) => {
   const [addPost] = useMutation(ADD_POST, {
-    refetchQueries: [{ query: GET_POSTS }]
+    refetchQueries: [{ query: GET_POSTS }],
   });
   const [imageUrl, setImageUrl] = React.useState(false);
 
@@ -26,11 +26,11 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
       ? await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           allowsEditing: true,
-          aspect: [4, 4]
+          aspect: [4, 4],
         })
       : await ImagePicker.launchCameraAsync({
           allowsEditing: true,
-          aspect: [4, 4]
+          aspect: [4, 4],
         });
 
     if (!result.cancelled) {
@@ -39,33 +39,33 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
   };
 
   const openActionSheet = () => {
-    const options = ["Camera", "Camera roll", "Cancel"];
+    const options = ['Camera', 'Camera roll', 'Cancel'];
     const cancelButtonIndex = 2;
 
     showActionSheetWithOptions(
       {
         options,
-        cancelButtonIndex
+        cancelButtonIndex,
       },
       buttonIndex => {
         if (buttonIndex === 0 || buttonIndex === 1) {
           addImageAsync(buttonIndex === 0 ? true : false);
         }
-      }
+      },
     );
   };
 
   const getPermissionAsync = async () => {
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       const { status: statusCamera } = await Permissions.askAsync(
-        Permissions.CAMERA
+        Permissions.CAMERA,
       );
       const { status: statusCameraRoll } = await Permissions.askAsync(
-        Permissions.CAMERA_ROLL
+        Permissions.CAMERA_ROLL,
       );
-      if (statusCamera !== "granted" || statusCameraRoll !== "granted") {
+      if (statusCamera !== 'granted' || statusCameraRoll !== 'granted') {
         alert(
-          "Sorry, you need camera roll permissions! Go to 'Settings > Expo' to enable these."
+          "Sorry, you need camera roll permissions! Go to 'Settings > Expo' to enable these.",
         );
       } else {
         openActionSheet();
@@ -81,7 +81,7 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
         {imageUrl ? (
           <Image
             source={{ uri: imageUrl }}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: '100%', height: '100%' }}
           />
         ) : (
           <AddPostText>Upload image</AddPostText>
@@ -91,13 +91,13 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
         <Button
           onPress={() => {
             addPost({ variables: { image: imageUrl } }).then(() =>
-              navigation.navigate("Main")
+              navigation.navigate('Main'),
             );
           }}
-          title="Submit"
+          title='Submit'
         />
       )}
-      <Button onPress={() => navigation.navigate("Main")} title="Cancel" />
+      <Button onPress={() => navigation.navigate('Main')} title='Cancel' />
     </AddPostWrapper>
   );
 };
@@ -116,9 +116,9 @@ const AddPostText = styled(Text)`
 `;
 
 const UploadImage = styled(TouchableOpacity)`
-  width: ${Dimensions.get("window").width * 0.98};
-  height: ${Dimensions.get("window").width * 0.98};
-  margin: ${Dimensions.get("window").width * 0.01}px;
+  width: ${Dimensions.get('window').width * 0.98};
+  height: ${Dimensions.get('window').width * 0.98};
+  margin: ${Dimensions.get('window').width * 0.01}px;
   border: 1px solid #ccc;
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
-import React from "react";
-import { TouchableOpacity, Text } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import styled from 'styled-components/native';
 
 const Button = ({ title, onPress, ...props }) => (
   <StyledButton onPress={onPress} {...props}>
@@ -25,7 +25,7 @@ const StyledButtonText = styled(Text)`
 
 Button.defaultProps = {
   width: 90,
-  padding: 20
+  padding: 20,
 };
 
 export default Button;

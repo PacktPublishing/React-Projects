@@ -1,6 +1,6 @@
-import React from "react";
-import { Dimensions, Image, Text, View } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import { Dimensions, Image, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 
 const PostContent = ({ item }) => (
   <PostContentWrapper>
@@ -14,9 +14,9 @@ const PostContent = ({ item }) => (
 const PostContentWrapper = styled(View)``;
 
 const PostContentThumbnail = styled(Image)`
-  width: ${Dimensions.get("window").width * 0.98};
-  height: ${Dimensions.get("window").width * 0.98};
-  margin: ${Dimensions.get("window").width * 0.01}px;
+  width: ${Dimensions.get('window').width * 0.98};
+  height: ${Dimensions.get('window').width * 0.98};
+  margin: ${Dimensions.get('window').width * 0.01}px;
 `;
 
 const PostContentDetails = styled(View)`
@@ -30,7 +30,7 @@ const UserName = styled(Text)`
 `;
 
 PostContent.defaultProps = {
-  navigation: false
+  navigation: false,
 };
 
 export default PostContent;

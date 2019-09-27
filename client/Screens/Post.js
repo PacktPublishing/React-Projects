@@ -1,15 +1,15 @@
-import React from "react";
-import { Text, FlatList, ScrollView, View } from "react-native";
-import styled from "styled-components/native";
-import { useQuery } from "@apollo/react-hooks";
-import CommentForm from "../Components/Comment/CommentForm";
-import PostCount from "../Components/Post/PostCount";
-import PostContent from "../Components/Post/PostContent";
-import { GET_POST } from "../constants";
-import Comment from "../Components/Comment/Comment";
+import React from 'react';
+import { Text, FlatList, ScrollView, View } from 'react-native';
+import styled from 'styled-components/native';
+import { useQuery } from '@apollo/react-hooks';
+import CommentForm from '../Components/Comment/CommentForm';
+import PostCount from '../Components/Post/PostCount';
+import PostContent from '../Components/Post/PostContent';
+import { GET_POST } from '../constants';
+import Comment from '../Components/Comment/Comment';
 
 const Post = ({ navigation }) => {
-  const userName = navigation.getParam("userName", "");
+  const userName = navigation.getParam('userName', '');
   const { loading, data } = useQuery(GET_POST, { variables: { userName } });
 
   const { post } = data;

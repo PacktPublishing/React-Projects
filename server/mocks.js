@@ -1,14 +1,14 @@
-const faker = require("faker");
+const faker = require('faker');
 
 const mockStar = (userName = false) => ({
   id: faker.random.number,
-  userName: userName || faker.name.firstName
+  userName: userName || faker.name.firstName,
 });
 
 const mockComment = (userName = false) => ({
   id: faker.random.number,
   userName: userName || faker.name.firstName,
-  text: faker.hacker.phrase
+  text: faker.hacker.phrase,
 });
 
 const mockPost = ({ userName = false, image = false }) => {
@@ -21,7 +21,7 @@ const mockPost = ({ userName = false, image = false }) => {
     totalStars,
     totalComments,
     stars: Array.from(Array(totalStars), () => mockStar()),
-    comments: Array.from(Array(totalComments), () => mockComment())
+    comments: Array.from(Array(totalComments), () => mockComment()),
   };
 };
 

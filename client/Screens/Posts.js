@@ -1,17 +1,17 @@
-import React from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import React from 'react';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import {
   Button,
   FlatList,
   Text,
   View,
   ScrollView,
-  RefreshControl
-} from "react-native";
-import styled from "styled-components/native";
-import { GET_POSTS, STORE_EXPO_TOKEN } from "../constants";
-import PostItem from "../Components/Post/PostItem";
-import registerForPushNotificationsAsync from "../utils/registerForPushNotificationsAsync";
+  RefreshControl,
+} from 'react-native';
+import styled from 'styled-components/native';
+import { GET_POSTS, STORE_EXPO_TOKEN } from '../constants';
+import PostItem from '../Components/Post/PostItem';
+import registerForPushNotificationsAsync from '../utils/registerForPushNotificationsAsync';
 
 const Posts = ({ navigation }) => {
   const { loading, data, refetch } = useQuery(GET_POSTS, { pollInterval: 0 });
@@ -36,7 +36,7 @@ const Posts = ({ navigation }) => {
         <PostsText>Loading...</PostsText>
       ) : (
         <ScrollView
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
@@ -75,8 +75,8 @@ const PostsText = styled(Text)`
 
 Posts.navigationOptions = ({ navigation }) => ({
   headerRight: (
-    <Button onPress={() => navigation.navigate("AddPost")} title="Add Post" />
-  )
+    <Button onPress={() => navigation.navigate('AddPost')} title='Add Post' />
+  ),
 });
 
 export default Posts;

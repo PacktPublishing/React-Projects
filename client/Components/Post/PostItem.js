@@ -1,12 +1,12 @@
-import React from "react";
-import { Dimensions, Image, Text, View, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
-import PostContent from "./PostContent";
-import PostCount from "./PostCount";
+import React from 'react';
+import { Dimensions, Image, Text, View, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
+import PostContent from './PostContent';
+import PostCount from './PostCount';
 
 const PostItem = ({ item, navigation }) => (
   <PostItemWrapper
-    onPress={() => navigation.navigate("Post", { userName: item.userName })}
+    onPress={() => navigation.navigate('Post', { userName: item.userName })}
   >
     <PostContent item={item} />
     <PostCount stars={item.totalStars} comments={item.totalComments} />
@@ -22,9 +22,9 @@ const PostItemWrapper = styled(TouchableOpacity)`
 `;
 
 const PostItemThumbnail = styled(Image)`
-  width: ${Dimensions.get("window").width * 0.98};
-  height: ${Dimensions.get("window").width * 0.98};
-  margin: ${Dimensions.get("window").width * 0.01}px;
+  width: ${Dimensions.get('window').width * 0.98};
+  height: ${Dimensions.get('window').width * 0.98};
+  margin: ${Dimensions.get('window').width * 0.01}px;
 `;
 
 const PostItemDetails = styled(View)`
@@ -44,7 +44,7 @@ const PostText = styled(Text)`
 `;
 
 PostItem.defaultProps = {
-  navigation: false
+  navigation: false,
 };
 
 export default PostItem;

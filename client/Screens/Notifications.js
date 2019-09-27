@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, FlatList, View } from "react-native";
-import styled from "styled-components/native";
-import { useQuery } from "@apollo/react-hooks";
-import Notification from "../Components/Notification/Notification";
-import { GET_NOTIFICATIONS } from "../constants";
+import React from 'react';
+import { Text, FlatList, View } from 'react-native';
+import styled from 'styled-components/native';
+import { useQuery } from '@apollo/react-hooks';
+import Notification from '../Components/Notification/Notification';
+import { GET_NOTIFICATIONS } from '../constants';
 
 const Notifications = () => {
   const { loading, data } = useQuery(GET_NOTIFICATIONS);
@@ -12,7 +12,7 @@ const Notifications = () => {
       {loading || !data.notifications.length ? (
         <NotificationsBody>
           <NotificationsText>
-            {loading ? "Loading..." : "Empty"}
+            {loading ? 'Loading...' : 'Empty'}
           </NotificationsText>
         </NotificationsBody>
       ) : (

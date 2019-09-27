@@ -1,28 +1,27 @@
-import React from "react";
-import { AsyncStorage } from "react-native";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { setContext } from "apollo-link-context";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
-import { Notifications } from "expo";
-import AppContainer from "./AppContainer";
-import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from "./constants";
+import React from 'react';
+import { AsyncStorage } from 'react-native';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { setContext } from 'apollo-link-context';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
+import { Notifications } from 'expo';
+import AppContainer from './AppContainer';
+import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from './constants';
 
 const link = new HttpLink({
-  // uri: [LOCALTUNNEL_URL],
-  uri: "https://quiet-owl-41.localtunnel.me/graphql"
+  uri: '[LOCALTUNNEL_URL]',
 });
 
 const authLink = setContext(async (_, { headers }) => {
-  const token = await AsyncStorage.getItem("token");
+  const token = await AsyncStorage.getItem('token');
 
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : ""
-    }
+      authorization: token ? `Bearer ${token}` : '',
+    },
   };
 });
 
@@ -40,12 +39,12 @@ const client = new ApolloClient({
           data: {
             notifications: [
               ...data.notifications,
-              { id, title, body, __typename: "notifications" }
-            ]
-          }
+              { id, title, body, __typename: 'notifications' },
+            ],
+          },
         });
-      }
-    }
+      },
+    },
   },
   typeDefs: `
     type Notification {
@@ -56,13 +55,13 @@ const client = new ApolloClient({
     extend type Query {
       notifications: [Notification]!
     }
-  `
+  `,
 });
 
 cache.writeData({
   data: {
-    notifications: []
-  }
+    notifications: [],
+  },
 });
 
 const App = () => {
@@ -76,8 +75,8 @@ const App = () => {
       variables: {
         id: Math.floor(Math.random() * 500) + 1,
         title: data.title,
-        body: data.body
-      }
+        body: data.body,
+      },
     });
   };
   return (

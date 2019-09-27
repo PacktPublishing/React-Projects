@@ -1,11 +1,11 @@
-import React from "react";
-import { AsyncStorage, Text, View } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import { AsyncStorage, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 
 const AuthLoading = ({ navigation }) => {
   React.useEffect(() => {
-    AsyncStorage.getItem("token").then(value => {
-      navigation.navigate(value ? "Main" : "Login");
+    AsyncStorage.getItem('token').then(value => {
+      navigation.navigate(value ? 'Main' : 'Login');
     });
   }, [navigation]);
 
