@@ -33,7 +33,7 @@ const Loading = styled.span`
   text-align: center;
 `;
 
-const Lists = ({ data, loading, match, history }) =>
+const Lists = ({ data, loading, history }) =>
   !loading ? (
     <>
       {history && <SubHeader title='Your Lists' />}
@@ -52,6 +52,6 @@ const Lists = ({ data, loading, match, history }) =>
 
 export default withDataFetching({
   dataSource:
-    'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/lists',
+    'https://github.com/PacktPublishing/React-Projects/lists',
   loadingMessage: 'Loading...',
 })(Lists);
