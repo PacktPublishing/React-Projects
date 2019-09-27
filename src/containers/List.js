@@ -19,24 +19,32 @@ const Loading = styled.span`
 
 // const List = ({ items, loading, list, getListRequest, getItemsRequest, match, history }) => {
 const List = ({ match, history }) => {
-  const { list, getListRequest } = React.useContext(ListsContext)
-  const { loading, items, getItemsRequest } = React.useContext(ItemsContext)
+  const { list, getListRequest } = React.useContext(ListsContext);
+  const { loading, items, getItemsRequest } = React.useContext(ItemsContext);
 
   React.useEffect(() => {
-    getListRequest(match.params.id)
+    getListRequest(match.params.id);
     if (!items.length > 0) {
-      getItemsRequest(match.params.id)
+      getItemsRequest(match.params.id);
     }
-  }, [])
+  }, []);
 
-  return (!loading) ? (
+  return !loading ? (
     <>
-      { (history && list) && <SubHeader goBack={() => history.goBack()} title={list.title} openForm={() => history.push(`${match.url}/new`)} /> }
+      {history && list && (
+        <SubHeader
+          goBack={() => history.goBack()}
+          title={list.title}
+          openForm={() => history.push(`${match.url}/new`)}
+        />
+      )}
       <ListItemWrapper>
-        { items && items.map(item => <ListItem key={item.id} data={ item } />) }
+        {items && items.map(item => <ListItem key={item.id} data={item} />)}
       </ListItemWrapper>
     </>
-) : <Loading>{loading}</Loading>
+  ) : (
+    <Loading>{loading}</Loading>
+  );
 };
 
 export default List;

@@ -2,12 +2,10 @@ import React from 'react';
 import ListsContextProvider from './ListsContextProvider';
 import ItemsContextProvider from './ItemsContextProvider';
 
-const GlobalContext = ({children}) => {
+const GlobalContext = ({ children }) => {
   return (
     <ListsContextProvider>
-      <ItemsContextProvider>
-        {children}
-      </ItemsContextProvider>
+      <ItemsContextProvider>{children}</ItemsContextProvider>
     </ListsContextProvider>
   );
 };

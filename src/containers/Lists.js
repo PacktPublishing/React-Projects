@@ -21,7 +21,7 @@ const ListLink = styled(Link)`
   padding: 10px;
   margin-bottom: 2%;
   color: black;
-  text-decoration: none
+  text-decoration: none;
 `;
 
 const Title = styled.h3`
@@ -35,22 +35,25 @@ const Loading = styled.span`
 
 ///const Lists = ({lists, loading = false, getListsRequest, match, history}) => {
 const Lists = ({ match, history }) => {
-  const { lists, loading, getListsRequest } = React.useContext(ListsContext)
+  const { lists, loading, getListsRequest } = React.useContext(ListsContext);
   React.useEffect(() => {
-    getListsRequest()
-  }, [])
+    getListsRequest();
+  }, []);
 
-  return (!loading) ? (
+  return !loading ? (
     <>
-      { history && <SubHeader title="Your Lists" /> }
+      {history && <SubHeader title='Your Lists' />}
       <ListWrapper>
-        {lists && lists.map((list) => (
-          <ListLink key={list.id} to={`list/${list.id}`}>
-            <Title>{ list.title }</Title>
-          </ListLink>
-        ))}
+        {lists &&
+          lists.map(list => (
+            <ListLink key={list.id} to={`list/${list.id}`}>
+              <Title>{list.title}</Title>
+            </ListLink>
+          ))}
       </ListWrapper>
     </>
-  ) : <Loading>{loading}</Loading>;
-}
+  ) : (
+    <Loading>{loading}</Loading>
+  );
+};
 export default Lists;

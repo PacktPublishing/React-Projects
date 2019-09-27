@@ -18,32 +18,62 @@ const SubmitButton = styled(Button)`
 `;
 
 const Form = ({ match, history }) => {
-  const { addItemRequest } = React.useContext(ItemsContext)
-  const [state, setState] = React.useState({ title: '', quantity: '', price: '' })
+  const { addItemRequest } = React.useContext(ItemsContext);
+  const [state, setState] = React.useState({
+    title: '',
+    quantity: '',
+    price: '',
+  });
 
   const handleOnChange = (key, e) => {
-    setState({ ...state, [key]: e.target.value })
-  }
+    setState({ ...state, [key]: e.target.value });
+  };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = e => {
     e.preventDefault();
-    addItemRequest({ ...state, id: Math.floor(Math.random() * 100), listId: parseInt(match.params.id) })
-    history.goBack()
-  }
+    addItemRequest({
+      ...state,
+      id: Math.floor(Math.random() * 100),
+      listId: parseInt(match.params.id),
+    });
+    history.goBack();
+  };
 
   return (
     <>
-      { history && <SubHeader goBack={() => history.goBack()} title={`Add Item`} /> }
+      {history && (
+        <SubHeader goBack={() => history.goBack()} title='Add Item' />
+      )}
       <FormWrapper>
         <form onSubmit={handleOnSubmit}>
-          <FormItem id="title" label="Title" placeholder="Insert title" value={state.title} handleOnChange={handleOnChange} />
-          <FormItem id="quantity" label="Quantity" type="number" placeholder="0" value={state.quantity} handleOnChange={handleOnChange} />
-          <FormItem id="price" label="Price" type="number" placeholder="0.00" value={state.price} handleOnChange={handleOnChange} />
+          <FormItem
+            id='title'
+            label='Title'
+            placeholder='Insert title'
+            value={state.title}
+            handleOnChange={handleOnChange}
+          />
+          <FormItem
+            id='quantity'
+            label='Quantity'
+            type='number'
+            placeholder='0'
+            value={state.quantity}
+            handleOnChange={handleOnChange}
+          />
+          <FormItem
+            id='price'
+            label='Price'
+            type='number'
+            placeholder='0.00'
+            value={state.price}
+            handleOnChange={handleOnChange}
+          />
           <SubmitButton>Add Item</SubmitButton>
         </form>
       </FormWrapper>
     </>
   );
-}
+};
 
 export default Form;
