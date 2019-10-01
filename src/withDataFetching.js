@@ -2,11 +2,12 @@ import React from 'react';
 
 const withDataFetching = props => WrappedComponent => {
   class WithDataFetching extends React.Component {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = {
         data: [],
-        loading: props.loadingMessage,
+        loading: true,
+        error: '',
       };
     }
 
@@ -23,15 +24,23 @@ const withDataFetching = props => WrappedComponent => {
         }
       } catch (error) {
         this.setState({
-          loading: error.message,
+          loading: false,
+          error: error.message,
         });
       }
     }
 
     render() {
-      const { data, loading } = this.state;
+      const { data, loading, error } = this.state;
 
-      return <WrappedComponent data={data} loading={loading} {...this.props} />;
+      return (
+        <WrappedComponent
+          data={data}
+          loading={loading}
+          error={error}
+          {...this.props}
+        />
+      );
     }
   }
 

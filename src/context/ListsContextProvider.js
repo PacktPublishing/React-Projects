@@ -6,6 +6,7 @@ const initialValue = {
   lists: [],
   list: {},
   loading: true,
+  error: '',
 };
 
 const reducer = (value, action) => {
@@ -20,7 +21,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         lists: [],
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     case 'GET_LIST_SUCCESS':
       return {
@@ -32,7 +34,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         list: {},
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     default:
       return value;

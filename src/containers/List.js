@@ -12,15 +12,16 @@ const ListItemWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-// const List = ({ items, loading, list, getListRequest, getItemsRequest, match, history }) => {
 const List = ({ match, history }) => {
   const { list, getListRequest } = React.useContext(ListsContext);
-  const { loading, items, getItemsRequest } = React.useContext(ItemsContext);
+  const { loading, error, items, getItemsRequest } = React.useContext(
+    ItemsContext,
+  );
 
   React.useEffect(() => {
     getListRequest(match.params.id);
@@ -29,7 +30,7 @@ const List = ({ match, history }) => {
     }
   }, []);
 
-  return !loading ? (
+  return !loading && !error ? (
     <>
       {history && list && (
         <SubHeader
@@ -43,7 +44,7 @@ const List = ({ match, history }) => {
       </ListItemWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 

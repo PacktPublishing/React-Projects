@@ -28,19 +28,20 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-///const Lists = ({lists, loading = false, getListsRequest, match, history}) => {
-const Lists = ({ match, history }) => {
-  const { lists, loading, getListsRequest } = React.useContext(ListsContext);
+const Lists = ({ history }) => {
+  const { lists, loading, error, getListsRequest } = React.useContext(
+    ListsContext,
+  );
   React.useEffect(() => {
     getListsRequest();
   }, []);
 
-  return !loading ? (
+  return !loading && !error ? (
     <>
       {history && <SubHeader title='Your Lists' />}
       <ListWrapper>
@@ -53,7 +54,7 @@ const Lists = ({ match, history }) => {
       </ListWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 export default Lists;

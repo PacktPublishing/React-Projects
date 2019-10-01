@@ -5,6 +5,7 @@ export const ItemsContext = React.createContext();
 const initialValue = {
   items: [],
   loading: true,
+  error: '',
 };
 
 const reducer = (value, action) => {
@@ -19,7 +20,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         items: [],
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     case 'ADD_ITEM_SUCCESS':
       return {
@@ -30,7 +32,8 @@ const reducer = (value, action) => {
     case 'ADD_ITEM_ERROR':
       return {
         ...value,
-        loading: 'Something went wrong...',
+        loading: false,
+        error: 'Something went wrong...',
       };
     default:
       return value;
