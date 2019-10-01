@@ -10,7 +10,7 @@ const QuestionWrapper = styled.div`
   margin: 5%;
 `;
 
-const Loading = styled.div`
+const Alert = styled.div`
   text-align: center;
 `;
 
@@ -21,7 +21,8 @@ class Question extends Component {
     super(props);
     this.state = {
       data: [],
-      loading: 'Loading...',
+      loading: true,
+      error: '',
     };
   }
 
@@ -41,22 +42,23 @@ class Question extends Component {
       }
     } catch (error) {
       this.setState({
-        loading: error.message,
+        loading: false,
+        error: error.message,
       });
     }
   }
 
   render() {
     const { match } = this.props;
-    const { data, loading } = this.state;
+    const { data, loading, error } = this.state;
 
-    if (loading) {
+    if (loading || error) {
       return (
         <>
           <Helmet>
             <title>{`Q&A Feed - Question #${match.params.id}`}</title>
           </Helmet>
-          <Loading>{loading}</Loading>
+          <Alert>{loading ? 'Loading...' : error}</Alert>
         </>
       );
     }

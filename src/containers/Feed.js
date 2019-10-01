@@ -12,7 +12,7 @@ const FeedWrapper = styled.div`
   margin: 5%;
 `;
 
-const Loading = styled.div`
+const Alert = styled.div`
   text-align: center;
 `;
 
@@ -44,7 +44,8 @@ class Feed extends Component {
     this.state = {
       data: [],
       page: query.page ? parseInt(query.page) : 1,
-      loading: 'Loading...',
+      loading: true,
+      error: '',
     };
   }
 
@@ -65,7 +66,8 @@ class Feed extends Component {
       }
     } catch (error) {
       this.setState({
-        loading: error.message,
+        loading: false,
+        error: error.message,
       });
     }
   }
@@ -85,17 +87,17 @@ class Feed extends Component {
   }
 
   render() {
-    const { data, page, loading } = this.state;
+    const { data, page, loading, error } = this.state;
     const { match } = this.props;
 
-    if (loading) {
+    if (loading || error) {
       return (
         <>
           <Helmet>
             <title>My Title</title>
             <meta name='description' content='Helmet application' />
           </Helmet>
-          <Loading>{loading}</Loading>
+          <Alert>{loading ? 'Loading...' : error}</Alert>
         </>
       );
     }
