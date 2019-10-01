@@ -28,22 +28,21 @@ class Board extends React.Component {
       this.setState({ tickets: this.props.data });
     }
   }
-  onDragStart = (element, id) => {
-    console.log('dragstart:', id);
-    element.dataTransfer.setData('id', id);
+  onDragStart = (e, id) => {
+    e.dataTransfer.setData('id', id);
   };
-  onDragOver = element => {
-    element.preventDefault();
+  onDragOver = e => {
+    e.preventDefault();
   };
-  onDrop = (element, laneId) => {
-    const id = element.dataTransfer.getData('id');
+  onDrop = (e, laneId) => {
+    const id = e.dataTransfer.getData('id');
 
     const tickets = this.state.tickets.filter(ticket => {
-      if (ticket.id === id) {
+      if (ticket.id === parseInt(id)) {
         ticket.lane = laneId;
       }
       return ticket;
-    });
+    });    
 
     this.setState({
       ...this.state,
