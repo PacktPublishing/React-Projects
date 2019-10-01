@@ -12,14 +12,14 @@ const ReviewsWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
 const Detail = ({ match, history }) => {
   const { hotel, getHotelRequest } = React.useContext(HotelsContext);
-  const { loading, reviews, getReviewsRequest } = React.useContext(
+  const { loading, error, reviews, getReviewsRequest } = React.useContext(
     ReviewsContext,
   );
 
@@ -30,7 +30,7 @@ const Detail = ({ match, history }) => {
     }
   }, []);
 
-  return !loading ? (
+  return !loading && !error ? (
     <>
       {history && hotel && (
         <SubHeader
@@ -45,7 +45,7 @@ const Detail = ({ match, history }) => {
       </ReviewsWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 
