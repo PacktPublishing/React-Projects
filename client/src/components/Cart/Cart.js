@@ -17,17 +17,17 @@ const CartItemsWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-const Cart = ({ history, loading, cart }) => (
+const Cart = ({ history, loading, error, cart }) => (
   <>
     {history && (
       <SubHeader title='Cart' goToCart={() => history.push('/cart')} />
     )}
-    {!loading ? (
+    {!loading && !error ? (
       <CartWrapper>
         <CartItemsWrapper>
           {cart.products &&
@@ -38,13 +38,14 @@ const Cart = ({ history, loading, cart }) => (
         <Totals count={cart.total} />
       </CartWrapper>
     ) : (
-      <Loading>{loading}</Loading>
+      <Alert>{loading ? 'Loading...' : error}</Alert>
     )}
   </>
 );
 
 Cart.defaultProps = {
   loading: false,
+  erorr: '',
   cart: {
     products: [],
     total: 0,

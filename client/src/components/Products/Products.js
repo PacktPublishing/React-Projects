@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SubHeader from '../Header/SubHeader';
 import ProductItem from './ProductItem';
 
-export const ProductItemsWrapper = styled.div`
+const ProductItemsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -11,12 +11,12 @@ export const ProductItemsWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-export const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-const Products = ({ history, loading, products }) => {
+const Products = ({ history, loading, error, products }) => {
   const isEmpty = products.length === 0 ? 'No products available' : false;
 
   return (
@@ -27,7 +27,7 @@ const Products = ({ history, loading, products }) => {
           goToCart={() => history.push('/cart')}
         />
       )}
-      {!loading && !isEmpty ? (
+      {!loading && !error && !isEmpty ? (
         <ProductItemsWrapper>
           {products &&
             products.map(product => (
@@ -35,7 +35,7 @@ const Products = ({ history, loading, products }) => {
             ))}
         </ProductItemsWrapper>
       ) : (
-        <Loading>{loading || isEmpty}</Loading>
+        <Alert>{loading ? 'Loading' : error || isEmpty}</Loading>
       )}
     </>
   );
@@ -43,6 +43,7 @@ const Products = ({ history, loading, products }) => {
 
 Products.defaultProps = {
   loading: false,
+  error: '',
   products: [],
 };
 
