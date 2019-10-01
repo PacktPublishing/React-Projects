@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, KeyboardAvoidingView } from 'react-native';
 import styled from 'styled-components/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import { useMutation } from 'react-apollo';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';

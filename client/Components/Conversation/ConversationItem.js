@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, Text, View, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
 const ConversationItem = ({ item, navigation }) => (
