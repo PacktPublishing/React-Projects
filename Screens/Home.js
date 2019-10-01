@@ -5,6 +5,7 @@ import ListingItem from '../Components/Listing/ListingItem';
 
 const Home = ({ navigation }) => {
   const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
   const [data, setData] = React.useState([]);
 
   const fetchAPI = async () => {
@@ -19,7 +20,8 @@ const Home = ({ navigation }) => {
         setLoading(false);
       }
     } catch (error) {
-      setLoading(error.message);
+      setLoading(false);
+      setError(error.message);
     }
   };
 
@@ -29,10 +31,10 @@ const Home = ({ navigation }) => {
 
   return (
     <ListingsWrapper>
-      {!loading && (
+      {!loading && !error && (
         <Listings
           data={data}
-          keyExtractor={({item}) => String(item.id)}
+          keyExtractor={({ item }) => String(item.id)}
           renderItem={({ item }) => (
             <ListingItem item={item} navigation={navigation} />
           )}
