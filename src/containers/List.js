@@ -11,17 +11,17 @@ const ListItemWrapper = styled.div`
   margin: 2% 5%;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-const List = ({ data, loading, match, history }) => {
+const List = ({ data, loading, error, match, history }) => {
   const items =
     data.items &&
     data.items.filter(item => item.listId === parseInt(match.params.id));
 
-  return !loading ? (
+  return !loading && !error ? (
     <>
       {history && (
         <SubHeader
@@ -34,12 +34,11 @@ const List = ({ data, loading, match, history }) => {
       </ListItemWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 
 export default withDataFetching({
   dataSource:
     'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items',
-  loadingMessage: 'Loading...',
 })(List);

@@ -28,13 +28,13 @@ const Title = styled.h3`
   flex-basis: 80%;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-const Lists = ({ data, loading, history }) =>
-  !loading ? (
+const Lists = ({ data, loading, error, history }) =>
+  !loading && !error ? (
     <>
       {history && <SubHeader title='Your Lists' />}
       <ListWrapper>
@@ -47,11 +47,9 @@ const Lists = ({ data, loading, history }) =>
       </ListWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 
 export default withDataFetching({
-  dataSource:
-    'https://github.com/PacktPublishing/React-Projects/lists',
-  loadingMessage: 'Loading...',
+  dataSource: 'https://github.com/PacktPublishing/React-Projects/lists',
 })(Lists);
