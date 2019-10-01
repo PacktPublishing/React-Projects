@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Hotels, { Loading, HotelItemsWrapper } from './Hotels';
+import Hotels, { Alert, HotelItemsWrapper } from './Hotels';
 import HotelItem, { Title } from './HotelItem';
 
 let useContextMock;
@@ -17,7 +17,8 @@ afterEach(() => {
 describe('the <Hotels /> component', () => {
   it('should handle the first mount', () => {
     const mockContext = {
-      loading: 'Loading...',
+      loading: true,
+      error: '',
       hotels: [],
       getHotelsRequest: jest.fn(),
     };
@@ -25,12 +26,13 @@ describe('the <Hotels /> component', () => {
     const wrapper = mount(<Hotels />);
 
     expect(mockContext.getHotelsRequest).toHaveBeenCalled();
-    expect(wrapper.find(Loading).text()).toBe(mockContext.loading);
+    expect(wrapper.find(Alert).text()).toBe('Loading...');
   });
 
   it('should render the list of hotels', () => {
     const mockContext = {
       loading: false,
+      error: '',
       hotels: [
         {
           id: 123,
