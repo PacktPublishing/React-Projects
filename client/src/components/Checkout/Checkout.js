@@ -2,6 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 
+const CheckoutWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 2% 5%;
+`;
+
 const Checkout = () => {
   return (
     <CheckoutWrapper>
@@ -11,12 +18,5 @@ const Checkout = () => {
     </CheckoutWrapper>
   );
 };
-
-const CheckoutWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 2% 5%;
-`;
 
 export default Checkout;

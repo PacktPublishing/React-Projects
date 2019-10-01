@@ -10,7 +10,7 @@ const SubHeaderWrapper = styled.div`
   background: cornflowerBlue;
 `;
 
-export const Title = styled.h2`
+const Title = styled.h2`
   text-align: center;
   flex-basis: 60%;
 
@@ -23,7 +23,7 @@ export const Title = styled.h2`
   }
 `;
 
-export const SubHeaderButton = styled(Button)`
+const SubHeaderButton = styled(Button)`
   margin: 10px 5%;
 `;
 

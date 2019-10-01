@@ -14,7 +14,7 @@ const ProductItemWrapper = styled.div`
   text-decoration: none;
 `;
 
-export const Title = styled.h3`
+const Title = styled.h3`
   margin-left: 2%;
 `;
 
