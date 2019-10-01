@@ -3,6 +3,18 @@ import { FlatList, View, Text } from 'react-native';
 import styled from 'styled-components/native';
 import ListingItem from '../Components/Listing/ListingItem';
 
+const ListingsWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Listings = styled(FlatList)`
+  width: 100%;
+  padding: 2%;
+`;
+
 const Home = ({ navigation }) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState('');
@@ -43,17 +55,5 @@ const Home = ({ navigation }) => {
     </ListingsWrapper>
   );
 };
-
-const ListingsWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Listings = styled(FlatList)`
-  width: 100%;
-  padding: 2%;
-`;
 
 export default Home;
