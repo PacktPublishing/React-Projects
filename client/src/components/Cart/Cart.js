@@ -8,16 +8,31 @@ import Button from '../Button/Button';
 import Totals from './Totals';
 import { GET_CART } from '../../constants';
 
+const CartWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 2% 5%;
+`;
+
+const CartItemsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+const Alert = styled.span`
+  width: 100%;
+  text-align: center;
+`;
+
 const Cart = ({ history }) => (
   <>
     {history && <SubHeader goBack={() => history.goBack()} title='Cart' />}
     <Query query={GET_CART}>
       {({ loading, error, data }) => {
-        if (loading) {
-          return <Loading>"Loading..."</Loading>;
-        }
-        if (error) {
-          return <Loading>{error.message}</Loading>;
+        if (loading || error) {
+          return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
         }
         return (
           <CartWrapper>
@@ -39,23 +54,5 @@ const Cart = ({ history }) => (
     </Query>
   </>
 );
-
-const CartWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 2% 5%;
-`;
-
-const CartItemsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-`;
-
-const Loading = styled.span`
-  width: 100%;
-  text-align: center;
-`;
 
 export default Cart;

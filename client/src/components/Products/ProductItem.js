@@ -2,14 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import AddToCartButton from '../Cart/AddToCartButton';
 
-const ProductItem = ({ data }) => (
-  <ProductItemWrapper>
-    <Thumbnail src={data.thumbnail} width={200} />
-    <Title>{data.title}</Title>
-    <AddToCartButton productId={data.id} />
-  </ProductItemWrapper>
-);
-
 const ProductItemWrapper = styled.div`
   display: flex;
   text-align: left;
@@ -30,5 +22,13 @@ const Title = styled.h3`
 const Thumbnail = styled.img`
   border-radius: 5px;
 `;
+
+const ProductItem = ({ data }) => (
+  <ProductItemWrapper>
+    <Thumbnail src={data.thumbnail} width={200} />
+    <Title>{data.title}</Title>
+    <AddToCartButton productId={data.id} />
+  </ProductItemWrapper>
+);
 
 export default ProductItem;

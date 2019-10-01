@@ -3,16 +3,6 @@ import styled from 'styled-components';
 import Button from '../Button/Button';
 import CartButton from '../Cart/CartButton';
 
-const SubHeader = ({ goBack, title, goToCart = false }) => (
-  <SubHeaderWrapper>
-    {goBack && (
-      <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton>
-    )}
-    <Title>{title}</Title>
-    {goToCart && <CartButton onClick={goToCart} />}
-  </SubHeaderWrapper>
-);
-
 const SubHeaderWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -37,5 +27,15 @@ const Title = styled.h2`
 const SubHeaderButton = styled(Button)`
   margin: 10px 5%;
 `;
+
+const SubHeader = ({ goBack, title, goToCart = false }) => (
+  <SubHeaderWrapper>
+    {goBack && (
+      <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton>
+    )}
+    <Title>{title}</Title>
+    {goToCart && <CartButton onClick={goToCart} />}
+  </SubHeaderWrapper>
+);
 
 export default SubHeader;

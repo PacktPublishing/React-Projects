@@ -6,6 +6,19 @@ import ProductItem from './ProductItem';
 import Filters from './Filters';
 import { GET_PRODUCTS, GET_LIMIT } from '../../constants';
 
+const ProductItemsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 2% 5%;
+`;
+
+const Alert = styled.span`
+  width: 100%;
+  text-align: center;
+`;
+
 const Products = ({ history }) => (
   <>
     {history && (
@@ -23,11 +36,8 @@ const Products = ({ history }) => (
             variables={{ limit: parseInt(data.limit) }}
           >
             {({ loading, error, data }) => {
-              if (loading) {
-                return <Loading>"Loading..."</Loading>;
-              }
-              if (error) {
-                return <Loading>{error.message}</Loading>;
+              if (loading || error) {
+                return <Alert>{loading ? 'Loading...' : error.message}</Alert>;
               }
               return (
                 <ProductItemsWrapper>
@@ -44,18 +54,5 @@ const Products = ({ history }) => (
     </Query>
   </>
 );
-
-const ProductItemsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: 2% 5%;
-`;
-
-const Loading = styled.span`
-  width: 100%;
-  text-align: center;
-`;
 
 export default Products;

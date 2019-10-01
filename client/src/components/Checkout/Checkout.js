@@ -4,6 +4,13 @@ import { useMutation } from 'react-apollo';
 import Button from '../Button/Button';
 import { COMPLETE_CART } from '../../constants';
 
+const CheckoutWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 2% 5%;
+`;
+
 const Checkout = () => {
   const [completeCart, { data }] = useMutation(COMPLETE_CART);
 
@@ -22,12 +29,5 @@ const Checkout = () => {
     </CheckoutWrapper>
   );
 };
-
-const CheckoutWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 2% 5%;
-`;
 
 export default Checkout;
