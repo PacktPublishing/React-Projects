@@ -9,7 +9,7 @@ const FeedWrapper = styled.div`
   margin: 5%;
 `;
 
-const Loading = styled.div`
+const Alert = styled.div`
   text-align: center;
 `;
 
@@ -20,7 +20,8 @@ class Feed extends Component {
     super();
     this.state = {
       data: [],
-      loading: 'Loading...',
+      loading: true,
+      error: '',
     };
   }
 
@@ -39,16 +40,17 @@ class Feed extends Component {
       }
     } catch (error) {
       this.setState({
-        loading: error.message,
+        loading: false,
+        error: error.message,
       });
     }
   }
 
   render() {
-    const { data, loading } = this.state;
+    const { data, loading, error } = this.state;
 
-    if (loading) {
-      return <Loading>{loading}</Loading>;
+    if (loading || error) {
+      return <Alert>{loading ? 'Loading...' : error}</Alert>;
     }
 
     return (
