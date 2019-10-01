@@ -51,7 +51,7 @@ class Board extends React.Component {
     });
   };
   render() {
-    const { lanes, loading } = this.props;
+    const { lanes, loading, error } = this.props;
 
     return (
       <BoardWrapper>
@@ -61,6 +61,7 @@ class Board extends React.Component {
             laneId={lane.id}
             title={lane.title}
             loading={loading}
+            error={error}
             onDragStart={this.onDragStart}
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}

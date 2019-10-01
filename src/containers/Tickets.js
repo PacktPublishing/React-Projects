@@ -14,13 +14,13 @@ const TicketsWrapper = styled.div`
   }
 `;
 
-const Loading = styled.div`
+const Alert = styled.div`
   text-align: center;
 `;
 
-const Tickets = ({ loading, data }) => (
+const Tickets = ({ loading, error, data }) => (
   <TicketsWrapper>
-    {loading && <Loading>{loading}</Loading>}
+    {(loading || error) && <Alert>{loading ? 'Loading...' : error}</Alert>}
     {data.map(ticket => (
       <Ticket key={ticket.id} marginRight ticket={ticket} />
     ))}

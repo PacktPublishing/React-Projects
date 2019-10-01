@@ -37,11 +37,9 @@ class App extends Component {
           <Board
             lanes={lanes}
             dataSource={'../../assets/data.json'}
-            loadingMessage='Loading...'
           />
           <Tickets
             dataSource={'../../assets/data.json'}
-            loadingMessage='Loading...'
           />
         </AppWrapper>
       </>
