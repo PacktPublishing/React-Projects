@@ -7,6 +7,7 @@ const initialValue = {
   hotels: [],
   hotel: {},
   loading: true,
+  error: '',
 };
 
 const reducer = (value, action) => {
@@ -21,7 +22,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         hotels: [],
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     case 'GET_HOTEL_SUCCESS':
       return {
@@ -33,7 +35,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         hotel: {},
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     default:
       return value;

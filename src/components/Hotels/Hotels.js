@@ -17,18 +17,20 @@ const HotelLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Loading = styled.span`
+const Alert = styled.span`
   width: 100%;
   text-align: center;
 `;
 
-const Hotels = ({ match, history }) => {
-  const { hotels, loading, getHotelsRequest } = React.useContext(HotelsContext);
+const Hotels = ({ history }) => {
+  const { hotels, loading, error, getHotelsRequest } = React.useContext(
+    HotelsContext,
+  );
   React.useEffect(() => {
     getHotelsRequest();
   }, []);
 
-  return !loading ? (
+  return !loading && !error ? (
     <>
       {history && <SubHeader title='Your Lists' />}
       <HotelItemsWrapper>
@@ -41,7 +43,7 @@ const Hotels = ({ match, history }) => {
       </HotelItemsWrapper>
     </>
   ) : (
-    <Loading>{loading}</Loading>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 

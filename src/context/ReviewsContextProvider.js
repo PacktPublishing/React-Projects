@@ -6,6 +6,7 @@ export const ReviewsContext = React.createContext();
 const initialValue = {
   reviews: [],
   loading: true,
+  error: '',
 };
 
 const reducer = (value, action) => {
@@ -20,7 +21,8 @@ const reducer = (value, action) => {
       return {
         ...value,
         reviews: [],
-        loading: action.payload,
+        loading: false,
+        error: action.payload,
       };
     case 'ADD_REVIEW_SUCCESS':
       console.log(action);
@@ -32,7 +34,8 @@ const reducer = (value, action) => {
     case 'ADD_REVIEW_ERROR':
       return {
         ...value,
-        loading: 'Something went wrong...',
+        loading: false,
+        error: 'Something went wrong...',
       };
     default:
       return value;
