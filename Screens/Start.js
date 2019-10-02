@@ -2,14 +2,6 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const Start = ({ navigation }) => (
-  <StartWrapper>
-    <StartButton onPress={() => navigation.navigate('Game')}>
-      <StartButtonText>Start Game</StartButtonText>
-    </StartButton>
-  </StartWrapper>
-);
-
 const StartWrapper = styled(View)`
   flex: 1;
   align-items: center;
@@ -30,5 +22,13 @@ const StartButtonText = styled(Text)`
   color: white;
   font-size: 48px;
 `;
+
+const Start = ({ navigation }) => (
+  <StartWrapper>
+    <StartButton onPress={() => navigation.navigate('Game')}>
+      <StartButtonText>Start Game</StartButtonText>
+    </StartButton>
+  </StartWrapper>
+);
 
 export default Start;

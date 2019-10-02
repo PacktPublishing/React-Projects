@@ -3,24 +3,6 @@ import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { useAppContext } from '../context/AppContext';
 
-const LeaderBoard = () => {
-  const { scores } = useAppContext();
-
-  return (
-    <LeaderBoardWrapper>
-      <LeaderBoardTitle>Scores</LeaderBoardTitle>
-      <PlayerScore>
-        <PlayerScoreLabel>Player 1</PlayerScoreLabel>
-        <PlayerScoreNumber>{scores.player1}</PlayerScoreNumber>
-      </PlayerScore>
-      <PlayerScore>
-        <PlayerScoreLabel>Player 2</PlayerScoreLabel>
-        <PlayerScoreNumber>{scores.player2}</PlayerScoreNumber>
-      </PlayerScore>
-    </LeaderBoardWrapper>
-  );
-};
-
 const LeaderBoardWrapper = styled(View)`
   flex: 1
   align-items: stretch;
@@ -50,5 +32,23 @@ const PlayerScoreNumber = styled(Text)`
   font-size: 48px;
   font-weight: bold;
 `;
+
+const LeaderBoard = () => {
+  const { scores } = useAppContext();
+
+  return (
+    <LeaderBoardWrapper>
+      <LeaderBoardTitle>Scores</LeaderBoardTitle>
+      <PlayerScore>
+        <PlayerScoreLabel>Player 1</PlayerScoreLabel>
+        <PlayerScoreNumber>{scores.player1}</PlayerScoreNumber>
+      </PlayerScore>
+      <PlayerScore>
+        <PlayerScoreLabel>Player 2</PlayerScoreLabel>
+        <PlayerScoreNumber>{scores.player2}</PlayerScoreNumber>
+      </PlayerScore>
+    </LeaderBoardWrapper>
+  );
+};
 
 export default LeaderBoard;
