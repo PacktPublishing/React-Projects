@@ -1,10 +1,6 @@
-import React from "react";
-import { TextInput as TextInputComponent } from "react-native";
-import styled from "styled-components/native";
-
-const TextInput = ({ onChangeText, ...props }) => (
-  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
-);
+import React from 'react';
+import { TextInput as TextInputComponent } from 'react-native';
+import styled from 'styled-components/native';
 
 const StyledTextInput = styled(TextInputComponent)`
   width: ${({ width }) => `${width}%`}
@@ -19,9 +15,13 @@ const StyledTextInput = styled(TextInputComponent)`
   margin-bottom: ${({ marginBottom }) => `${marginBottom}px`}
 `;
 
+const TextInput = ({ onChangeText, ...props }) => (
+  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
+);
+
 TextInput.defaultProps = {
   width: 90,
-  marginBottom: 10
+  marginBottom: 10,
 };
 
 export default TextInput;

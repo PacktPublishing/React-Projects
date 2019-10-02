@@ -3,15 +3,6 @@ import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import Button from '../Components/Button/Button';
 
-const AddPost = ({ navigation }) => {
-  return (
-    <AddPostWrapper>
-      <AddPostText>Add Post</AddPostText>
-      <Button onPress={() => navigation.navigate('Main')} title='Cancel' />
-    </AddPostWrapper>
-  );
-};
-
 const AddPostWrapper = styled(View)`
   flex: 1;
   background-color: #fff;
@@ -24,5 +15,14 @@ const AddPostText = styled(Text)`
   font-size: 20px;
   color: black;
 `;
+
+const AddPost = ({ navigation }) => {
+  return (
+    <AddPostWrapper>
+      <AddPostText>Add Post</AddPostText>
+      <Button onPress={() => navigation.navigate('Main')} title='Cancel' />
+    </AddPostWrapper>
+  );
+};
 
 export default AddPost;

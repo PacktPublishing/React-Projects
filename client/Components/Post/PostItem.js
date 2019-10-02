@@ -4,15 +4,6 @@ import styled from 'styled-components/native';
 import PostContent from './PostContent';
 import PostCount from './PostCount';
 
-const PostItem = ({ item, navigation }) => (
-  <PostItemWrapper
-    onPress={() => navigation.navigate('Post', { userName: item.userName })}
-  >
-    <PostContent item={item} />
-    <PostCount stars={item.totalStars} comments={item.totalComments} />
-  </PostItemWrapper>
-);
-
 const PostItemWrapper = styled(TouchableOpacity)`
   display: flex;
   align-items: center;
@@ -42,6 +33,15 @@ const PostText = styled(Text)`
   max-width: 95%;
   font-size: 14px;
 `;
+
+const PostItem = ({ item, navigation }) => (
+  <PostItemWrapper
+    onPress={() => navigation.navigate('Post', { userName: item.userName })}
+  >
+    <PostContent item={item} />
+    <PostCount stars={item.totalStars} comments={item.totalComments} />
+  </PostItemWrapper>
+);
 
 PostItem.defaultProps = {
   navigation: false,

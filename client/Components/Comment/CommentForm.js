@@ -5,6 +5,16 @@ import { Ionicons } from '@expo/vector-icons';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 
+const CommentFormWrapper = styled(View)`
+  width: 100%;
+  background-color: #ccc;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const CommentForm = () => {
   const [comment, setComment] = React.useState('');
 
@@ -34,15 +44,5 @@ const CommentForm = () => {
     </CommentFormWrapper>
   );
 };
-
-const CommentFormWrapper = styled(View)`
-  width: 100%;
-  background-color: #ccc;
-  padding: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-`;
 
 export default CommentForm;

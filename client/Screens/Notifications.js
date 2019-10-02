@@ -5,6 +5,26 @@ import Notification from '../Components/Notification/Notification';
 import { GET_NOTIFICATIONS } from '../constants';
 import { useMutation } from '@apollo/react-hooks';
 
+const NotificationsWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+
+const NotificationsBody = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const NotificationsText = styled(Text)`
+  font-size: 20px;
+  color: black;
+`;
+
 const Notifications = () => {
   const [{ loading, data }] = useMutation(GET_NOTIFICATIONS);
 
@@ -28,29 +48,5 @@ const Notifications = () => {
     </NotificationsWrapper>
   );
 };
-
-const NotificationsWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-
-const NotificationsBody = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
-
-const NotificationsText = styled(Text)`
-  font-size: 20px;
-  color: black;
-`;
-
-// Notifications.navigationOptions = ({ navigation }) => ({
-//   tabBarIcon: <></>
-// });
 
 export default Notifications;
