@@ -3,26 +3,6 @@ import { Platform, Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
-const ConversationItem = ({ item, navigation }) => (
-  <ConversationItemWrapper
-    onPress={() =>
-      navigation.navigate('Conversation', { userName: item.userName })
-    }
-  >
-    <ThumbnailWrapper>
-      <Ionicons
-        name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-contact`}
-        size={60}
-        color='green'
-      />
-    </ThumbnailWrapper>
-    <View>
-      <UserName>{item.userName}</UserName>
-      <Message>{item.messages[0].text}</Message>
-    </View>
-  </ConversationItemWrapper>
-);
-
 const ConversationItemWrapper = styled(TouchableOpacity)`
   display: flex;
   flex-direction: row;
@@ -45,5 +25,25 @@ const Message = styled(Text)`
   max-width: 95%;
   font-size: 14px;
 `;
+
+const ConversationItem = ({ item, navigation }) => (
+  <ConversationItemWrapper
+    onPress={() =>
+      navigation.navigate('Conversation', { userName: item.userName })
+    }
+  >
+    <ThumbnailWrapper>
+      <Ionicons
+        name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-contact`}
+        size={60}
+        color='green'
+      />
+    </ThumbnailWrapper>
+    <View>
+      <UserName>{item.userName}</UserName>
+      <Message>{item.messages[0].text}</Message>
+    </View>
+  </ConversationItemWrapper>
+);
 
 export default ConversationItem;

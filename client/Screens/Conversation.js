@@ -3,19 +3,6 @@ import { Dimensions, Text, FlatList, ScrollView, View } from 'react-native';
 import styled from 'styled-components/native';
 import ConversationActions from '../Components/Conversation/ConversationActions';
 
-const Conversation = ({ navigation }) => {
-  const userName = navigation.getParam('userName', '');
-
-  return (
-    <ConversationWrapper>
-      <ConversationBody>
-        <ConversationBodyText>Loading...</ConversationBodyText>
-      </ConversationBody>
-      <ConversationActions userName={userName} />
-    </ConversationWrapper>
-  );
-};
-
 const ConversationWrapper = styled(View)`
   flex: 1;
   background-color: #fff;
@@ -39,5 +26,18 @@ const ConversationBodyText = styled(Text)`
 const MessagesList = styled(FlatList)`
   width: 100%;
 `;
+
+const Conversation = ({ navigation }) => {
+  const userName = navigation.getParam('userName', '');
+
+  return (
+    <ConversationWrapper>
+      <ConversationBody>
+        <ConversationBodyText>Loading...</ConversationBodyText>
+      </ConversationBody>
+      <ConversationActions userName={userName} />
+    </ConversationWrapper>
+  );
+};
 
 export default Conversation;

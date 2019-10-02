@@ -5,6 +5,16 @@ import { Ionicons } from '@expo/vector-icons';
 import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 
+const ConversationActionsWrapper = styled(View)`
+  width: 100%;
+  background-color: #ccc;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const ConversationActions = ({ userName }) => {
   const [message, setMessage] = React.useState('');
 
@@ -34,15 +44,5 @@ const ConversationActions = ({ userName }) => {
     </ConversationActionsWrapper>
   );
 };
-
-const ConversationActionsWrapper = styled(View)`
-  width: 100%;
-  background-color: #ccc;
-  padding: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-`;
 
 export default ConversationActions;
