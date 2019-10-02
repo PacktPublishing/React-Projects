@@ -2,10 +2,6 @@ import React from 'react';
 import { TextInput as TextInputComponent } from 'react-native';
 import styled from 'styled-components/native';
 
-const TextInput = ({ onChangeText, ...props }) => (
-  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
-);
-
 const StyledTextInput = styled(TextInputComponent)`
   width: ${({ width }) => `${width}%`}
   padding: 18px;
@@ -18,6 +14,10 @@ const StyledTextInput = styled(TextInputComponent)`
   font-size: 20px;
   margin-bottom: ${({ marginBottom }) => `${marginBottom}px`}
 `;
+
+const TextInput = ({ onChangeText, ...props }) => (
+  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
+);
 
 TextInput.defaultProps = {
   width: 90,

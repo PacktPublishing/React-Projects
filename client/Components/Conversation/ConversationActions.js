@@ -7,6 +7,16 @@ import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 import { SEND_MESSAGE } from '../../constants';
 
+const ConversationActionsWrapper = styled(KeyboardAvoidingView)`
+  width: 100%;
+  background-color: #ccc;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const ConversationActions = ({ userName }) => {
   const [sendMessage] = useMutation(SEND_MESSAGE);
   const [message, setMessage] = React.useState('');
@@ -43,15 +53,5 @@ const ConversationActions = ({ userName }) => {
     </ConversationActionsWrapper>
   );
 };
-
-const ConversationActionsWrapper = styled(KeyboardAvoidingView)`
-  width: 100%;
-  background-color: #ccc;
-  padding: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-`;
 
 export default ConversationActions;

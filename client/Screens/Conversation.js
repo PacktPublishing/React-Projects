@@ -6,6 +6,19 @@ import { GET_CONVERSATION } from '../constants';
 import ConversationActions from '../Components/Conversation/ConversationActions';
 import ConversationBody from '../Components/Conversation/ConversationBody';
 
+const ConversationWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+`;
+
+const ConversationBodyText = styled(Text)`
+  font-size: 20px;
+  color: black;
+`;
+
 const Conversation = ({ navigation }) => {
   const userName = navigation.getParam('userName', '');
 
@@ -31,18 +44,5 @@ const Conversation = ({ navigation }) => {
     </ConversationWrapper>
   );
 };
-
-const ConversationWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-`;
-
-const ConversationBodyText = styled(Text)`
-  font-size: 20px;
-  color: black;
-`;
 
 export default Conversation;

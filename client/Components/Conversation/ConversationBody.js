@@ -4,6 +4,17 @@ import { Dimensions, ScrollView, FlatList } from 'react-native';
 import Message from '../Message/Message';
 import { MESSAGE_ADDED } from '../../constants';
 
+const ConversationBodyWrapper = styled(ScrollView)`
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  height: ${Dimensions.get('window').height * 0.6};
+`;
+
+const MessagesList = styled(FlatList)`
+  width: 100%;
+`;
+
 const ConversationBody = ({ subscribeToMore, userName, messages }) => {
   React.useEffect(() => {
     subscribeToMore({
@@ -39,16 +50,5 @@ const ConversationBody = ({ subscribeToMore, userName, messages }) => {
     </ConversationBodyWrapper>
   );
 };
-
-const ConversationBodyWrapper = styled(ScrollView)`
-  width: 100%;
-  padding: 2%;
-  display: flex;
-  height: ${Dimensions.get('window').height * 0.6};
-`;
-
-const MessagesList = styled(FlatList)`
-  width: 100%;
-`;
 
 export default ConversationBody;

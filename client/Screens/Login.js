@@ -6,6 +6,13 @@ import Button from '../Components/Button/Button';
 import TextInput from '../Components/TextInput/TextInput';
 import { LOGIN_USER } from '../constants';
 
+const LoginWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Login = ({ navigation }) => {
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -52,12 +59,5 @@ const Login = ({ navigation }) => {
     </Mutation>
   );
 };
-
-const LoginWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default Login;
