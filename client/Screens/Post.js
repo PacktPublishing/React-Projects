@@ -8,6 +8,24 @@ import PostContent from '../Components/Post/PostContent';
 import { GET_POST } from '../constants';
 import Comment from '../Components/Comment/Comment';
 
+const PostWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+
+const PostBody = styled(ScrollView)`
+  width: 100%;
+  display: flex;
+`;
+
+const PostText = styled(Text)`
+  font-size: 20px;
+  color: black;
+`;
+
 const Post = ({ navigation }) => {
   const userName = navigation.getParam('userName', '');
   const { loading, data } = useQuery(GET_POST, { variables: { userName } });
@@ -37,23 +55,5 @@ const Post = ({ navigation }) => {
     </PostWrapper>
   );
 };
-
-const PostWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-
-const PostBody = styled(ScrollView)`
-  width: 100%;
-  display: flex;
-`;
-
-const PostText = styled(Text)`
-  font-size: 20px;
-  color: black;
-`;
 
 export default Post;

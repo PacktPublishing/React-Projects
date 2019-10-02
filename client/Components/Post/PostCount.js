@@ -3,6 +3,35 @@ import { Platform, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
+const PostCountWrapper = styled(View)`
+  border: 1px solid #ccc;
+  border-left-width: 0;
+  border-right-width: 0;
+  width: 100%
+  display: flex;
+  margin-bottom: ${({ marginBottom }) => `${marginBottom}%`};
+`;
+
+const PostCountDetails = styled(View)`
+  width: 95%;
+  margin: 2.5%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const CountWrapper = styled(View)`
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+`;
+
+const CountText = styled(Text)`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: 2%;
+`;
+
 const PostCount = ({ stars, comments, marginBottom }) => (
   <PostCountWrapper marginBottom={marginBottom}>
     <PostCountDetails>
@@ -32,35 +61,6 @@ const PostCount = ({ stars, comments, marginBottom }) => (
     </PostCountDetails>
   </PostCountWrapper>
 );
-
-const PostCountWrapper = styled(View)`
-  border: 1px solid #ccc;
-  border-left-width: 0;
-  border-right-width: 0;
-  width: 100%
-  display: flex;
-  margin-bottom: ${({ marginBottom }) => `${marginBottom}%`};
-`;
-
-const PostCountDetails = styled(View)`
-  width: 95%;
-  margin: 2.5%;
-  display: flex;
-  flex-direction: row;
-`;
-
-const CountWrapper = styled(View)`
-  display: flex;
-  flex-direction: row;
-  margin-right: 2%;
-`;
-
-const CountText = styled(Text)`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 22px;
-  margin-left: 2%;
-`;
 
 PostCount.defaultProps = {
   comments: false,

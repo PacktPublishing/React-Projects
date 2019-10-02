@@ -2,15 +2,6 @@ import React from 'react';
 import { Dimensions, Image, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
-const PostContent = ({ item }) => (
-  <PostContentWrapper>
-    <PostContentThumbnail source={{ uri: item.image }} />
-    <PostContentDetails>
-      <UserName>{item.userName}</UserName>
-    </PostContentDetails>
-  </PostContentWrapper>
-);
-
 const PostContentWrapper = styled(View)``;
 
 const PostContentThumbnail = styled(Image)`
@@ -28,6 +19,15 @@ const UserName = styled(Text)`
   font-weight: bold;
   font-size: 16px;
 `;
+
+const PostContent = ({ item }) => (
+  <PostContentWrapper>
+    <PostContentThumbnail source={{ uri: item.image }} />
+    <PostContentDetails>
+      <UserName>{item.userName}</UserName>
+    </PostContentDetails>
+  </PostContentWrapper>
+);
 
 PostContent.defaultProps = {
   navigation: false,

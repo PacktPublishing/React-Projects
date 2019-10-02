@@ -13,6 +13,22 @@ import { GET_POSTS, STORE_EXPO_TOKEN } from '../constants';
 import PostItem from '../Components/Post/PostItem';
 import registerForPushNotificationsAsync from '../utils/registerForPushNotificationsAsync';
 
+const PostsWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PostsList = styled(FlatList)`
+  width: 100%;
+`;
+
+const PostsText = styled(Text)`
+  font-size: 20px;
+  color: black;
+`;
+
 const Posts = ({ navigation }) => {
   const { loading, data, refetch } = useQuery(GET_POSTS, { pollInterval: 0 });
   const [storeExpoToken] = useMutation(STORE_EXPO_TOKEN);
@@ -56,22 +72,6 @@ const Posts = ({ navigation }) => {
     </PostsWrapper>
   );
 };
-
-const PostsWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
-
-const PostsList = styled(FlatList)`
-  width: 100%;
-`;
-
-const PostsText = styled(Text)`
-  font-size: 20px;
-  color: black;
-`;
 
 Posts.navigationOptions = ({ navigation }) => ({
   headerRight: (

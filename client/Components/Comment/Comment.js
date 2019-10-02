@@ -1,13 +1,6 @@
-import React from "react";
-import { View, Text } from "react-native";
-import styled from "styled-components/native";
-
-const Comment = ({ text, userName }) => (
-  <CommentWrapper>
-    <UserName>{userName}</UserName>
-    <CommentText>{text}</CommentText>
-  </CommentWrapper>
-);
+import React from 'react';
+import { View, Text } from 'react-native';
+import styled from 'styled-components/native';
 
 const CommentWrapper = styled(View)`
   border: 1px solid #ccc;
@@ -27,5 +20,12 @@ const UserName = styled(Text)`
 const CommentText = styled(Text)`
   font-size: 14px;
 `;
+
+const Comment = ({ text, userName }) => (
+  <CommentWrapper>
+    <UserName>{userName}</UserName>
+    <CommentText>{text}</CommentText>
+  </CommentWrapper>
+);
 
 export default Comment;

@@ -15,6 +15,29 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_POST, GET_POSTS } from '../constants';
 import Button from '../Components/Button/Button';
 
+const AddPostWrapper = styled(View)`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  margin: 60px 0;
+`;
+
+const AddPostText = styled(Text)`
+  font-size: 20px;
+  color: black;
+`;
+
+const UploadImage = styled(TouchableOpacity)`
+  width: ${Dimensions.get('window').width * 0.98};
+  height: ${Dimensions.get('window').width * 0.98};
+  margin: ${Dimensions.get('window').width * 0.01}px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const AddPost = ({ navigation, showActionSheetWithOptions }) => {
   const [addPost] = useMutation(ADD_POST, {
     refetchQueries: [{ query: GET_POSTS }],
@@ -101,31 +124,6 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
     </AddPostWrapper>
   );
 };
-
-const AddPostWrapper = styled(View)`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: space-between;
-  margin: 60px 0;
-`;
-
-const AddPostText = styled(Text)`
-  font-size: 20px;
-  color: black;
-`;
-
-const UploadImage = styled(TouchableOpacity)`
-  width: ${Dimensions.get('window').width * 0.98};
-  height: ${Dimensions.get('window').width * 0.98};
-  margin: ${Dimensions.get('window').width * 0.01}px;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-//export default AddPost;
 
 const ConnectedApp = connectActionSheet(AddPost);
 

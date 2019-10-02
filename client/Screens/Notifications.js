@@ -5,29 +5,6 @@ import { useQuery } from '@apollo/react-hooks';
 import Notification from '../Components/Notification/Notification';
 import { GET_NOTIFICATIONS } from '../constants';
 
-const Notifications = () => {
-  const { loading, data } = useQuery(GET_NOTIFICATIONS);
-  return (
-    <NotificationsWrapper>
-      {loading || !data.notifications.length ? (
-        <NotificationsBody>
-          <NotificationsText>
-            {loading ? 'Loading...' : 'Empty'}
-          </NotificationsText>
-        </NotificationsBody>
-      ) : (
-        <FlatList
-          data={data.notifications}
-          keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => (
-            <Notification title={item.title} body={item.body} />
-          )}
-        />
-      )}
-    </NotificationsWrapper>
-  );
-};
-
 const NotificationsWrapper = styled(View)`
   flex: 1;
   background-color: #fff;
@@ -48,8 +25,28 @@ const NotificationsText = styled(Text)`
   color: black;
 `;
 
-// Notifications.navigationOptions = ({ navigation }) => ({
-//   tabBarIcon: <></>
-// });
+const Notifications = () => {
+  const { loading, data } = useQuery(GET_NOTIFICATIONS);
+
+  return (
+    <NotificationsWrapper>
+      {loading || !data.notifications.length ? (
+        <NotificationsBody>
+          <NotificationsText>
+            {loading ? 'Loading...' : 'Empty'}
+          </NotificationsText>
+        </NotificationsBody>
+      ) : (
+        <FlatList
+          data={data.notifications}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => (
+            <Notification title={item.title} body={item.body} />
+          )}
+        />
+      )}
+    </NotificationsWrapper>
+  );
+};
 
 export default Notifications;
