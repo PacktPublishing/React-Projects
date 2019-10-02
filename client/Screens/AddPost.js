@@ -72,7 +72,7 @@ const AddPost = ({ navigation, showActionSheetWithOptions }) => {
       },
       buttonIndex => {
         if (buttonIndex === 0 || buttonIndex === 1) {
-          addImageAsync(buttonIndex === 0 ? true : false);
+          addImageAsync(buttonIndex === 0);
         }
       },
     );
