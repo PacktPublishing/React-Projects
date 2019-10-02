@@ -3,21 +3,6 @@ import { View, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Slot from '../Slot/Slot';
 
-const Board = ({ slots, winner, setSlot }) => (
-  <BoardWrapper>
-    <SlotsWrapper>
-      {slots.map((slot, index) => (
-        <Slot
-          key={index}
-          index={index}
-          handleOnPress={!winner ? setSlot : () => {}}
-          filled={slot.filled}
-        />
-      ))}
-    </SlotsWrapper>
-  </BoardWrapper>
-);
-
 const BoardWrapper = styled(View)`
   display: flex;
   flex: 1;
@@ -34,5 +19,20 @@ const SlotsWrapper = styled(View)`
   height: ${Dimensions.get('window').width * 0.9};
   width: ${Dimensions.get('window').width * 0.9};
 `;
+
+const Board = ({ slots, winner, setSlot }) => (
+  <BoardWrapper>
+    <SlotsWrapper>
+      {slots.map((slot, index) => (
+        <Slot
+          key={index}
+          index={index}
+          handleOnPress={!winner ? setSlot : () => {}}
+          filled={slot.filled}
+        />
+      ))}
+    </SlotsWrapper>
+  </BoardWrapper>
+);
 
 export default Board;

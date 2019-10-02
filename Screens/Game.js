@@ -34,6 +34,12 @@ const reducer = (state, action) => {
   }
 };
 
+const GameWrapper = styled(View)`
+  flex: 1
+  align-items: stretch;
+  margin: 60px 0;
+`;
+
 const Game = ({ navigation, initialState }) => {
   const { setPlayerWins } = React.useContext(AppContext);
   const [state, dispatch] = React.useReducer(reducer, initialState, init);
@@ -81,11 +87,5 @@ const Game = ({ navigation, initialState }) => {
     </GameWrapper>
   );
 };
-
-const GameWrapper = styled(View)`
-  flex: 1
-  align-items: stretch;
-  margin: 60px 0;
-`;
 
 export default Game;
