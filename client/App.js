@@ -10,12 +10,15 @@ import { getMainDefinition } from 'apollo-utilities';
 import { ApolloProvider } from 'react-apollo';
 import AppContainer from './AppContainer';
 
+const LOCALTUNNEL_URL = '';
+const LOCALTUNNEL_URL_WS = '';
+
 const httpLink = new HttpLink({
-  uri: '[LOCALTUNNEL_URL]',
+  uri: LOCALTUNNEL_URL,
 });
 
 const wsLink = new WebSocketLink({
-  uri: '[LOCALTUNNEL_URL_WS]',
+  uri: LOCALTUNNEL_URL_WS,
   options: {
     reconnect: true,
   },
