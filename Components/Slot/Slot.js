@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 const SlotWrapper = styled(TouchableOpacity)`

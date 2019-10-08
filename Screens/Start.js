@@ -15,7 +15,7 @@ const StartButton = styled(TouchableOpacity)`
   align-items: center;
   justify-content: space-around;
   border-radius: 150;
-  backgroundcolor: purple;
+  background-color: purple;
 `;
 
 const StartButtonText = styled(Text)`
