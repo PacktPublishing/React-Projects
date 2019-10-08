@@ -15,13 +15,13 @@ const StyledTextInput = styled(TextInputComponent)`
   margin-bottom: ${({ marginBottom }) => `${marginBottom}px`}
 `;
 
+const TextInput = ({ onChangeText, ...props }) => (
+  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
+);
+
 TextInput.defaultProps = {
   width: 90,
   marginBottom: 10,
 };
-
-const TextInput = ({ onChangeText, ...props }) => (
-  <StyledTextInput onChangeText={text => onChangeText(text)} {...props} />
-);
 
 export default TextInput;
