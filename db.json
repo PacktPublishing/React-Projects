@@ -1,0 +1,26 @@
+{
+  "items": [
+    { "id": 1, "listId": 1, "title": "Washing pods", "quantity": 1, "price": 6.99 },
+    { "id": 2, "listId": 1, "title": "Rice", "quantity": 1, "price": 0.99 }
+  ],
+  "lists": [
+    { "id": 1, "title": "Daily groceries"},
+    { "id": 2, "title": "Birthday youngest child" }
+  ],
+  "reviews": [
+    { "id": 1, "hotelId": 1, "title": "Best holiday ever", "description": "Donec a nisi in mi pellentesque placerat vel eu leo. Nulla facilisi. Duis dui nulla, ornare sed efficitur vitae, aliquam vel tortor. Nunc porta varius ex. Donec id porta lacus, ac facilisis nulla. Proin sed felis nec tellus dictum commodo nec quis lorem. Nam ultrices, risus ut maximus ullamcorper, elit tellus tincidunt tortor, eu euismod turpis ipsum et leo.", "rating": 5 },
+    { "id": 2, "hotelId": 1, "title": "Very clean", "description": "Duis blandit, dolor sed posuere sodales, diam lorem tempor libero, at vestibulum turpis nisl porttitor enim. Cras accumsan felis orci, a sagittis lectus porta ut.", "rating": 4 }
+  ],
+  "hotels": [
+    { "id": 1, "title": "Beachfront Hotel (***)", "thumbnail": "assets/beachfront-hotel.jpg" },
+    { "id": 2, "title": "Forest Apartments (**)", "thumbnail": "assets/forest-apartments.jpg" }
+  ],
+  "listings": [
+    { "id": 1, "title": "Canalside house", "thumbnail": "https://picsum.photos/id/164/400/400", "price": "$350,000" },
+    { "id": 2, "title": "Old center townhouse", "thumbnail": "https://picsum.photos/id/405/400/400", "price": "$800,000" },
+    { "id": 3, "title": "Centrally located appartment", "thumbnail": "https://picsum.photos/id/1065/400/400", "price": "$280,000" },
+    { "id": 4, "title": "Downtown apartment", "thumbnail": "https://picsum.photos/id/1076/400/400", "price": "$1,200,000" },
+    { "id": 5, "title": "Fairytale castle", "thumbnail": "https://picsum.photos/id/1040/400/400", "price": "$5,000,000" }
+  ]
+}
+
