@@ -26,7 +26,7 @@ const Conversations = ({ navigation }) => (
     <Query query={GET_CONVERSATIONS}>
       {({ loading, data }) => {
         if (loading) {
-          <ConversationsText>Loading...</ConversationsText>;
+          return <ConversationsText>Loading...</ConversationsText>;
         }
 
         return (
