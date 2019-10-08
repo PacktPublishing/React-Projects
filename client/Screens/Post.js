@@ -30,19 +30,17 @@ const Post = ({ navigation }) => {
   const userName = navigation.getParam('userName', '');
   const { loading, data } = useQuery(GET_POST, { variables: { userName } });
 
-  const { post } = data;
-
   return (
     <PostWrapper>
       <PostBody>
-        {loading || !post ? (
+        {loading || !data.post ? (
           <PostText>Loading...</PostText>
         ) : (
           <>
-            <PostContent item={post} />
-            <PostCount stars={post.stars} marginBottom={2} />
+            <PostContent item={data.post} />
+            <PostCount stars={data.post.stars} marginBottom={2} />
             <FlatList
-              data={post.comments}
+              data={data.post.comments}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) =>
                 item && <Comment userName={item.userName} text={item.text} />
