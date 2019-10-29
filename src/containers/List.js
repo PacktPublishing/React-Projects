@@ -24,11 +24,14 @@ const List = ({ match, history }) => {
   );
 
   React.useEffect(() => {
-    getListRequest(match.params.id);
-    if (!items.length > 0) {
+    if (!list.id) {
+      getListRequest(match.params.id);
+    }
+
+    if (!items.length) {
       getItemsRequest(match.params.id);
     }
-  }, []);
+  }, [getItemsRequest, getListRequest, items, list, match.params.id]);
 
   return !loading && !error ? (
     <>

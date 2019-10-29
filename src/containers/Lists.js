@@ -37,9 +37,11 @@ const Lists = ({ history }) => {
   const { lists, loading, error, getListsRequest } = React.useContext(
     ListsContext,
   );
-  React.useEffect(() => {
-    getListsRequest();
-  }, []);
+  React.useLayoutEffect(() => {
+    if (!lists.length) {
+      getListsRequest();
+    }
+  }, [getListsRequest, lists]);
 
   return !loading && !error ? (
     <>
