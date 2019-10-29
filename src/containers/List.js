@@ -18,8 +18,7 @@ const Alert = styled.span`
 
 const List = ({ data, loading, error, match, history }) => {
   const items =
-    data.items &&
-    data.items.filter(item => item.listId === parseInt(match.params.id));
+    data && data.filter(item => item.listId === parseInt(match.params.id));
 
   return !loading && !error ? (
     <>

@@ -38,8 +38,8 @@ const Lists = ({ data, loading, error, history }) =>
     <>
       {history && <SubHeader title='Your Lists' />}
       <ListWrapper>
-        {data.lists &&
-          data.lists.map(list => (
+        {data &&
+          data.map(list => (
             <ListLink key={list.id} to={`list/${list.id}`}>
               <Title>{list.title}</Title>
             </ListLink>
@@ -51,5 +51,6 @@ const Lists = ({ data, loading, error, history }) =>
   );
 
 export default withDataFetching({
-  dataSource: 'https://github.com/PacktPublishing/React-Projects/lists',
+  dataSource:
+    'https://my-json-server.typicode.com/PacktPublishing/React-Projects/lists',
 })(Lists);
