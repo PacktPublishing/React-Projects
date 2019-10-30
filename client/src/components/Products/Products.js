@@ -35,7 +35,7 @@ const Products = ({ history, loading, error, products }) => {
             ))}
         </ProductItemsWrapper>
       ) : (
-        <Alert>{loading ? 'Loading' : error || isEmpty}</Loading>
+        <Alert>{loading ? 'Loading' : error || isEmpty}</Alert>
       )}
     </>
   );
