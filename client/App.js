@@ -7,7 +7,7 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import AppContainer from './AppContainer';
 
-const LOCALTUNNEL_URL = 'https://shy-octopus-3.localtunnel.me/graphql';
+const LOCALTUNNEL_URL = '';
 
 const httpLink = new HttpLink({
   uri: LOCALTUNNEL_URL,
