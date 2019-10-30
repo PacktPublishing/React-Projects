@@ -28,7 +28,7 @@ const Detail = ({ match, history }) => {
     if (!reviews.length > 0) {
       getReviewsRequest(match.params.id);
     }
-  }, []);
+  }, [getHotelRequest, getReviewsRequest, match.params.id, reviews.length]);
 
   return !loading && !error ? (
     <>
