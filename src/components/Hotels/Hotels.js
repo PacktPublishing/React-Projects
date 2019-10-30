@@ -28,7 +28,7 @@ const Hotels = ({ history }) => {
   );
   React.useEffect(() => {
     getHotelsRequest();
-  }, []);
+  }, [getHotelsRequest]);
 
   return !loading && !error ? (
     <>
