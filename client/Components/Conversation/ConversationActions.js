@@ -23,7 +23,7 @@ const ConversationActions = ({ userName }) => {
 
   return (
     <ConversationActionsWrapper
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 190 : 0}
       behavior={Platform.OS === 'ios' ? 'padding' : null}
     >
       <>
