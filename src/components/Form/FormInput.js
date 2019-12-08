@@ -42,12 +42,12 @@ const FormInput = ({
   <FormInputWrapper>
     <Label htmlFor={id}>{label}</Label>
     {type === 'textarea' ? (
-      <TextArea id={id} onChange={e => handleOnChange(id, e)} {...otherProps} />
+      <TextArea id={id} onChange={e => handleOnChange(e.target.value)} {...otherProps} />
     ) : (
       <Input
         id={id}
         type={type}
-        onChange={e => handleOnChange(id, e)}
+        onChange={e => handleOnChange(e.target.value)}
         {...otherProps}
       />
     )}

@@ -14,25 +14,22 @@ const FormWrapper = styled.div`
 
 const SubmitButton = styled(Button)`
   background: blue;
+  color: blue;
   margin: 2% 0;
 `;
 
 const Form = ({ match, history }) => {
   const { addReviewRequest } = React.useContext(ReviewsContext);
-  const [state, setState] = React.useState({
-    title: '',
-    rating: '',
-    description: '',
-  });
-
-  const handleOnChange = (key, e) => {
-    setState({ ...state, [key]: e.target.value });
-  };
+  const [title, setTitle] = React.useState('');
+  const [rating, setRating] = React.useState('');
+  const [description, setDescription] = React.useState('');
 
   const handleOnSubmit = e => {
     e.preventDefault();
     addReviewRequest({
-      ...state,
+      title,
+      rating,
+      description,
       id: Math.floor(Math.random() * 100),
       hotelId: parseInt(match.params.id),
     });
@@ -50,8 +47,8 @@ const Form = ({ match, history }) => {
             id='title'
             label='Title'
             placeholder='Insert title'
-            value={state.title}
-            handleOnChange={handleOnChange}
+            value={title}
+            handleOnChange={setTitle}
           />
           <FormInput
             id='rating'
@@ -59,16 +56,16 @@ const Form = ({ match, history }) => {
             type='number'
             placeholder='0'
             max={5}
-            value={state.rating}
-            handleOnChange={handleOnChange}
+            value={rating}
+            handleOnChange={setRating}
           />
           <FormInput
             id='description'
             label='Description'
             type='textarea'
             placeholder='Lorem ipsum...'
-            value={state.description}
-            handleOnChange={handleOnChange}
+            value={description}
+            handleOnChange={setDescription}
           />
           <SubmitButton>Add Review</SubmitButton>
         </form>
