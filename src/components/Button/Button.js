@@ -16,8 +16,8 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
 `;
 
-const Button = ({ children, onClick }) => (
-  <ButtonWrapper onClick={onClick}>{children}</ButtonWrapper>
+const Button = ({ children, onClick, ...otherProps }) => (
+  <ButtonWrapper onClick={onClick} {...otherProps}>{children}</ButtonWrapper>
 );
 
 export default Button;
