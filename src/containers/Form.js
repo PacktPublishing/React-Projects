@@ -19,20 +19,16 @@ const SubmitButton = styled(Button)`
 
 const Form = ({ match, history }) => {
   const { addItemRequest } = React.useContext(ItemsContext);
-  const [state, setState] = React.useState({
-    title: '',
-    quantity: '',
-    price: '',
-  });
-
-  const handleOnChange = (key, e) => {
-    setState({ ...state, [key]: e.target.value });
-  };
+  const [title, setTitle]= React.useState('');
+  const [quantity, setQuantity]= React.useState('');
+  const [price, setPrice]= React.useState('');
 
   const handleOnSubmit = e => {
     e.preventDefault();
     addItemRequest({
-      ...state,
+      title,
+      quantity,
+      price,
       id: Math.floor(Math.random() * 100),
       listId: parseInt(match.params.id),
     });
@@ -50,24 +46,24 @@ const Form = ({ match, history }) => {
             id='title'
             label='Title'
             placeholder='Insert title'
-            value={state.title}
-            handleOnChange={handleOnChange}
+            value={title}
+            handleOnChange={setTitle}
           />
           <FormItem
             id='quantity'
             label='Quantity'
             type='number'
             placeholder='0'
-            value={state.quantity}
-            handleOnChange={handleOnChange}
+            value={quantity}
+            handleOnChange={setQuantity}
           />
           <FormItem
             id='price'
             label='Price'
             type='number'
             placeholder='0.00'
-            value={state.price}
-            handleOnChange={handleOnChange}
+            value={price}
+            handleOnChange={setPrice}
           />
           <SubmitButton>Add Item</SubmitButton>
         </form>

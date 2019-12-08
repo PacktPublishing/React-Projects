@@ -39,7 +39,7 @@ const FormItem = ({
       id={id}
       placeholder={placeholder}
       value={value}
-      onChange={e => handleOnChange(id, e)}
+      onChange={e => handleOnChange(e.target.value)}
     />
   </FormItemWrapper>
 );
