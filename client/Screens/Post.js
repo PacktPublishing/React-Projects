@@ -1,5 +1,11 @@
 import React from 'react';
-import { Text, FlatList, ScrollView, View } from 'react-native';
+import {
+  Platform,
+  Text,
+  FlatList,
+  ScrollView,
+  KeyboardAvoidingView,
+} from 'react-native';
 import styled from 'styled-components/native';
 import { useQuery } from '@apollo/react-hooks';
 import CommentForm from '../Components/Comment/CommentForm';
@@ -8,17 +14,19 @@ import PostContent from '../Components/Post/PostContent';
 import { GET_POST } from '../constants';
 import Comment from '../Components/Comment/Comment';
 
-const PostWrapper = styled(View)`
+import { SafeAreaView } from 'react-navigation';
+
+const PostWrapper = styled(SafeAreaView)`
   flex: 1;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `;
 
 const PostBody = styled(ScrollView)`
   width: 100%;
-  display: flex;
+  flex: 1;
 `;
 
 const PostText = styled(Text)`
@@ -32,24 +40,30 @@ const Post = ({ navigation }) => {
 
   return (
     <PostWrapper>
-      <PostBody>
-        {loading || !data.post ? (
-          <PostText>Loading...</PostText>
-        ) : (
-          <>
-            <PostContent item={data.post} />
-            <PostCount stars={data.post.stars} marginBottom={2} />
-            <FlatList
-              data={data.post.comments}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => (
-                <Comment userName={item.userName} text={item.text} />
-              )}
-            />
-          </>
-        )}
-      </PostBody>
-      <CommentForm userName={userName} />
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 170 : 130}
+        style={{ flex: 1 }}
+        behavior='padding'
+      >
+        <PostBody>
+          {loading || !data.post ? (
+            <PostText>Loading...</PostText>
+          ) : (
+            <>
+              <PostContent item={data.post} />
+              <PostCount stars={data.post.stars} marginBottom={2} />
+              <CommentForm userName={userName} />
+              <FlatList
+                data={data.post.comments}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item }) =>
+                  item && <Comment userName={item.userName} text={item.text} />
+                }
+              />
+            </>
+          )}
+        </PostBody>
+      </KeyboardAvoidingView>
     </PostWrapper>
   );
 };

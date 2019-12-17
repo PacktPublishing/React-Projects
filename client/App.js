@@ -7,10 +7,10 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import AppContainer from './AppContainer';
 
-const LOCALTUNNEL_URL = '';
+const API_URL = '';
 
 const httpLink = new HttpLink({
-  uri: LOCALTUNNEL_URL,
+  uri: API_URL,
 });
 
 const authLink = setContext(async (_, { headers }) => {

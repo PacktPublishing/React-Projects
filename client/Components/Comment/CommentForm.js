@@ -10,19 +10,16 @@ const CommentFormWrapper = styled(View)`
   background-color: #ccc;
   padding: 2%;
   display: flex;
+  height: 90px;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const CommentForm = () => {
   const [comment, setComment] = React.useState('');
 
   return (
-    <CommentFormWrapper
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-    >
+    <CommentFormWrapper>
       <TextInput
         width={75}
         marginBottom={0}
