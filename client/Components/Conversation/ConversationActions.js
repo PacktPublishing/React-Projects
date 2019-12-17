@@ -19,10 +19,7 @@ const ConversationActions = ({ userName }) => {
   const [message, setMessage] = React.useState('');
 
   return (
-    <ConversationActionsWrapper
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-    >
+    <ConversationActionsWrapper>
       <TextInput
         width={75}
         marginBottom={0}
