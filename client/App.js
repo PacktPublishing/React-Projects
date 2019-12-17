@@ -10,10 +10,10 @@ import { Notifications } from 'expo';
 import AppContainer from './AppContainer';
 import { ADD_NOTIFICATION, GET_NOTIFICATIONS } from './constants';
 
-const LOCALTUNNEL_URL = '';
+const API_URL = '';
 
 const link = new HttpLink({
-  uri: LOCALTUNNEL_URL,
+  uri: API_URL,
 });
 
 const authLink = setContext(async (_, { headers }) => {
