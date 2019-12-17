@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   Platform,
-  Dimensions,
   Text,
   FlatList,
   ScrollView,
-  View,
   KeyboardAvoidingView,
 } from 'react-native';
 import styled from 'styled-components/native';
@@ -15,7 +13,6 @@ import PostCount from '../Components/Post/PostCount';
 import PostContent from '../Components/Post/PostContent';
 import { GET_POST } from '../constants';
 import Comment from '../Components/Comment/Comment';
-
 import { SafeAreaView } from 'react-navigation';
 
 const PostWrapper = styled(SafeAreaView)`
