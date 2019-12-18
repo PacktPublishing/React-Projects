@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ssr": "node server/index.js"
+    "ssr": "npm run build && node server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
