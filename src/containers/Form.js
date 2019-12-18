@@ -19,7 +19,7 @@ const SubmitButton = styled(Button)`
 const Form = ({ match, history }) => (
   <>
     {history && (
-      <SubHeader goBack={() => history.goBack()} title={`Back`} />
+      <SubHeader goBack={() => history.goBack()} title={`Add Item`} />
     )}
     <FormWrapper>
       <form>
