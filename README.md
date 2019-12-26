@@ -67,6 +67,10 @@ With the following software and hardware list you can run all code files present
 **Roy Derks** is a serial start-up CTO, conference speaker, and developer from Amsterdam. He has been actively programming since he was a teenager, starting as a self-taught programmer using online tutorials and books. At the age of 14, he founded his first start-up, a peer-to-peer platform where users could trade DVDs with other users for free. This marked the start of his career in web development, which back then primarily consisted of creating web applications using an MVC architecture with the LAMP stack.
 In 2015, he was introduced to React and GraphQL at a hackathon in Berlin, and after winning a prize for his project, he started to use these technologies professionally. Over the next few years, he helped multiple start-ups create cross-platform applications using React and React Native, including a start-up he co-founded. He also started giving workshops and talks at conferences around the globe. In 2019, he gave over 20 conference talks about React, React Native, and GraphQL, inspiring over 10,000 developers worldwide.
 
+## Other books by the authors
+* [Blueprints Visual Scripting for Unreal Engine](https://www.packtpub.com/game-development/blueprints-visual-scripting-unreal-engine?utm_source=github&utm_medium=repository&utm_campaign=9781785286018)
+
+
 
 
 
