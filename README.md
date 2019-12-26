@@ -44,16 +44,17 @@ The code will look like the following:
 **Following is what you need for this book:**
 The book is for JavaScript developers who want to explore React tooling and frameworks for building cross-platform applications. Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book.
 
-With the following software and hardware list you can run all code files present in the book (Chapter 1-14).
+With the following software and hardware list you can run all code files present in the book (Chapter 1-12).
 
 ### Software and Hardware List
 
 | Chapter  | Software required                   | OS required                        |
 | -------- | ------------------------------------| -----------------------------------|
-| 1-12     | Node.js   npm                          | Windows, Mac OS X, and Linux (Any) |
+| 1-12     | Node.js   npm                       | Windows, Mac OS X, and Linux (Any) |
 
         
 
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book.  [Click here to download it](https://static.packt-cdn.com/downloads/9781789954937_ColorImages.pdf).
 
 
 
