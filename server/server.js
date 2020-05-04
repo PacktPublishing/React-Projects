@@ -11,6 +11,9 @@ import App from '../src/containers/App';
 const PORT = 8080;
 const app = express();
 
+// Serve the static build
+app.use(express.static('./build'));
+
 app.get('/*', (req, res) => {
   const context = {};
   const app = ReactDOMServer.renderToString(
