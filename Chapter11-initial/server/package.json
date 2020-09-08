@@ -1,0 +1,24 @@
+{
+  "name": "social-media-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.9.5",
+    "apollo-server-express": "^2.9.5",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.5",
+    "http": "^0.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.19.1"
+  }
+}
