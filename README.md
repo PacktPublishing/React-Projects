@@ -1,7 +1,3 @@
-## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B13338?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
------
-For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
-
 # React Projects
 
 <a href="https://www.packtpub.com/programming/react-js-projects?utm_source=github&utm_medium=repository&utm_campaign=9781789954937"><img src="https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789954937-original.png" alt="React Projects" height="256px" align="right"></a>
